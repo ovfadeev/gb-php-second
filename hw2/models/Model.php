@@ -9,5 +9,7 @@ abstract class Model
   {
     # code...
   }
+
+  abstract protected function GetTableName();
 }
 ?>

@@ -18,7 +18,7 @@ class Product extends Model
     return false;
   }
 
-  public function GetList($arFilter)
+  public function GetList($arFilter = array())
   {
     return false;
   }

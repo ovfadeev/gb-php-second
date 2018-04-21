@@ -13,20 +13,28 @@ class Users extends Model
   public $login;
   protected $password;
 
-  function __construct($name, $lastName, $email, $login, $password)
+  function __construct()
   {
-    $this->name = $name;
-    $this->lastName = $lastName;
-    $this->email = $email;
-    $this->login = $login;
-    $this->password = $password;
+    # code...
   }
 
-  public function Add()
+  protected function GetTableName()
   {
-    $newPass = $this->HashPassword($this->password);
+    return "php2_users";
+  }
+
+  public function Add($name, $lastName, $email, $login, $password)
+  {
+    $newPass = $this->HashPassword($password);
     $db = new DB();
-    $query = "INSERT INTO Users (name, last_name, email, login, password) VALUES ('".$name."', '".$lastName."', '".$email."', '".$login."', '".$newPass."');";
+    $query = "INSERT INTO ".$this->GetTableName()." (name, last_name, email, login, password) VALUES ('".$name."', '".$lastName."', '".$email."', '".$login."', '".$newPass."');";
+    return $db->query($query);
+  }
+
+  public function Update($arParams)
+  {
+    $db = new DB();
+    $query = "UPDATE ";
     return $db->query($query);
   }
 
