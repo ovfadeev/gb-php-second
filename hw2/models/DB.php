@@ -11,12 +11,12 @@ class DB
   private $dbHost;
   private $db;
 
-  function __construct($name, $login, $password, $host)
+  function __construct()
   {
-    $this->dbName = $name;
-    $this->dbLogin = $login;
-    $this->dbPassword = $password;
-    $this->dbHost = $host;
+    $this->dbName = DB_NAME;
+    $this->dbLogin = DB_LOGIN;
+    $this->dbPassword = DB_PASSWORD;
+    $this->dbHost = DB_HOST;
   }
 
   private function connect()
