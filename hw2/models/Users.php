@@ -20,7 +20,7 @@ class Users extends Model
 
   public function GetTableName()
   {
-    return "php2_users";
+    return DB_PREFIX_TABLE."users";
   }
 
   public function Add($name, $lastName, $email, $login, $password)

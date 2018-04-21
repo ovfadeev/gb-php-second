@@ -13,6 +13,11 @@ class Product extends Model
     $this->db = new DB();
   }
 
+  public function getTableName()
+  {
+    return DB_PREFIX_TABLE."products";
+  }
+
   public function GetById($id)
   {
     return false;
