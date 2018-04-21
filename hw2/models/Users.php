@@ -4,7 +4,7 @@ use \fadeev\php2\models\DB;
 /**
 * Пользователь
 */
-class Users
+class Users extends Model
 {
   public $id;
   public $name;

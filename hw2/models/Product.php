@@ -4,7 +4,7 @@ use \fadeev\php2\models\DB;
 /**
 * Product
 */
-class Product
+class Product extends Model
 {
   private $db;
 
