@@ -53,7 +53,7 @@ class Users
     return false;
   }
 
-  public function GetList($arFilter)
+  public function GetList($arFilter = array())
   {
     return false;
   }
