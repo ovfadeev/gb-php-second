@@ -10,7 +10,6 @@ class Product
 
   function __construct()
   {
-    
     $this->db = new DB();
   }
 

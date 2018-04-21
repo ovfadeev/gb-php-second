@@ -1,5 +1,6 @@
 <?php
 namespace fadeev\php2\models;
+use \fadeev\php2\models\DB;
 /**
 * Пользователь
 */
@@ -24,12 +25,12 @@ class Users
   public function Add()
   {
     $newPass = $this->HashPassword($this->password);
-    $db = new DataBase();
+    $db = new DB();
     $query = "INSERT INTO Users (name, last_name, email, login, password) VALUES ('".$name."', '".$lastName."', '".$email."', '".$login."', '".$newPass."');";
-    $res = $db->query($query);
+    return $db->query($query);
   }
 
-  public function Remove($login)
+  public function Remove($id)
   {
     return false;
   }

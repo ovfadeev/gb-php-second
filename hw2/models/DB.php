@@ -19,22 +19,22 @@ class DB
     $this->dbHost = DB_HOST;
   }
 
-  private function connect()
+  private function Connect()
   {
     $this->db = mysqli_connect($this->dbHost, $this->dbLogin, $this->dbPassword, $this->dbName);
     mysqli_query($this->db, "SET NAMES utf8");
   }
 
-  private function close()
+  private function Close()
   {
     mysqli_close($this->db);
   }
 
-  private function query($sql)
+  private function Query($sql)
   {
-    $this->connect();
+    $this->Connect();
     $result = mysqli_query($this->db, $sql);
-    $this->close();
+    $this->Close();
     return $result;
   }
 }
