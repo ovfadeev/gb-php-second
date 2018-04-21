@@ -1,10 +1,13 @@
 <?php
 namespace fadeev\php2\models;
+use \fadeev\php2\models\DB;
 /**
 * Orders
 */
 class Orders
 {
+  protected $db;
+
   function __construct()
   {
     $this->db = new DB();

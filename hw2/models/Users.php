@@ -13,9 +13,11 @@ class Users extends Model
   public $login;
   public $password;
 
+  protected $db;
+
   function __construct()
   {
-    # code...
+    $this->db = new DB();
   }
 
   public function GetTableName()

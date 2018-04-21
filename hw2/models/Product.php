@@ -6,7 +6,7 @@ use \fadeev\php2\models\DB;
 */
 class Product extends Model
 {
-  private $db;
+  protected $db;
 
   function __construct()
   {
