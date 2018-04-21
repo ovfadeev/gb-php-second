@@ -1,5 +1,6 @@
 <?php
 namespace fadeev\php2\models;
+use \fadeev\php2\models\DB;
 /**
 * Product
 */
@@ -10,7 +11,7 @@ class Product
   function __construct()
   {
     
-    $this->db = new \fadeev\php2\models\DB();
+    $this->db = new DB();
   }
 
   public function GetById($id)
