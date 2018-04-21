@@ -18,7 +18,7 @@ class Users extends Model
     # code...
   }
 
-  protected function GetTableName()
+  public function GetTableName()
   {
     return "php2_users";
   }
