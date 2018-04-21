@@ -76,11 +76,7 @@ class UsersParams extends Users
     $this->work = $work;
     $this->picture_id = $picture_id;
 
-    parent::$name = $name;
-    parent::$lastName = $lastName;
-    parent::$email = $email;
-    parent::$login = $login;
-    parent::$password = $password;
+    parent::__construct($name, $lastName, $email, $login, $password);
   }
 }
 ?>
