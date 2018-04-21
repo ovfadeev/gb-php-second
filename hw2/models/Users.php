@@ -11,7 +11,7 @@ class Users extends Model
   public $lastName;
   public $email;
   public $login;
-  protected $password;
+  public $password;
 
   function __construct()
   {
@@ -23,15 +23,12 @@ class Users extends Model
     return DB_PREFIX_TABLE."users";
   }
 
-  public function Add($name, $lastName, $email, $login, $password)
+  public function Add($arParams = array())
   {
-    $newPass = $this->HashPassword($password);
-    $db = new DB();
-    $query = "INSERT INTO ".$this->GetTableName()." (name, last_name, email, login, password) VALUES ('".$name."', '".$lastName."', '".$email."', '".$login."', '".$newPass."');";
-    return $db->query($query);
+    return false;
   }
 
-  public function Update($arParams)
+  public function Update($arParams = array())
   {
     return false;
   }

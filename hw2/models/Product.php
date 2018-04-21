@@ -18,6 +18,21 @@ class Product extends Model
     return DB_PREFIX_TABLE."products";
   }
 
+  public function Add($arParams = array())
+  {
+    return false;
+  }
+
+  public function Update($arParams = array())
+  {
+    return false;
+  }
+
+  public function Remove($id)
+  {
+    return false;
+  }
+
   public function GetById($id)
   {
     return false;
