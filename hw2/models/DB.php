@@ -30,10 +30,10 @@ class DB
     mysqli_close($this->db);
   }
 
-  private function Query($sql)
+  private function Query($query)
   {
     $this->Connect();
-    $result = mysqli_query($this->db, $sql);
+    $result = mysqli_query($this->db, $query);
     $this->Close();
     return $result;
   }
