@@ -33,9 +33,7 @@ class Users extends Model
 
   public function Update($arParams)
   {
-    $db = new DB();
-    $query = "UPDATE ";
-    return $db->query($query);
+    return false;
   }
 
   public function Remove($id)
