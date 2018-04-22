@@ -5,23 +5,38 @@ namespace fadeev\php2\models;
 */
 class DB
 {
-  private $dbtype;
-  private $dbName;
-  private $dbLogin;
-  private $dbPassword;
-  private $dbHost;
-  private $charset;
+  private $dbtype = DB_TYPE;
+  private $dbName = DB_NAME;
+  private $dbLogin = DB_LOGIN;
+  private $dbPassword = DB_PASSWORD;
+  private $dbHost = DB_HOST;
+  private $charset = DB_CHARSET;
 
-  private $db;
+  private $db = null;
 
-  function __construct()
+  private function __construct(){}
+  private function __clone(){}
+  private function __wakeup(){}
+
+  private static $instance = null;
+
+  public static function getInstance()
   {
-    $this->dbtype = DB_TYPE;
-    $this->dbName = DB_NAME;
-    $this->dbLogin = DB_LOGIN;
-    $this->dbPassword = DB_PASSWORD;
-    $this->dbHost = DB_HOST;
-    $this->charset = DB_CHARSET;
+    if (is_null($instance))
+    {
+      static::$instance = new Static();
+    }
+    return static::$instance;
+  }
+
+  private function Connect()
+  {
+    if (is_null($this->db))
+    {
+      $this->db = new \PDO($this->prepareDsn(), $this->dbLogin, $this->dbPassword);
+      $this->db->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+    }
+    return $this->db;
   }
 
   private function prepareDsn()
@@ -32,16 +47,6 @@ class DB
       $this->dbName,
       $this->charset
     );
-  }
-
-  private function Connect()
-  {
-    if ($this->db === null)
-    {
-      $this->db = new \PDO($this->prepareDsn(), $this->dbLogin, $this->dbPassword);
-      $this->db->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
-    }
-    return $this->db;
   }
 
   public function Query($query)

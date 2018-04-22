@@ -13,13 +13,6 @@ class Users extends Model
   public $login;
   public $password;
 
-  protected $db;
-
-  function __construct()
-  {
-    $this->db = new DB();
-  }
-
   public function GetTableName()
   {
     return DB_PREFIX_TABLE."users";
