@@ -1,10 +1,13 @@
 <?php
 namespace fadeev\php2\models;
+use \fadeev\php2\traits\TSingleton;
 /**
 * Database
 */
 class DB
 {
+  use TSingleton;
+
   private $dbtype = DB_TYPE;
   private $dbName = DB_NAME;
   private $dbLogin = DB_LOGIN;
@@ -14,20 +17,7 @@ class DB
 
   private $db = null;
 
-  private function __construct(){}
-  private function __clone(){}
-  private function __wakeup(){}
-
   private static $instance = null;
-
-  public static function getInstance()
-  {
-    if (is_null($instance))
-    {
-      static::$instance = new Static();
-    }
-    return static::$instance;
-  }
 
   private function Connect()
   {
