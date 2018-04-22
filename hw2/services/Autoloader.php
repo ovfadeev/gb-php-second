@@ -20,7 +20,7 @@ class AutoLoader
     }
     if (file_exists($this->fileName))
     {
-      include($this->fileName);
+      include_once($this->fileName);
     }
   }
 }
