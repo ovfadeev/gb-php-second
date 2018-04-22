@@ -13,5 +13,30 @@ abstract class Model implements IModel
   {
     $this->db = DB::getinstance();
   }
+
+  public function Add($arParams = array())
+  {
+    return false;
+  }
+
+  public function Update($arParams = array())
+  {
+    return false;
+  }
+
+  public function Remove($id)
+  {
+    return false;
+  }
+
+  public function GetById($id)
+  {
+    return false;
+  }
+
+  public function GetList($arFilter = array())
+  {
+    return false;
+  }
 }
 ?>

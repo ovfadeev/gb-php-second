@@ -18,21 +18,6 @@ class Users extends Model
     return DB_PREFIX_TABLE."users";
   }
 
-  public function Add($arParams = array())
-  {
-    return false;
-  }
-
-  public function Update($arParams = array())
-  {
-    return false;
-  }
-
-  public function Remove($id)
-  {
-    return false;
-  }
-
   protected function HashPassword($password)
   {
     return password_hash($password, PASSWORD_DEFAULT);
@@ -43,17 +28,7 @@ class Users extends Model
     return false;
   }
 
-  public function GetById($id)
-  {
-    return false;
-  }
-
   public function GetByLogin($login)
-  {
-    return false;
-  }
-
-  public function GetList($arFilter = array())
   {
     return false;
   }
