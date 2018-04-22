@@ -10,8 +10,9 @@ class DB
   private $dbLogin;
   private $dbPassword;
   private $dbHost;
-  private $db;
   private $charset;
+
+  private $db;
 
   function __construct()
   {
