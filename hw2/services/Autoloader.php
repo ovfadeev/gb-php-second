@@ -6,7 +6,8 @@ namespace fadeev\php2\services;
 class AutoLoader
 {
   const DEV_NAMESPACE = "fadeev\\php2\\";
-  const FILE_PATH = "/../#PATH#.php";
+  const FILE_PATH = "/../#PATH#";
+  const FILE_EXT = ".php";
 
   protected $filePath;
   protected $fileName;
@@ -17,6 +18,7 @@ class AutoLoader
     {
       $this->filePath = str_replace(array(self::DEV_NAMESPACE, "\\"), array("", "/"), $className);
       $this->fileName = str_replace("#PATH#", $this->filePath, $_SERVER["DOCUMENT_ROOT"].self::FILE_PATH);
+      $this->fileName .= self::FILE_EXT;
     }
     if (file_exists($this->fileName))
     {
