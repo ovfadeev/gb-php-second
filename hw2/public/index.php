@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"]."/../services/init.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 
 $product = new \fadeev\php2\models\Product();
 echo "<pre>";
