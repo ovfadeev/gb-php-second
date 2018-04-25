@@ -1,11 +1,6 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 
-$product = new \fadeev\php2\models\Product();
-echo "<pre>";
-var_dump($product);
-echo "</pre>";
-
 $user = new \fadeev\php2\models\Users();
 
 // GetById
@@ -26,7 +21,7 @@ echo "</pre>";
 // GetList filter and select
 $usersList = $user->GetList(
   array(),
-  array("id", "login", "f_name", "l_name", "date_register")
+  array("login", "email", "f_name", "l_name", "date_register")
 );
 
 echo "<pre>";
@@ -42,7 +37,7 @@ echo "</pre>";
 $userUpdate = $user->Update(
   3,
   array(
-    "login" => "test_update2", "f_name" => "test_f_name_update"
+    "login" => "test_update", "f_name" => "test_f_name_update"
   )
 );
 echo "<pre>";

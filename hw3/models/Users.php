@@ -31,7 +31,8 @@ class Users extends Model
   public function Add($arParams = array())
   {
     $arParams["password"] = $this->HashPassword($arParams["password"]);
-    parent::Add($arParams);
+    $res = parent::Add($arParams);
+    return $res;
   }
 }
 ?>
