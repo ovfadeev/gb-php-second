@@ -75,5 +75,22 @@ class DB
     $sql .= ";";
     return $sql;
   }
+
+  public function PrepareDeleteSql($table, $arFilter)
+  {
+    $sql = "DELETE";
+    $sql .= " FROM ".$table;
+    if (!empty($arFilter))
+    {
+      $sql .= " WHERE ";
+      $sql .= implode(
+        array_map(function ($k, $v) {
+          return $k." = ".$v;
+        }, array_keys($arFilter), $arFilter)
+      );
+    }
+    $sql .= ";";
+    return $sql;
+  }
 }
 ?>

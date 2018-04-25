@@ -26,23 +26,25 @@ abstract class Model implements IModel
 
   public function Remove($id)
   {
-    return false;
+    $tableName = $this->GetTableName();
+    $sql = $this->db->PrepareDeleteSql($tableName, array("id" => $id));
+    return $this->db->Query($sql)->FetchAll();
   }
 
   public function GetById($id, $arSelect = array())
   {
     $tableName = $this->GetTableName();
     $sql = $this->db->PrepareSelectSql($tableName, array("id" => $id), $arSelect);
-    $res = $this->db->Query($sql)->FetchAll();
-    return $res[0];
+    $arResult = $this->db->Query($sql)->FetchAll();
+    return $arResult[0];
   }
 
   public function GetList($arFilter = array(), $arSelect = array())
   {
     $tableName = $this->getTableName();
     $sql = $this->db->PrepareSelectSql($tableName, $arFilter, $arSelect);
-    $res = $this->db->Query($sql)->FetchAll();
-    return $res;
+    $arResult = $this->db->Query($sql)->FetchAll();
+    return $arResult;
   }
 }
 ?>

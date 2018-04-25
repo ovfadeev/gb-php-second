@@ -23,11 +23,16 @@ echo "</pre>";
 
 $usersList = $user->GetList(
   array(),
-  array("login", "f_name", "l_name", "date_register")
+  array("id", "login", "f_name", "l_name", "date_register")
 );
 
 echo "<pre>";
 print_r($usersList);
+echo "</pre>";
+
+
+echo "<pre>";
+print_r($user->Remove(4));
 echo "</pre>";
 ?>
 <!DOCTYPE html>
