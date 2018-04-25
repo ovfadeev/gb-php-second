@@ -11,7 +11,7 @@ echo "<pre>";
 print_r($user->GetById(3));
 echo "</pre>";
 echo "<pre>";
-print_r($user->GetList(array("id" => 1), array("id", "login", "f_name", "l_name")));
+print_r($user->GetList(array("id" => 3), array("id", "login", "f_name", "l_name")));
 echo "</pre>";
 ?>
 <!DOCTYPE html>

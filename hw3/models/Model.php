@@ -40,9 +40,7 @@ abstract class Model implements IModel
   public function GetList($arFilter = array(), $arSelect = array())
   {
     $tableName = $this->getTableName();
-
     $sql = "";
-
     if (!empty($arSelect))
     {
       $sql .= "SELECT ".implode(", ", $arSelect);
@@ -51,9 +49,7 @@ abstract class Model implements IModel
     {
       $sql .= "SELECT *";
     }
-
     $sql .= " FROM ".$tableName;
-
     if (!empty($arFilter))
     {
       $sql .= " WHERE ";
@@ -63,7 +59,7 @@ abstract class Model implements IModel
       }
       $sql .= implode(" AND ", $arStrFilter);
     }
-    echo $sql;
+    $sql .= ";";
     $res = $this->db->query($sql)->FetchAll();
     return $res;
   }
