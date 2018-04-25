@@ -66,11 +66,11 @@ class DB
     if (!empty($arFilter))
     {
       $sql .= " WHERE ";
-      foreach ($arFilter as $key => $value)
-      {
-        $arStrFilter[] = $key." = ".$value;
-      }
-      $sql .= implode(" AND ", $arStrFilter);
+      $sql .= implode(
+        array_map(function ($k, $v) {
+          return $k." = ".$v;
+        }, array_keys($arFilter), $arFilter)
+      );
     }
     $sql .= ";";
     return $sql;
