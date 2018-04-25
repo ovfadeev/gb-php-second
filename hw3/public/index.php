@@ -5,6 +5,14 @@ $product = new \fadeev\php2\models\Product();
 echo "<pre>";
 var_dump($product);
 echo "</pre>";
+
+$user = new \fadeev\php2\models\Users();
+echo "<pre>";
+print_r($user->GetById(3));
+echo "</pre>";
+echo "<pre>";
+print_r($user->GetList(array("id" => 1), array("id", "login", "f_name", "l_name")));
+echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

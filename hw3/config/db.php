@@ -1,6 +1,6 @@
 <?php
 define("DB_TYPE", "mysql");
-define("DB_NAME", "gb-php-second");
+define("DB_NAME", "gb-php");
 define("DB_LOGIN", "root");
 define("DB_PASSWORD", "");
 define("DB_HOST", "localhost");

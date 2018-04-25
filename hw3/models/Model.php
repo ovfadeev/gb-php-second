@@ -11,7 +11,7 @@ abstract class Model implements IModel
 
   function __construct()
   {
-    $this->db = DB::getinstance();
+    $this->db = DB::getInstance();
   }
 
   public function Add($arParams = array())
@@ -29,14 +29,43 @@ abstract class Model implements IModel
     return false;
   }
 
-  public function GetById($id)
+  public function GetById($id, $arSelect = array())
   {
-    return false;
+    $tableName = $this->getTableName();
+    $sql = "SELECT * FROM ".$tableName." WHERE id = ".$id;
+    $res = $this->db->query($sql)->FetchAll();
+    return $res[0];
   }
 
-  public function GetList($arFilter = array())
+  public function GetList($arFilter = array(), $arSelect = array())
   {
-    return false;
+    $tableName = $this->getTableName();
+
+    $sql = "";
+
+    if (!empty($arSelect))
+    {
+      $sql .= "SELECT ".implode(", ", $arSelect);
+    }
+    else
+    {
+      $sql .= "SELECT *";
+    }
+
+    $sql .= " FROM ".$tableName;
+
+    if (!empty($arFilter))
+    {
+      $sql .= " WHERE ";
+      foreach ($arFilter as $key => $value)
+      {
+        $arStrFilter[] = $key." = ".$value;
+      }
+      $sql .= implode(" AND ", $arStrFilter);
+    }
+    echo $sql;
+    $res = $this->db->query($sql)->FetchAll();
+    return $res;
   }
 }
 ?>

@@ -39,10 +39,16 @@ class DB
     );
   }
 
-  public static function Query($query)
+  public function query($sql){
+    $pdoStatement = $this->Connect()->prepare($sql);
+    $pdoStatement->execute();
+    return $pdoStatement;
+  }
+
+  public function execute($sql)
   {
-    self::Connect();
-    return self::$db;
+    $this->query($sql);
+    return true;
   }
 }
 ?>
