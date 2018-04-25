@@ -7,11 +7,18 @@ var_dump($product);
 echo "</pre>";
 
 $user = new \fadeev\php2\models\Users();
+
 echo "<pre>";
 print_r($user->GetById(3));
 echo "</pre>";
+
+$usersList = $user->GetList(
+  array("id" => 3),
+  array("f_name", "l_name")
+);
+
 echo "<pre>";
-print_r($user->GetList(array("id" => 3), array("id", "login", "f_name", "l_name")));
+print_r($usersList);
 echo "</pre>";
 ?>
 <!DOCTYPE html>
