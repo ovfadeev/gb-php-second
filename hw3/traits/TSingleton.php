@@ -9,7 +9,7 @@ trait TSingleton
   private function __clone(){}
   private function __wakeup(){}
 
-  public static function getInstance()
+  public static function GetInstance()
   {
     if (is_null($instance))
     {

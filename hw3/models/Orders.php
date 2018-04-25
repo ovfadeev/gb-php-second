@@ -4,9 +4,9 @@ use \fadeev\php2\models\DB;
 /**
 * Orders
 */
-class Orders
+class Orders extends Model
 {
-  public function getTableName()
+  public function GetTableName()
   {
     return DB_PREFIX_TABLE."orders";
   }
