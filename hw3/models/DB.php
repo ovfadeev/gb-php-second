@@ -104,11 +104,33 @@ class DB
       $sql .= implode(
         ", ",
         array_map(function ($k, $v) {
-          return $k." = `".$v."`";
+          return $k." = '".$v."'";
         }, array_keys($arParams), $arParams)
       );
     }
     $sql .= " WHERE id = ".$id;
+    $sql .= ";";
+    return $sql;
+  }
+
+  public function PrepareAddSql($table, $arParams)
+  {
+    $sql = "INSERT INTO ".$table;
+    if (!empty($arParams))
+    {
+      $sql .= " (";
+      $sql .= implode(", ", array_keys($arParams));
+      $sql .= ")";
+      $sql .= " VALUES (";
+      $sql .= implode(
+        ", ",
+        array_map(function ($v) {
+          return "'".$v."'";
+        }, $arParams)
+      );
+      $sql .= ")";
+
+    }
     $sql .= ";";
     return $sql;
   }

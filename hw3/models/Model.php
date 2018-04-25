@@ -16,16 +16,18 @@ abstract class Model implements IModel
 
   public function Add($arParams = array())
   {
-    return false;
+    $tableName = $this->getTableName();
+    $sql = $this->db->PrepareAddSql($tableName, $arParams);
+    $arResult = $this->db->Query($sql)->FetchAll();
+    return $arResult;
   }
 
   public function Update($id, $arParams = array())
   {
     $tableName = $this->getTableName();
     $sql = $this->db->PrepareUpdateSql($tableName, $id, $arParams);
-    echo $sql;
-    $arResult = $this->db->Query($sql)->FetchAll();
-    return $arResult;
+    $res = $this->db->Query($sql)->RowCount();
+    return $res;
   }
 
   public function Remove($id)

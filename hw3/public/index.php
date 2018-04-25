@@ -42,11 +42,27 @@ echo "</pre>";
 $userUpdate = $user->Update(
   3,
   array(
-    "login" => "test_update", "f_name" => "test_f_name_update"
+    "login" => "test_update2", "f_name" => "test_f_name_update"
   )
 );
-
+echo "<pre>";
+print_r($userUpdate);
+echo "</pre>";
 // add
+$userAdd = $user->Add(
+  array(
+    "login" => "123123123",
+    "password" => "asdasd asd asd asd ",
+    "email" => "test@test.ru",
+    "f_name" => "test_add",
+    "l_name" => "test add",
+    "image" => "/images/reviews.jpg",
+    "address" => "Москва"
+  )
+);
+echo "<pre>";
+print_r($userAdd);
+echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

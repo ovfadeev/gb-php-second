@@ -32,5 +32,11 @@ class Users extends Model
   {
     return false;
   }
+
+  public function Add($arParams = array())
+  {
+    $arParams["password"] = $this->HashPassword($arParams["password"]);
+    parent::Add($arParams);
+  }
 }
 ?>
