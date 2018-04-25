@@ -20,6 +20,15 @@ $usersList = $user->GetList(
 echo "<pre>";
 print_r($usersList);
 echo "</pre>";
+
+$usersList = $user->GetList(
+  array(),
+  array("login", "f_name", "l_name", "date_register")
+);
+
+echo "<pre>";
+print_r($usersList);
+echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

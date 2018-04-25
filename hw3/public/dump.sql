@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `s_catalog_product_size` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы gb-php.s_catalog_product_size: ~6 rows (приблизительно)
+-- Дамп данных таблицы gb-php.s_catalog_product_size: ~7 rows (приблизительно)
 /*!40000 ALTER TABLE `s_catalog_product_size` DISABLE KEYS */;
 INSERT INTO `s_catalog_product_size` (`id`, `value`) VALUES
 	(1, 'XS'),
@@ -185,7 +185,8 @@ CREATE TABLE IF NOT EXISTS `s_users` (
 -- Дамп данных таблицы gb-php.s_users: ~2 rows (приблизительно)
 /*!40000 ALTER TABLE `s_users` DISABLE KEYS */;
 INSERT INTO `s_users` (`id`, `login`, `password`, `email`, `f_name`, `l_name`, `image`, `address`, `date_register`, `last_date_auth`) VALUES
-	(3, 'test', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test@test.ru', 'test', 'test', '/images/reviews.jpg', 'Москва', '2018-03-11 16:12:25', '2018-03-18 13:10:55');
+	(3, 'test', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test@test.ru', 'test', 'test', '/images/reviews.jpg', 'Москва', '2018-03-11 16:12:25', '2018-03-18 13:10:55'),
+	(4, 'test2', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test2@test.ru', 'test2', 'test', '', 'Санкт-петербург', '2018-04-25 14:00:08', NULL);
 /*!40000 ALTER TABLE `s_users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
