@@ -28,11 +28,6 @@ class Users extends Model
     return false;
   }
 
-  public function GetByLogin($login)
-  {
-    return false;
-  }
-
   public function Add($arParams = array())
   {
     $arParams["password"] = $this->HashPassword($arParams["password"]);
