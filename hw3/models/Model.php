@@ -18,7 +18,7 @@ abstract class Model implements IModel
   {
     $tableName = $this->getTableName();
     $sql = $this->db->PrepareAddSql($tableName, $arParams);
-    $res = $this->db->Query($sql)->FetchAll();
+    $res = $this->db->Query($sql)->RowCount();
     return $res;
   }
 
@@ -34,7 +34,7 @@ abstract class Model implements IModel
   {
     $tableName = $this->GetTableName();
     $sql = $this->db->PrepareDeleteSql($tableName, array("id" => $id));
-    $res = $this->db->Query($sql)->FetchAll();
+    $res = $this->db->Query($sql)->RowCount();
     return $res;
   }
 
