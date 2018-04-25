@@ -32,7 +32,7 @@ abstract class Model implements IModel
   public function GetById($id, $arSelect = array())
   {
     $tableName = $this->GetTableName();
-    $sql = "SELECT * FROM ".$tableName." WHERE id = ".$id;
+    $sql = $this->db->PrepareSelectSql($tableName, array("id" => $id), $arSelect);
     $res = $this->db->Query($sql)->FetchAll();
     return $res[0];
   }
