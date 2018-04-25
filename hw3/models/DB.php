@@ -39,10 +39,10 @@ class DB
     );
   }
 
-  public function Query($query)
+  public static function Query($query)
   {
-    $this->Connect();
-    return $this->db;
+    self::Connect();
+    return self::$db;
   }
 }
 ?>
