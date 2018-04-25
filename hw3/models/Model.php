@@ -18,8 +18,8 @@ abstract class Model implements IModel
   {
     $tableName = $this->getTableName();
     $sql = $this->db->PrepareAddSql($tableName, $arParams);
-    $arResult = $this->db->Query($sql)->FetchAll();
-    return $arResult;
+    $res = $this->db->Query($sql)->FetchAll();
+    return $res;
   }
 
   public function Update($id, $arParams = array())
@@ -34,7 +34,8 @@ abstract class Model implements IModel
   {
     $tableName = $this->GetTableName();
     $sql = $this->db->PrepareDeleteSql($tableName, array("id" => $id));
-    return $this->db->Query($sql)->FetchAll();
+    $res = $this->db->Query($sql)->FetchAll();
+    return $res;
   }
 
   public function GetById($id, $arSelect = array())

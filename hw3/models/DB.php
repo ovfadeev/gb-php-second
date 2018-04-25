@@ -77,7 +77,7 @@ class DB
     return $sql;
   }
 
-  public function PrepareDeleteSql($table, $arFilter)
+  public function PrepareDeleteSql($table, $arFilter = array())
   {
     $sql = "DELETE";
     $sql .= " FROM ".$table;
@@ -95,7 +95,7 @@ class DB
     return $sql;
   }
 
-  public function PrepareUpdateSql($table, $id, $arParams)
+  public function PrepareUpdateSql($table, $id, $arParams = array())
   {
     $sql = "UPDATE ".$table;
     if (!empty($arParams))
@@ -113,7 +113,7 @@ class DB
     return $sql;
   }
 
-  public function PrepareAddSql($table, $arParams)
+  public function PrepareAddSql($table, $arParams = array())
   {
     $sql = "INSERT INTO ".$table;
     if (!empty($arParams))

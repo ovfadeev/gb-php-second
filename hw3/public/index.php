@@ -34,9 +34,9 @@ print_r($usersList);
 echo "</pre>";
 
 // Remove
-// echo "<pre>";
-// print_r($user->Remove(4));
-// echo "</pre>";
+echo "<pre>";
+var_dump($user->Remove(5));
+echo "</pre>";
 
 // update
 $userUpdate = $user->Update(
@@ -46,7 +46,7 @@ $userUpdate = $user->Update(
   )
 );
 echo "<pre>";
-print_r($userUpdate);
+var_dump($userUpdate);
 echo "</pre>";
 // add
 $userAdd = $user->Add(
@@ -61,7 +61,7 @@ $userAdd = $user->Add(
   )
 );
 echo "<pre>";
-print_r($userAdd);
+var_dump($userAdd);
 echo "</pre>";
 ?>
 <!DOCTYPE html>
