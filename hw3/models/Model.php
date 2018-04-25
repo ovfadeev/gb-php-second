@@ -40,7 +40,7 @@ abstract class Model implements IModel
   public function GetList($arFilter = array(), $arSelect = array())
   {
     $tableName = $this->getTableName();
-    $sql = $this->db->PrepareSql($tableName, $arFilter, $arSelect);
+    $sql = $this->db->PrepareSelectSql($tableName, $arFilter, $arSelect);
     $res = $this->db->Query($sql)->FetchAll();
     return $res;
   }

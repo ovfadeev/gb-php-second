@@ -51,7 +51,7 @@ class DB
     return true;
   }
 
-  public function PrepareSql($table, $arFilter = array(), $arSelect = array())
+  public function PrepareSelectSql($table, $arFilter = array(), $arSelect = array())
   {
     $sql = "";
     if (!empty($arSelect))
