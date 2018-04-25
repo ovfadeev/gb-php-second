@@ -19,9 +19,13 @@ abstract class Model implements IModel
     return false;
   }
 
-  public function Update($arParams = array())
+  public function Update($id, $arParams = array())
   {
-    return false;
+    $tableName = $this->getTableName();
+    $sql = $this->db->PrepareUpdateSql($tableName, $id, $arParams);
+    echo $sql;
+    $arResult = $this->db->Query($sql)->FetchAll();
+    return $arResult;
   }
 
   public function Remove($id)

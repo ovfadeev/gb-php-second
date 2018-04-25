@@ -67,6 +67,7 @@ class DB
     {
       $sql .= " WHERE ";
       $sql .= implode(
+        ", ",
         array_map(function ($k, $v) {
           return $k." = ".$v;
         }, array_keys($arFilter), $arFilter)
@@ -84,11 +85,30 @@ class DB
     {
       $sql .= " WHERE ";
       $sql .= implode(
+        ", ",
         array_map(function ($k, $v) {
           return $k." = ".$v;
         }, array_keys($arFilter), $arFilter)
       );
     }
+    $sql .= ";";
+    return $sql;
+  }
+
+  public function PrepareUpdateSql($table, $id, $arParams)
+  {
+    $sql = "UPDATE ".$table;
+    if (!empty($arParams))
+    {
+      $sql .= " SET ";
+      $sql .= implode(
+        ", ",
+        array_map(function ($k, $v) {
+          return $k." = `".$v."`";
+        }, array_keys($arParams), $arParams)
+      );
+    }
+    $sql .= " WHERE id = ".$id;
     $sql .= ";";
     return $sql;
   }
