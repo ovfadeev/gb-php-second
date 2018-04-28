@@ -15,28 +15,28 @@ abstract class Model implements IModel
     $this->db = DB::GetInstance();
   }
 
-  public function Add($arParams = array())
+  public function Add()
   {
-    $tableName = static::getTableName();
-    $sql = PrepareSql::Add($tableName, $arParams);
-    $res = $this->db->Query($sql)->RowCount();
-    return $res;
+    // $tableName = static::getTableName();
+    // $sql = PrepareSql::Add($tableName, $arParams);
+    // $res = $this->db->Query($sql)->RowCount();
+    // return $res;
   }
 
-  public function Update($id, $arParams = array())
+  public function Update()
   {
-    $tableName = static::getTableName();
-    $sql = PrepareSql::Update($tableName, $id, $arParams);
-    $res = $this->db->Query($sql)->RowCount();
-    return $res;
+    // $tableName = static::getTableName();
+    // $sql = PrepareSql::Update($tableName, $id, $arParams);
+    // $res = $this->db->Query($sql)->RowCount();
+    // return $res;
   }
 
-  public function Remove($id)
+  public function Remove()
   {
-    $tableName = static::getTableName();
-    $sql = PrepareSql::Delete($tableName, array("id" => $id));
-    $res = $this->db->Query($sql)->RowCount();
-    return $res;
+    // $tableName = static::getTableName();
+    // $sql = PrepareSql::Delete($tableName, array("id" => $id));
+    // $res = $this->db->Query($sql)->RowCount();
+    // return $res;
   }
 
   public function Save()
