@@ -44,7 +44,7 @@ abstract class Model implements IModel
 
   public function Save()
   {
-    $tableName = static::getTableName();
+    # code...
   }
 
   public static function GetById($id, $arSelect = array())
