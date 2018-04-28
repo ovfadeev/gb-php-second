@@ -17,6 +17,7 @@ class DB
 
   private $db = null;
 
+
   private static $instance = null;
 
   private function Connect()
