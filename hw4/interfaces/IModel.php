@@ -10,5 +10,6 @@ interface IModel
   public function Update();
   public function Remove();
   public function Save();
+  public function PrivateColumns();
 }
 ?>

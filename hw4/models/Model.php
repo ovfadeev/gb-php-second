@@ -17,6 +17,9 @@ abstract class Model implements IModel
 
   public function Add()
   {
+    echo "<pre>";
+    var_dump($this);
+    echo "</pre>";
     // $tableName = static::getTableName();
     // $sql = PrepareSql::Add($tableName, $arParams);
     // $res = $this->db->Query($sql)->RowCount();

@@ -29,6 +29,11 @@ class Users extends Model
     return DB_PREFIX_TABLE."users";
   }
 
+  public function PrivateColumns()
+  {
+    return array();
+  }
+
   protected function HashPassword($password)
   {
     return password_hash($password, PASSWORD_DEFAULT);
@@ -39,11 +44,10 @@ class Users extends Model
     return false;
   }
 
-  public function Add($arParams = array())
+  public function Add()
   {
-    $arParams["password"] = $this->HashPassword($arParams["password"]);
-    $res = parent::Add($arParams);
-    return $res;
+    $this->password = $this->HashPassword($this->password);
+    parent::Add($arParams);
   }
 }
 ?>
