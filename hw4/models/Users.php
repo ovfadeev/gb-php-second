@@ -13,7 +13,7 @@ class Users extends Model
   public $login;
   public $password;
 
-  public function GetTableName()
+  public static function GetTableName()
   {
     return DB_PREFIX_TABLE."users";
   }

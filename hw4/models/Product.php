@@ -6,7 +6,7 @@ use \fadeev\php2\models\DB;
 */
 class Product extends Model
 {
-  public function GetTableName()
+  public static function GetTableName()
   {
     return DB_PREFIX_TABLE."products";
   }

@@ -17,7 +17,7 @@ abstract class Model implements IModel
 
   public function Add($arParams = array())
   {
-    $tableName = $this->getTableName();
+    $tableName = static::getTableName();
     $sql = PrepareSql::Add($tableName, $arParams);
     $res = $this->db->Query($sql)->RowCount();
     return $res;
@@ -25,7 +25,7 @@ abstract class Model implements IModel
 
   public function Update($id, $arParams = array())
   {
-    $tableName = $this->getTableName();
+    $tableName = static::getTableName();
     $sql = PrepareSql::Update($tableName, $id, $arParams);
     $res = $this->db->Query($sql)->RowCount();
     return $res;
@@ -33,21 +33,26 @@ abstract class Model implements IModel
 
   public function Remove($id)
   {
-    $tableName = $this->GetTableName();
+    $tableName = static::getTableName();
     $sql = PrepareSql::Delete($tableName, array("id" => $id));
     $res = $this->db->Query($sql)->RowCount();
     return $res;
   }
 
-  public function GetById($id, $arSelect = array())
+  public function Save()
   {
-    $tableName = $this->GetTableName();
+    $tableName = static::getTableName();
+  }
+
+  public static function GetById($id, $arSelect = array())
+  {
+    $tableName = static::getTableName();
     $sql = PrepareSql::Select($tableName, array("id" => $id), $arSelect);
     $arResult = $this->db->Query($sql)->FetchAll();
     return $arResult[0];
   }
 
-  public function GetList($arFilter = array(), $arSelect = array())
+  public static function GetList($arFilter = array(), $arSelect = array())
   {
     $tableName = $this->getTableName();
     $sql = PrepareSql::Select($tableName, $arFilter, $arSelect);
