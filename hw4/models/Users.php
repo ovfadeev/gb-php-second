@@ -13,6 +13,17 @@ class Users extends Model
   public $login;
   public $password;
 
+  public function __construct($id = null, $name = null, $lastName = null, $email = null, $login = null, $password = null)
+  {
+    parent::__construct();
+    $this->id = $id;
+    $this->name = $name;
+    $this->lastName = $lastName;
+    $this->email = $email;
+    $this->login = $login;
+    $this->password = $password;
+  }
+
   public static function GetTableName()
   {
     return DB_PREFIX_TABLE."users";

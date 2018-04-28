@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 
-$user = new \fadeev\php2\models\Users();
+$user = new \fadeev\php2\models\Users(null, 'Vasya', 'Pupkin', 'test@test.ru', 'test', '123123');
 echo "<pre>";
 var_dump($user);
 echo "</pre>";
