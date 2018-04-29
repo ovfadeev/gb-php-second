@@ -27,6 +27,9 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
+    echo "<pre>";
+    print_r($arPrepareSql);
+    echo "</pre>";
     try {
       Db::getInstance()->Query($arPrepareSql["sql"], $arPrepareSql["params"]);
       $this->id = $this->db->lastInsertId();
@@ -43,9 +46,6 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    echo "<pre>";
-    print_r($arPrepareSql);
-    echo "</pre>";
     try {
       $res = Db::getInstance()
         ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
@@ -75,10 +75,15 @@ abstract class DBModel extends Model implements IDBModel
 
   public function Save()
   {
-    if (!$this->Update())
+    $res = false;
+    if (($res = $this->Update()) <= 0)
     {
       $this->Add();
+      if ($this->id > 0){
+        $res = true;
+      }
     }
+    return $res;
   }
 
   public static function GetById($id, $arSelect = array())

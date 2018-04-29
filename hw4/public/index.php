@@ -36,8 +36,18 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 //   echo "</pre>";
 // }
 
-$user = \fadeev\php2\models\Users::GetById(26);
-$res = $user->Delete();
+// $user = \fadeev\php2\models\Users::GetById(26);
+// $res = $user->Delete();
+// var_dump($res);
+// if ($res)
+// {
+//   echo "<pre>";
+//   var_dump($user);
+//   echo "</pre>";
+// }
+
+$user = new \fadeev\php2\models\Users(null, 'Vasya', 'Pupkin', 'test@test.ru', 'test', '123123');
+$res = $user->Save();
 var_dump($res);
 if ($res)
 {

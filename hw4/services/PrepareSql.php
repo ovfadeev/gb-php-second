@@ -46,7 +46,7 @@ class PrepareSql
       $arParams[":".$prop] = $value;
       $arColumns[] = $prop." = :".$prop;
     }
-    $strColumns = implode(", ", $arColumns);
+    $strColumns = implode(" AND ", $arColumns);
     return array(
       "sql" => "DELETE FROM ".$table." WHERE ".$strColumns.";",
       "params" => $arParams
