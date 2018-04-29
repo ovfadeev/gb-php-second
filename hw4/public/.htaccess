@@ -23,13 +23,17 @@ ErrorDocument 404 /404.php
   Options +FollowSymLinks
   RewriteBase /
   RewriteEngine On
-  RewriteRule ^([a-z]+)/([a-z]+)/$ ?c=$1&a=$2 [L]
   RewriteCond %{REQUEST_URI} !\?
   RewriteCond %{REQUEST_URI} !\&
   RewriteCond %{REQUEST_URI} !\=
   RewriteCond %{REQUEST_URI} !\.
   RewriteCond %{REQUEST_URI} !\/$
   RewriteRule ^(.*[^\/])$ /$1/ [R=301,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^([a-z]+)/$ ?c=$1 [L,QSA]
+  RewriteRule ^([a-z]+)/([a-z]+)/$ ?c=$1&a=$2 [L,QSA]
 </IfModule>
 
 <IfModule mod_dir.c>
