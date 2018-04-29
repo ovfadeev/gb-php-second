@@ -42,7 +42,6 @@ abstract class DBModel extends Model implements IDBModel
     $res = $this->db
       ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
       ->rowCount();
-    var_dump($res);
     return $res;
   }
 
