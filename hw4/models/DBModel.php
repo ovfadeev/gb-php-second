@@ -43,6 +43,9 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
+    echo "<pre>";
+    print_r($arPrepareSql);
+    echo "</pre>";
     try {
       $res = Db::getInstance()
         ->Query($arPrepareSql["sql"], $arPrepareSql["params"])

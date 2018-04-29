@@ -41,6 +41,11 @@ class Users extends DBModel
     return DB_PREFIX_TABLE."users";
   }
 
+  public function PrivateColumns()
+  {
+    return array_merge(array("date_register", "last_date_auth"), parent::PrivateColumns());
+  }
+
   /**
    * Шифруем пароль
    * @param string $password
@@ -66,7 +71,7 @@ class Users extends DBModel
   public function Add()
   {
     $this->password = $this->HashPassword($this->password);
-    parent::Add($arParams);
+    parent::Add();
   }
 }
 ?>

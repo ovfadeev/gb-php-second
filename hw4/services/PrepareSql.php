@@ -51,22 +51,25 @@ class PrepareSql
     // return $sql;
   }
 
-  public static function Update($table, $obj)
+  public static function Update($table, $obj, $privateColumns = array())
   {
     $arParams = array();
     $arColumns = array();
     foreach ($obj as $prop => $value)
     {
-      if (!empty($privateParams) && in_array($prop, $privateParams))
+      if (!empty($privateColumns) && in_array($prop, $privateColumns))
       {
         continue;
       }
       $arParams[":".$prop] = $value;
-      $arColumns[] = "`".$prop."`";
+      if ($prop == "id")
+      {
+        continue;
+      }
+      $arColumns[] = $prop." = `:".$prop."`";
     }
     $strColumns = implode(", ", $arColumns);
-    $placeholders = implode(", ", array_keys($arParams));
-    $sql = "UPDATE ".$table." SET ".." WHERE "..";";
+    $sql = "UPDATE ".$table." SET ".$strColumns." WHERE id = :id;";
     return array(
       "sql" => $sql,
       "params" => $arParams
@@ -88,13 +91,13 @@ class PrepareSql
     // return $sql;
   }
 
-  public static function Add($table, $obj, $privateParams = array())
+  public static function Add($table, $obj, $privateColumns = array())
   {
     $arParams = array();
     $arColumns = array();
     foreach ($obj as $prop => $value)
     {
-      if (!empty($privateParams) && in_array($prop, $privateParams))
+      if (!empty($privateColumns) && in_array($prop, $privateColumns))
       {
         continue;
       }
