@@ -2,7 +2,7 @@
 namespace fadeev\php2\models;
 use \fadeev\php2\models\DB;
 /**
-* Product
+* Продукт
 */
 class Product extends DBModel
 {
@@ -43,9 +43,9 @@ class Product extends DBModel
     return DB_PREFIX_TABLE."catalog_products";
   }
 
-  public function PrivateColumns()
-  {
-    return array_merge(array(), parent::PrivateColumns());
-  }
+  // public function PrivateColumns()
+  // {
+  //   return array_merge(array(), parent::PrivateColumns());
+  // }
 }
 ?>

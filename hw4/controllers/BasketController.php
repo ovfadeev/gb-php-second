@@ -8,7 +8,11 @@ class BasketController extends Controller
 {
   public function actionIndex()
   {
-    $basket = Basket::GetById($id);
+    // тут два варианта узнать корзину
+    // 1. По идентификатору сессии
+    // 2. По авторизованному пользователю
+    $session_id = session_id();
+    $basket = Basket::GetList(array("session_id" => $session_id));
     echo $this->render('basket', ['basket' => $basket]);
   }
 }
