@@ -1,7 +1,7 @@
 <?php
 namespace fadeev\php2\interfaces;
 
-interface IModel
+interface IDBModel
 {
   public static function getTableName();
   public static function GetById($id, $arSelect = array());
