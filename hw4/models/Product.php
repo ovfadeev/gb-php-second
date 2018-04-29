@@ -4,7 +4,7 @@ use \fadeev\php2\models\DB;
 /**
 * Product
 */
-class Products extends DBModel
+class Product extends DBModel
 {
   public $id;
   public $category_id;
@@ -22,6 +22,7 @@ class Products extends DBModel
 
   public function __construct($id = null, $category_id = null, $name = null, $image = null, $image_small = null, $image_slider = null, $description = null, $price = null, $size_id = null, $color_id = null, $status = null, $view = null, $count = null)
   {
+    parent::__construct();
     $this->$id = $id;
     $this->$category_id = $category_id;
     $this->$name = $name;

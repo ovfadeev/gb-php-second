@@ -8,12 +8,13 @@ class ProductController extends Controller
 {
     public function actionIndex()
     {
-        echo "catalog";
+        $products = Product::GetById($id);
+        echo $this->render('products', ['products' => $products]);
     }
 
     public function actionCard()
     {
-       $id = $_GET['id'];
+       $id = htmlspecialchars($_GET['id']);
        $product = Product::GetById($id);
        echo $this->render('card', ['product' => $product]);
     }

@@ -10,7 +10,6 @@ abstract class Controller
   private $layout = 'main';
   private $useLayout = true;
 
-
   public function runAction($action = null)
   {
     $this->action = $action ?: $this->defaultAction;
@@ -23,21 +22,20 @@ abstract class Controller
     }
   }
 
-
-  public function render($template, $params = [])
+  public function render($template, $arParams = array())
   {
     if($this->useLayout){
       return $this->renderTemplate("layouts/{$this->layout}",
-        ['content' => $this->renderTemplate($template, $params)]);
+        ['content' => $this->renderTemplate($template, $arParams)]);
     }else{
-      return $this->renderTemplate($template, $params);
+      return $this->renderTemplate($template, $arParams);
     }
   }
 
-  public function renderTemplate($template, $params = [])
+  public function renderTemplate($template, $arParams = array())
   {
     ob_start();
-    extract($params);
+    extract($arParams);
     $templatePath = TEMPLATES_DIR . $template . ".php";
     include $templatePath;
     return ob_get_clean();
