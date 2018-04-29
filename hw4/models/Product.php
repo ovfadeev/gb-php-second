@@ -20,6 +20,8 @@ class Product extends DBModel
   public $view;
   public $count;
 
+  private $privateColumns = array();
+
   public function __construct($id = null, $category_id = null, $name = null, $image = null, $image_small = null, $image_slider = null, $description = null, $price = null, $size_id = null, $color_id = null, $status = null, $view = null, $count = null)
   {
     parent::__construct();
@@ -43,9 +45,9 @@ class Product extends DBModel
     return DB_PREFIX_TABLE."catalog_products";
   }
 
-  // public function PrivateColumns()
-  // {
-  //   return array_merge(array(), parent::PrivateColumns());
-  // }
+  public function PrivateColumns()
+  {
+    return array_merge(parent::PrivateColumns(), $this->privateColumns);
+  }
 }
 ?>

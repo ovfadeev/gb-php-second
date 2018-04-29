@@ -13,6 +13,10 @@ class User extends DBModel
   public $login;
   public $password;
 
+  private $privateColumns = array(
+    "last_date_auth"
+  );
+
   /**
    * [__construct description]
    * @param int $id
@@ -43,7 +47,7 @@ class User extends DBModel
 
   public function PrivateColumns()
   {
-    return array_merge(array("date_register", "last_date_auth"), parent::PrivateColumns());
+    return array_merge(parent::PrivateColumns(), $this->privateColumns);
   }
 
   /**
