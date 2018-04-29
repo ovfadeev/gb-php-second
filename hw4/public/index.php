@@ -54,18 +54,18 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 //   echo "</pre>";
 // }
 
-$user = \fadeev\php2\models\Users::GetById(11);
+// $user = \fadeev\php2\models\Users::GetById(11);
 
-$user->l_name = "testovich";
+// $user->l_name = "testovich";
 
-$res = $user->Save();
-var_dump($res);
-if ($res)
-{
-  echo "<pre>";
-  var_dump($user);
-  echo "</pre>";
-}
+// $res = $user->Save();
+// var_dump($res);
+// if ($res)
+// {
+//   echo "<pre>";
+//   var_dump($user);
+//   echo "</pre>";
+// }
 
 ?>
 <!DOCTYPE html>

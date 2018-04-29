@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
 -- Хост:                         127.0.0.1
 -- Версия сервера:               5.6.38-log - MySQL Community Server (GPL)
--- Операционная система:         Win32
+-- Операционная система:         Win64
 -- HeidiSQL Версия:              9.5.0.5196
 -- --------------------------------------------------------
 
@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `s_basket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы gb-php.s_basket: ~0 rows (приблизительно)
+DELETE FROM `s_basket`;
 /*!40000 ALTER TABLE `s_basket` DISABLE KEYS */;
 /*!40000 ALTER TABLE `s_basket` ENABLE KEYS */;
 
@@ -42,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `s_catalog_category` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='\r\n';
 
 -- Дамп данных таблицы gb-php.s_catalog_category: ~10 rows (приблизительно)
+DELETE FROM `s_catalog_category`;
 /*!40000 ALTER TABLE `s_catalog_category` DISABLE KEYS */;
 INSERT INTO `s_catalog_category` (`id`, `parent_id`, `name`, `code`) VALUES
 	(1, 0, 'Man', 'man'),
@@ -76,6 +78,7 @@ CREATE TABLE IF NOT EXISTS `s_catalog_products` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы gb-php.s_catalog_products: ~15 rows (приблизительно)
+DELETE FROM `s_catalog_products`;
 /*!40000 ALTER TABLE `s_catalog_products` DISABLE KEYS */;
 INSERT INTO `s_catalog_products` (`id`, `category_id`, `name`, `image`, `image_small`, `image_slider`, `description`, `price`, `size_id`, `color_id`, `status`, `view`, `count`) VALUES
 	(1, 1, 'Футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 200, 5, 1, 1, 0, 10),
@@ -106,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `s_catalog_product_color` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы gb-php.s_catalog_product_color: ~2 rows (приблизительно)
+DELETE FROM `s_catalog_product_color`;
 /*!40000 ALTER TABLE `s_catalog_product_color` DISABLE KEYS */;
 INSERT INTO `s_catalog_product_color` (`id`, `name`, `value_hex`, `value_rgb`) VALUES
 	(1, 'Black', '#000000', 'rgba(0, 0, 0, 1);'),
@@ -121,6 +125,7 @@ CREATE TABLE IF NOT EXISTS `s_catalog_product_size` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы gb-php.s_catalog_product_size: ~7 rows (приблизительно)
+DELETE FROM `s_catalog_product_size`;
 /*!40000 ALTER TABLE `s_catalog_product_size` DISABLE KEYS */;
 INSERT INTO `s_catalog_product_size` (`id`, `value`) VALUES
 	(1, 'XS'),
@@ -144,6 +149,7 @@ CREATE TABLE IF NOT EXISTS `s_reviews` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы gb-php.s_reviews: ~3 rows (приблизительно)
+DELETE FROM `s_reviews`;
 /*!40000 ALTER TABLE `s_reviews` DISABLE KEYS */;
 INSERT INTO `s_reviews` (`id`, `user_id`, `product_id`, `name`, `text`) VALUES
 	(1, 3, 0, 'Иван Иванов', 'Vestibulum quis porttitor dui! Quisque viverra nun'),
@@ -160,6 +166,7 @@ CREATE TABLE IF NOT EXISTS `s_subscribe` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы gb-php.s_subscribe: ~2 rows (приблизительно)
+DELETE FROM `s_subscribe`;
 /*!40000 ALTER TABLE `s_subscribe` DISABLE KEYS */;
 INSERT INTO `s_subscribe` (`id`, `email`) VALUES
 	(1, '123@123.ru'),
@@ -175,18 +182,25 @@ CREATE TABLE IF NOT EXISTS `s_users` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `f_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `l_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date_register` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_date_auth` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы gb-php.s_users: ~2 rows (приблизительно)
+-- Дамп данных таблицы gb-php.s_users: ~10 rows (приблизительно)
+DELETE FROM `s_users`;
 /*!40000 ALTER TABLE `s_users` DISABLE KEYS */;
-INSERT INTO `s_users` (`id`, `login`, `password`, `email`, `f_name`, `l_name`, `image`, `address`, `date_register`, `last_date_auth`) VALUES
-	(3, 'test', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test@test.ru', 'test', 'test', '/images/reviews.jpg', 'Москва', '2018-03-11 16:12:25', '2018-03-18 13:10:55'),
-	(4, 'test2', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test2@test.ru', 'test2', 'test', '', 'Санкт-петербург', '2018-04-25 14:00:08', NULL);
+INSERT INTO `s_users` (`id`, `login`, `password`, `email`, `f_name`, `l_name`, `date_register`, `last_date_auth`) VALUES
+	(3, 'test_update', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test@test.ru', 'Vasa', 'test', '2018-03-11 16:12:25', '2018-03-18 13:10:55'),
+	(4, 'test2', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test2@test.ru', 'test2', 'test', '2018-04-25 14:00:08', NULL),
+	(5, 'test', '$2y$10$11NhWaCPM8zAPSKt/Ch88ebECSz8cIlV69ZPlxYfGSaD08MRxWFbm', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:16:09', NULL),
+	(6, 'test', '$2y$10$sCOOAA32ie1H8SLQx7FsN.2GgE0YNVuddPZTrxTHH9oMpdkZn4YsS', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:17:46', NULL),
+	(7, 'test', '$2y$10$kM/qJ9yXVRlLw8d4Xn./aeFFeTEHJSxIg6LtQUZfMy2DA2fywd00.', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:17:59', NULL),
+	(8, 'test', '$2y$10$CxFR9F/M3Q1w74BFO7KqiuZpKfJwp9XMF7tcnO0IiZPpFI7LI0aCe', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:19:47', NULL),
+	(9, 'test', '$2y$10$5vBUtodzS/4BdwMNzQdJd.YpyguBWm4a4q74klGnw26ReDB1.Xi2y', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:20:10', NULL),
+	(11, 'test', '$2y$10$Hezd26AfF86RCiC4GpNBbeuGtIW2e05PHXt7KsqJV3EqcYNER/vnq', 'test@test.ru', 'Vasya', 'testovich', '2018-04-29 19:20:55', NULL),
+	(12, 'test', '$2y$10$0.OrUgELpucm701sGAkKCu9uhz0pP5KkSl21inCr0Z3sSQyhDizTW', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:21:30', NULL),
+	(13, 'test', '$2y$10$M2i.zAYOVSysRjitsOnQEOq/Co924MrcfTjeb/7XPO5qaiwUG8tVy', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:21:30', NULL);
 /*!40000 ALTER TABLE `s_users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
