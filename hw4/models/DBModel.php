@@ -27,11 +27,12 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    $res = DB::GetInstance()
-      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
-      ->RowCount();
-    $this->id = $this->db->lastInsertId();
-    return $this->id;
+    try {
+      Db::getInstance()->Query($arPrepareSql["sql"], $arPrepareSql["params"]);
+      $this->id = $this->db->lastInsertId();
+    } catch (PDOExecption $e) {
+      die($e->getMessage());
+    }
   }
 
   public function Update()
@@ -72,10 +73,9 @@ abstract class DBModel extends Model implements IDBModel
       array("id" => $id),
       $arSelect
     );
-    $arResult = DB::GetInstance()
-      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
-      ->FetchAll();
-    return $arResult[0];
+    $result = Db::getInstance()
+      ->queryObject($arPrepareSql["sql"], $arPrepareSql["params"], get_called_class());
+    return $result;
   }
 
   public static function GetList($arFilter = array(), $arSelect = array())

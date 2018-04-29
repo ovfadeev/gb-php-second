@@ -19,16 +19,20 @@ class PrepareSql
     $sql .= " FROM ".$table;
     if (!empty($arFilter))
     {
+      $arParams = array();
+      $arColumns = array();
+      foreach ($arFilter as $key => $value)
+      {
+        $arParams[":".$prop] = $value;
+        $arColumns[] = "`".$prop."`";
+      }
       $sql .= " WHERE ";
-      $sql .= implode(
-        ", ",
-        array_map(function ($k, $v) {
-          return $k." = ".$v;
-        }, array_keys($arFilter), $arFilter)
-      );
+      $sql .= implode(", ", $columns);
     }
     $sql .= ";";
-    return $sql;
+    return array(
+      "sql" => $sql
+    );
   }
 
   public static function Delete($table, $arFilter = array())
