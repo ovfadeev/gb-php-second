@@ -47,9 +47,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 // }
 
 $user = new \fadeev\php2\models\Users(null, 'Vasya', 'Pupkin', 'test@test.ru', 'test', '123123');
-$res = $user->Save();
-var_dump($res);
-if ($res)
+if ($user->Save())
 {
   echo "<pre>";
   var_dump($user);

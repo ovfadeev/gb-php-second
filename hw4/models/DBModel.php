@@ -27,15 +27,8 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    echo "<pre>";
-    print_r($arPrepareSql);
-    echo "</pre>";
-    try {
-      Db::getInstance()->Query($arPrepareSql["sql"], $arPrepareSql["params"]);
-      $this->id = $this->db->lastInsertId();
-    } catch (PDOExecption $e) {
-      die($e->getMessage());
-    }
+    Db::getInstance()->Query($arPrepareSql["sql"], $arPrepareSql["params"]);
+    $this->id = $this->db->lastInsertId();
   }
 
   public function Update()
@@ -46,13 +39,9 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    try {
-      $res = Db::getInstance()
-        ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
-        ->rowCount();
-    } catch (PDOExecption $e) {
-      die($e->getMessage());
-    }
+    $res = Db::getInstance()
+      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->rowCount();
     return $res;
   }
 
@@ -63,13 +52,9 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    try {
-      $res = Db::getInstance()
-        ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
-        ->rowCount();
-    } catch (PDOExecption $e) {
-      die($e->getMessage());
-    }
+    $res = Db::getInstance()
+      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->rowCount();
     return $res;
   }
 

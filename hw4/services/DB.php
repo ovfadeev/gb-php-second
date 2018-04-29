@@ -30,8 +30,12 @@ class DB
   }
 
   public function Query($sql, $arParams = array()){
-    $pdoStatement = $this->Connect()->prepare($sql);
-    $pdoStatement->execute($arParams);
+    try {
+      $pdoStatement = $this->Connect()->prepare($sql);
+      $pdoStatement->execute($arParams);
+    } catch (PDOExecption $e) {
+      die($e->getMessage());
+    }
     return $pdoStatement;
   }
 
