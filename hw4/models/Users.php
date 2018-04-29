@@ -41,11 +41,6 @@ class Users extends DBModel
     return DB_PREFIX_TABLE."users";
   }
 
-  public function PrivateColumns()
-  {
-    return array("id", "DB");
-  }
-
   /**
    * Шифруем пароль
    * @param string $password

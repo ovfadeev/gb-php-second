@@ -68,52 +68,26 @@ class PrepareSql
     return $sql;
   }
 
-  public static function Add($table, $arParams = array(), $privateParams = array())
+  public static function Add($table, $objParams, $privateParams = array())
   {
-    // $arColumns = array_map(function ($v){
-    //   if (!empty($privateParams) && !in_array($key, $privateParams))
-    //   {
-    //     return $v;
-    //   }
-    // }, array_keys($arParams));
-
-    echo "<pre>";
-    print_r(array_keys($arParams));
-    echo "</pre>";
-
-    // $params = [];
-    // $columns = [];
-    // foreach ($arParams as $key => $value) {
-    //   if (!empty($privateParams) && in_array($key, $privateParams)) {
-    //     continue;
-    //   }
-
-    //   $params[":{$key}"] = $value;
-    //   $columns[] = "`{$key}`";
-    // }
-
-    // $columns = implode(", ", $columns);
-    // $placeholders = implode(", ", array_keys($params));
-
-    // $sql = "INSERT INTO ".$table." (".$columns.") VALUES (".$placeholders.")";
-    // $sql = "INSERT INTO ".$table;
-    // if (!empty($arParams))
-    // {
-    //   $sql .= " (";
-    //   $sql .= implode(", ", array_keys($arParams));
-    //   $sql .= ")";
-    //   $sql .= " VALUES (";
-    //   $sql .= implode(
-    //     ", ",
-    //     array_map(function ($v) {
-    //       return "'".$v."'";
-    //     }, $arParams)
-    //   );
-    //   $sql .= ")";
-
-    // }
-    // $sql .= ";";
-    return $sql;
+    $params = array();
+    $columns = array();
+    foreach ($objParams as $prop => $value)
+    {
+      if (!empty($privateParams) && in_array($prop, $privateParams))
+      {
+        continue;
+      }
+      $params[":{$prop}"] = $value;
+      $columns[] = "`{$prop}`";
+    }
+    $columns = implode(", ", $columns);
+    $placeholders = implode(", ", array_keys($params));
+    $sql = "INSERT INTO ".$table." (".$columns.") VALUES (".$placeholders.")";
+    return array(
+      "sql" => $sql,
+      "params" => $params
+    );
   }
 }
 ?>

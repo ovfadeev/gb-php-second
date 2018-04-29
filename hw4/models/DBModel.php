@@ -15,32 +15,48 @@ abstract class DBModel extends Model implements IDBModel
     $this->db = DB::GetInstance();
   }
 
+  public function PrivateColumns()
+  {
+    return array("DB");
+  }
+
   public function Add()
   {
-    $sql = PrepareSql::Add(
+    $arPrepareSql = PrepareSql::Add(
       static::getTableName(),
       $this,
       $this->PrivateColumns()
     );
-    echo $sql;
-    // $res = DB::GetInstance()->Query($sql)->RowCount();
+    $res = DB::GetInstance()
+      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->RowCount();
     return $res;
   }
 
   public function Update()
   {
-    // $tableName = static::getTableName();
-    // $sql = PrepareSql::Update($tableName, $id, $arParams);
-    // $res = $this->db->Query($sql)->RowCount();
-    // return $res;
+    $arPrepareSql = PrepareSql::Update(
+      static::getTableName(),
+      $this,
+      $this->PrivateColumns()
+    );
+    $res = DB::GetInstance()
+      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->RowCount();
+    return $res;
   }
 
   public function Remove()
   {
-    // $tableName = static::getTableName();
-    // $sql = PrepareSql::Delete($tableName, array("id" => $id));
-    // $res = $this->db->Query($sql)->RowCount();
-    // return $res;
+    $arPrepareSql = PrepareSql::Remove(
+      static::getTableName(),
+      $this,
+      $this->PrivateColumns()
+    );
+    $res = DB::GetInstance()
+      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->RowCount();
+    return $res;
   }
 
   public function Save()
