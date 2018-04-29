@@ -7,23 +7,35 @@ use \fadeev\php2\models\DB;
 class Users extends DBModel
 {
   public $id;
-  public $name;
-  public $lastName;
+  public $f_name;
+  public $l_name;
   public $email;
   public $login;
   public $password;
 
-  public function __construct($id = null, $name = null, $lastName = null, $email = null, $login = null, $password = null)
+  /**
+   * [__construct description]
+   * @param int $id
+   * @param string $name
+   * @param string $lastName
+   * @param string $email
+   * @param string $login
+   * @param string $password
+   */
+  public function __construct($id = null, $f_name = null, $l_name = null, $email = null, $login = null, $password = null)
   {
     parent::__construct();
     $this->id = $id;
-    $this->name = $name;
-    $this->lastName = $lastName;
+    $this->f_name = $f_name;
+    $this->l_name = $l_name;
     $this->email = $email;
     $this->login = $login;
     $this->password = $password;
   }
 
+  /**
+   * Получить таблицу пользователей
+   */
   public static function GetTableName()
   {
     return DB_PREFIX_TABLE."users";
@@ -31,19 +43,31 @@ class Users extends DBModel
 
   public function PrivateColumns()
   {
-    return array();
+    return array("id", "DB");
   }
 
+  /**
+   * Шифруем пароль
+   * @param string $password
+   */
   protected function HashPassword($password)
   {
     return password_hash($password, PASSWORD_DEFAULT);
   }
 
+  /**
+   * Авторизация
+   * @param string $login
+   * @param string $password
+   */
   public function Auth($login, $password)
   {
     return false;
   }
 
+  /**
+   * Добавить пользователя
+   */
   public function Add()
   {
     $this->password = $this->HashPassword($this->password);

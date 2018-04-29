@@ -44,7 +44,7 @@ class DB
 
   public function Execute($sql, $arParams = array())
   {
-    $this->query($sql);
+    $this->query($sql, $arParams);
     return true;
   }
 
@@ -56,6 +56,11 @@ class DB
       $this->dbName,
       $this->charset
     );
+  }
+
+  function __toString()
+  {
+      return "DB";
   }
 }
 ?>
