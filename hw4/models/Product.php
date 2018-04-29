@@ -4,7 +4,7 @@ use \fadeev\php2\models\DB;
 /**
 * Product
 */
-class Product extends Model
+class Products extends DBModel
 {
   public $id;
   public $category_id;
@@ -44,7 +44,7 @@ class Product extends Model
 
   public function PrivateColumns()
   {
-    return array_merge(array("last_date_auth"), parent::PrivateColumns());
+    return array_merge(array(), parent::PrivateColumns());
   }
 }
 ?>

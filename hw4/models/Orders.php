@@ -4,7 +4,7 @@ use \fadeev\php2\models\DB;
 /**
 * Orders
 */
-class Orders extends Model
+class Orders extends DBModel
 {
   public static function GetTableName()
   {
