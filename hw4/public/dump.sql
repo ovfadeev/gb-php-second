@@ -64,10 +64,10 @@ CREATE TABLE IF NOT EXISTS `s_catalog_products` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `category_id` int(255) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `image_small` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `image_slider` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` decimal(10,0) DEFAULT NULL,
   `size_id` int(11) DEFAULT NULL,
   `color_id` int(255) DEFAULT '0',
@@ -80,22 +80,22 @@ CREATE TABLE IF NOT EXISTS `s_catalog_products` (
 -- Дамп данных таблицы gb-php.s_catalog_products: ~15 rows (приблизительно)
 DELETE FROM `s_catalog_products`;
 /*!40000 ALTER TABLE `s_catalog_products` DISABLE KEYS */;
-INSERT INTO `s_catalog_products` (`id`, `category_id`, `name`, `image`, `image_small`, `image_slider`, `description`, `price`, `size_id`, `color_id`, `status`, `view`, `count`) VALUES
-	(1, 1, 'Футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 200, 5, 1, 1, 0, 10),
-	(2, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 5, 2, 1, 0, 10),
-	(3, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 5, 2, 1, 0, 10),
-	(4, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 5, 2, 1, 0, 10),
-	(5, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 5, 2, 1, 0, 10),
-	(6, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 4, 2, 2, 0, 10),
-	(7, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 1, 2, 2, 0, 10),
-	(8, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 2, 2, 2, 0, 10),
-	(9, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 3, 2, 2, 0, 10),
-	(10, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 6, 2, 2, 0, 10),
-	(11, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 7, 2, 0, 0, 10),
-	(12, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 3, 2, 0, 0, 10),
-	(13, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 4, 2, 0, 0, 10),
-	(14, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 4, 2, 0, 0, 10),
-	(15, 1, 'футболка', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', 250, 4, 2, 0, 0, 10);
+INSERT INTO `s_catalog_products` (`id`, `category_id`, `name`, `description`, `image`, `image_small`, `image_slider`, `price`, `size_id`, `color_id`, `status`, `view`, `count`) VALUES
+	(1, 1, 'Футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 200, 5, 1, 1, 0, 10),
+	(2, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 5, 2, 1, 0, 10),
+	(3, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 5, 2, 1, 0, 10),
+	(4, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 5, 2, 1, 0, 10),
+	(5, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 5, 2, 1, 0, 10),
+	(6, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 4, 2, 2, 0, 10),
+	(7, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 1, 2, 2, 0, 10),
+	(8, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 2, 2, 2, 0, 10),
+	(9, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 3, 2, 2, 0, 10),
+	(10, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 6, 2, 2, 0, 10),
+	(11, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 7, 2, 0, 0, 10),
+	(12, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 3, 2, 0, 0, 10),
+	(13, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 4, 2, 0, 0, 10),
+	(14, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 4, 2, 0, 0, 10),
+	(15, 1, 'футболка', 'Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional portals.', '/images/product1.jpg', '/images/product-cart-small.jpg', '/images/productslide1.jpg', 250, 4, 2, 0, 0, 10);
 /*!40000 ALTER TABLE `s_catalog_products` ENABLE KEYS */;
 
 -- Дамп структуры для таблица gb-php.s_catalog_product_color
@@ -185,9 +185,9 @@ CREATE TABLE IF NOT EXISTS `s_users` (
   `date_register` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_date_auth` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы gb-php.s_users: ~10 rows (приблизительно)
+-- Дамп данных таблицы gb-php.s_users: ~12 rows (приблизительно)
 DELETE FROM `s_users`;
 /*!40000 ALTER TABLE `s_users` DISABLE KEYS */;
 INSERT INTO `s_users` (`id`, `login`, `password`, `email`, `f_name`, `l_name`, `date_register`, `last_date_auth`) VALUES
@@ -200,7 +200,9 @@ INSERT INTO `s_users` (`id`, `login`, `password`, `email`, `f_name`, `l_name`, `
 	(9, 'test', '$2y$10$5vBUtodzS/4BdwMNzQdJd.YpyguBWm4a4q74klGnw26ReDB1.Xi2y', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:20:10', NULL),
 	(11, 'test', '$2y$10$Hezd26AfF86RCiC4GpNBbeuGtIW2e05PHXt7KsqJV3EqcYNER/vnq', 'test@test.ru', 'Vasya', 'testovich', '2018-04-29 19:20:55', NULL),
 	(12, 'test', '$2y$10$0.OrUgELpucm701sGAkKCu9uhz0pP5KkSl21inCr0Z3sSQyhDizTW', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:21:30', NULL),
-	(13, 'test', '$2y$10$M2i.zAYOVSysRjitsOnQEOq/Co924MrcfTjeb/7XPO5qaiwUG8tVy', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:21:30', NULL);
+	(13, 'test', '$2y$10$M2i.zAYOVSysRjitsOnQEOq/Co924MrcfTjeb/7XPO5qaiwUG8tVy', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 19:21:30', NULL),
+	(14, 'test', '$2y$10$MNc56fpNyDFds4vGeO8iCeJvAtC3HRctMjHL5cnmG35ojWbVJ8gZm', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 21:13:30', NULL),
+	(15, 'test', '$2y$10$zZv5j7GCenEzLPIVjcCwN.C1j2wzqtRLHYn3Qpu3rJNKWsr8tJpUu', 'test@test.ru', 'Vasya', 'Pupkin', '2018-04-29 21:14:22', NULL);
 /*!40000 ALTER TABLE `s_users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
