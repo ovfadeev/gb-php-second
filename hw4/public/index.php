@@ -25,16 +25,18 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 // var_dump($user);
 // echo "</pre>";
 
-$user = \fadeev\php2\models\Users::GetById(3);
-$user->f_name = "Petya";
-$res = $user->Update();
-var_dump($res);
-if ($res)
-{
-  echo "<pre>";
-  var_dump($user);
-  echo "</pre>";
-}
+// $user = \fadeev\php2\models\Users::GetById(3);
+// $user->f_name = "Petya";
+// $res = $user->Update();
+// var_dump($res);
+// if ($res)
+// {
+//   echo "<pre>";
+//   var_dump($user);
+//   echo "</pre>";
+// }
+
+
 
 ?>
 <!DOCTYPE html>

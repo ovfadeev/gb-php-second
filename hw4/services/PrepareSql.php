@@ -66,7 +66,7 @@ class PrepareSql
       {
         continue;
       }
-      $arColumns[] = $prop." = `:".$prop."`";
+      $arColumns[] = $prop." = :".$prop;
     }
     $strColumns = implode(", ", $arColumns);
     $sql = "UPDATE ".$table." SET ".$strColumns." WHERE id = :id;";
@@ -74,21 +74,6 @@ class PrepareSql
       "sql" => $sql,
       "params" => $arParams
     );
-
-    // $sql = "UPDATE ".$table;
-    // if (!empty($arParams))
-    // {
-    //   $sql .= " SET ";
-    //   $sql .= implode(
-    //     ", ",
-    //     array_map(function ($k, $v) {
-    //       return $k." = '".$v."'";
-    //     }, array_keys($arParams), $arParams)
-    //   );
-    // }
-    // $sql .= " WHERE id = ".$id;
-    // $sql .= ";";
-    // return $sql;
   }
 
   public static function Add($table, $obj, $privateColumns = array())
