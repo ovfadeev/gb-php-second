@@ -39,7 +39,12 @@ class Product extends Model
 
   public static function GetTableName()
   {
-    return DB_PREFIX_TABLE."products";
+    return DB_PREFIX_TABLE."catalog_products";
+  }
+
+  public function PrivateColumns()
+  {
+    return array_merge(array("last_date_auth"), parent::PrivateColumns());
   }
 }
 ?>

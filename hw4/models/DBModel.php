@@ -17,7 +17,7 @@ abstract class DBModel extends Model implements IDBModel
 
   public function PrivateColumns()
   {
-    return array("DB");
+    return array("DB", "date_insert", "date_update");
   }
 
   public function Add()
