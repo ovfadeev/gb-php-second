@@ -8,6 +8,7 @@ $user = \fadeev\php2\models\Users::GetById(3);
 echo "<pre>";
 var_dump($user);
 echo "</pre>";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
