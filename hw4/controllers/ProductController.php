@@ -8,7 +8,7 @@ class ProductController extends Controller
 {
     public function actionIndex()
     {
-        $products = Product::GetById($id);
+        $products = Product::GetList();
         echo $this->render('products', ['products' => $products]);
     }
 
