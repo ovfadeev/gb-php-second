@@ -33,10 +33,10 @@ class DB
     try {
       $pdoStatement = $this->Connect()->prepare($sql);
       $pdoStatement->execute($arParams);
+      return $pdoStatement;
     } catch (PDOExecption $e) {
       die($e->getMessage());
     }
-    return $pdoStatement;
   }
 
   public function QueryObject($sql, $arParams, $class)

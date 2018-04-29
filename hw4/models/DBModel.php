@@ -27,7 +27,7 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    Db::getInstance()->Query($arPrepareSql["sql"], $arPrepareSql["params"]);
+    $this->db->Query($arPrepareSql["sql"], $arPrepareSql["params"]);
     $this->id = $this->db->lastInsertId();
   }
 
@@ -39,7 +39,7 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    $res = Db::getInstance()
+    $res = $this->db
       ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
       ->rowCount();
     return $res;
@@ -52,7 +52,7 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    $res = Db::getInstance()
+    $res = $this->db
       ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
       ->rowCount();
     return $res;
