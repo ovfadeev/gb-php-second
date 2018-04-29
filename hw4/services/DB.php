@@ -48,6 +48,11 @@ class DB
     return true;
   }
 
+  public function lastInsertId()
+  {
+    return $this->db->lastInsertId();
+  }
+
   private function PrepareDsn()
   {
     return sprintf("%s:host=%s;dbname=%s;charset=%s",

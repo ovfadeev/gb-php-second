@@ -30,7 +30,8 @@ abstract class DBModel extends Model implements IDBModel
     $res = DB::GetInstance()
       ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
       ->RowCount();
-    return $res;
+    $this->id = $this->db->lastInsertId();
+    return $this->id;
   }
 
   public function Update()
@@ -66,12 +67,14 @@ abstract class DBModel extends Model implements IDBModel
 
   public static function GetById($id, $arSelect = array())
   {
-    $sql = PrepareSql::Select(
+    $arPrepareSql = PrepareSql::Select(
       static::getTableName(),
       array("id" => $id),
       $arSelect
     );
-    $arResult = DB::GetInstance()->Query($sql)->FetchAll();
+    $arResult = DB::GetInstance()
+      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->FetchAll();
     return $arResult[0];
   }
 
