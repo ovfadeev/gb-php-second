@@ -60,19 +60,15 @@ abstract class DBModel extends Model implements IDBModel
 
   public function Save()
   {
-    $res = false;
-    if ($this->Update() <= 0)
-    {
+    if ($this->Update() <= 0){
       $this->Add();
       if ($this->id > 0){
-        $res = true;
+        return true;
       }
+    } else {
+      return true;
     }
-    else
-    {
-      $res = true;
-    }
-    return $res;
+    return false;
   }
 
   public static function GetById($id, $arSelect = array())
