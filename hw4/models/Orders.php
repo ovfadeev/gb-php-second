@@ -2,7 +2,7 @@
 namespace fadeev\php2\models;
 use \fadeev\php2\models\DB;
 /**
-* Orders
+* Заказы
 */
 class Orders extends DBModel
 {
