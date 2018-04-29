@@ -42,6 +42,7 @@ abstract class DBModel extends Model implements IDBModel
     $res = $this->db
       ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
       ->rowCount();
+    var_dump($res);
     return $res;
   }
 
@@ -61,12 +62,16 @@ abstract class DBModel extends Model implements IDBModel
   public function Save()
   {
     $res = false;
-    if (($res = $this->Update()) <= 0)
+    if ($this->Update() <= 0)
     {
       $this->Add();
       if ($this->id > 0){
         $res = true;
       }
+    }
+    else
+    {
+      $res = true;
     }
     return $res;
   }

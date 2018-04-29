@@ -55,7 +55,12 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 // }
 
 $user = \fadeev\php2\models\Users::GetById(11);
-// $user->f_name = "Vasa";
+
+echo "<pre>";
+var_dump($user);
+echo "</pre>";
+$user->l_name = "testovich";
+
 $res = $user->Save();
 var_dump($res);
 if ($res)
