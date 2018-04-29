@@ -37,14 +37,19 @@ abstract class DBModel extends Model implements IDBModel
 
   public function Update()
   {
+    $res = false;
     $arPrepareSql = PrepareSql::Update(
       static::getTableName(),
       $this,
       $this->PrivateColumns()
     );
-    $res = DB::GetInstance()
-      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
-      ->RowCount();
+    try {
+      $res = Db::getInstance()
+        ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+        ->rowCount();
+    } catch (PDOExecption $e) {
+      die($e->getMessage());
+    }
     return $res;
   }
 
@@ -55,15 +60,22 @@ abstract class DBModel extends Model implements IDBModel
       $this,
       $this->PrivateColumns()
     );
-    $res = DB::GetInstance()
-      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
-      ->RowCount();
+    try {
+      $res = Db::getInstance()
+        ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+        ->rowCount();
+    } catch (PDOExecption $e) {
+      die($e->getMessage());
+    }
     return $res;
   }
 
   public function Save()
   {
-    # code...
+    if (!$this->Update())
+    {
+      $this->Add();
+    }
   }
 
   public static function GetById($id, $arSelect = array())
@@ -80,12 +92,14 @@ abstract class DBModel extends Model implements IDBModel
 
   public static function GetList($arFilter = array(), $arSelect = array())
   {
-    $sql = PrepareSql::Select(
+    $arPrepareSql = PrepareSql::Select(
       static::getTableName(),
       $arFilter,
       $arSelect
     );
-    $arResult = DB::GetInstance()->Query($sql)->FetchAll();
+    $arResult = Db::getInstance()
+      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->FetchAll();
     return $arResult;
   }
 }

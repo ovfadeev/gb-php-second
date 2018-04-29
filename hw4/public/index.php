@@ -10,11 +10,28 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
 //   echo "</pre>";
 // }
 
-$user = \fadeev\php2\models\Users::GetById(3);
+// $user = \fadeev\php2\models\Users::GetById(3);
+// echo "<pre>";
+// var_dump($user);
+// echo "</pre>";
 
+// $user = \fadeev\php2\models\Users::GetById(3, array("l_name"));
+// echo "<pre>";
+// var_dump($user);
+// echo "</pre>";
+
+// $user = \fadeev\php2\models\Users::GetList();
+// echo "<pre>";
+// var_dump($user);
+// echo "</pre>";
+
+$user = \fadeev\php2\models\Users::GetById(3);
+$user->f_name = "Petya";
+$user->Update();
 echo "<pre>";
 var_dump($user);
 echo "</pre>";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
