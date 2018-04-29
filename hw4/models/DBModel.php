@@ -56,9 +56,9 @@ abstract class DBModel extends Model implements IDBModel
     return $res;
   }
 
-  public function Remove()
+  public function Delete()
   {
-    $arPrepareSql = PrepareSql::Remove(
+    $arPrepareSql = PrepareSql::Delete(
       static::getTableName(),
       $this,
       $this->PrivateColumns()

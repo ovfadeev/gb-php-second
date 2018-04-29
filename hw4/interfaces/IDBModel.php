@@ -8,7 +8,7 @@ interface IDBModel
   public static function GetList($arFilter = array(), $arSelect = array());
   public function Add();
   public function Update();
-  public function Remove();
+  public function Delete();
   public function Save();
   public function PrivateColumns();
 }

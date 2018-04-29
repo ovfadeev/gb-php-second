@@ -33,22 +33,24 @@ class PrepareSql
     );
   }
 
-  public static function Delete($table, $arFilter = array())
+  public static function Delete($table, $obj, $privateColumns = array())
   {
-    // $sql = "DELETE";
-    // $sql .= " FROM ".$table;
-    // if (!empty($arFilter))
-    // {
-    //   $sql .= " WHERE ";
-    //   $sql .= implode(
-    //     ", ",
-    //     array_map(function ($k, $v) {
-    //       return $k." = ".$v;
-    //     }, array_keys($arFilter), $arFilter)
-    //   );
-    // }
-    // $sql .= ";";
-    // return $sql;
+    $arParams = array();
+    $arColumns = array();
+    foreach ($obj as $prop => $value)
+    {
+      if (!empty($privateColumns) && in_array($prop, $privateColumns))
+      {
+        continue;
+      }
+      $arParams[":".$prop] = $value;
+      $arColumns[] = $prop." = :".$prop;
+    }
+    $strColumns = implode(", ", $arColumns);
+    return array(
+      "sql" => "DELETE FROM ".$table." WHERE ".$strColumns.";",
+      "params" => $arParams
+    );
   }
 
   public static function Update($table, $obj, $privateColumns = array())
@@ -69,9 +71,8 @@ class PrepareSql
       $arColumns[] = $prop." = :".$prop;
     }
     $strColumns = implode(", ", $arColumns);
-    $sql = "UPDATE ".$table." SET ".$strColumns." WHERE id = :id;";
     return array(
-      "sql" => $sql,
+      "sql" => "UPDATE ".$table." SET ".$strColumns." WHERE id = :id;",
       "params" => $arParams
     );
   }
@@ -91,9 +92,8 @@ class PrepareSql
     }
     $strColumns = implode(", ", $arColumns);
     $placeholders = implode(", ", array_keys($arParams));
-    $sql = "INSERT INTO ".$table." (".$strColumns.") VALUES (".$placeholders.");";
     return array(
-      "sql" => $sql,
+      "sql" => "INSERT INTO ".$table." (".$strColumns.") VALUES (".$placeholders.");",
       "params" => $arParams
     );
   }
