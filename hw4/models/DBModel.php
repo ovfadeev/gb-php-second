@@ -9,6 +9,8 @@ use \fadeev\php2\services\PrepareSql;
 abstract class DBModel extends Model implements IDBModel
 {
   protected $db;
+  protected $date_insert;
+  protected $date_update;
 
   function __construct()
   {
@@ -60,15 +62,11 @@ abstract class DBModel extends Model implements IDBModel
 
   public function Save()
   {
-    if ($this->Update() <= 0){
-      $this->Add();
-      if ($this->id > 0){
-        return true;
-      }
+    if ($this->date_insert){
+      $this->Update();
     } else {
-      return true;
+      $this->Add()
     }
-    return false;
   }
 
   public static function GetById($id, $arSelect = array())
