@@ -77,5 +77,10 @@ class User extends DBModel
     $this->password = $this->HashPassword($this->password);
     parent::Add();
   }
+
+  public function Update()
+  {
+    parent::Update();
+  }
 }
 ?>
