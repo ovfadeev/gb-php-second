@@ -65,7 +65,7 @@ abstract class DBModel extends Model implements IDBModel
     if ($this->date_insert){
       $this->Update();
     } else {
-      $this->Add()
+      $this->Add();
     }
   }
 
