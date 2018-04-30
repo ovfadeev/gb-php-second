@@ -10,7 +10,6 @@ abstract class DBModel extends Model implements IDBModel
 {
   protected $db;
   protected $date_insert;
-  protected $date_update;
 
   function __construct()
   {
