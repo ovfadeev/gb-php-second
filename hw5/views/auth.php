@@ -8,6 +8,7 @@
     <input type="submit" name="submit_auth" value="Submit" />
   </form>
 <?} else {?>
+  <p><?=$params["msg"]?></p>
   <?
   echo "<pre>";
   var_dump($params);
