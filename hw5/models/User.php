@@ -58,6 +58,14 @@ class User extends DBModel
   {
     return password_hash($password, PASSWORD_DEFAULT);
   }
+  /**
+   * Шифруем пароль
+   * @param string $password
+   */
+  protected function VerifyPassword($password, $db_password)
+  {
+    return password_verify($password, $db_password);
+  }
 
   /**
    * Авторизация
@@ -66,6 +74,11 @@ class User extends DBModel
    */
   public function Auth($login, $password)
   {
+    $findUser = self::GetList(array("login" => $login), array());
+    if ($this->VerifyPassword($password, $findUser[0]["password"]))
+    {
+      return self::GetById($findUser[0]["id"]);
+    }
     return false;
   }
 

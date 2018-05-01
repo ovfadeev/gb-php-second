@@ -1,3 +1,1 @@
-<?php
-echo "Main page";
-?>
+<h1><?="Main page"?></h1>

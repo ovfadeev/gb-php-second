@@ -8,9 +8,14 @@ class UserController extends Controller
 {
   public function actionIndex()
   {
-    $id = htmlspecialchars($_GET["id"]);
-    $user = User::GetById($id);
-    echo $this->Render("user", array("user" => $user));
+    global $user;
+    if ($user) {
+      $id = htmlspecialchars($user->id);
+      $db_user = User::GetById($id);
+      echo $this->Render("user", array("user" => $db_user));
+    } else {
+      header("Location: /auth/");
+    }
   }
 }
 ?>

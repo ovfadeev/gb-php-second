@@ -190,26 +190,18 @@ CREATE TABLE IF NOT EXISTS `s_users` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `f_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `l_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `last_date_auth` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login` (`login`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы gb-php.s_users: ~12 rows (приблизительно)
+-- Дамп данных таблицы gb-php.s_users: ~3 rows (приблизительно)
 DELETE FROM `s_users`;
 /*!40000 ALTER TABLE `s_users` DISABLE KEYS */;
-INSERT INTO `s_users` (`id`, `date_insert`, `date_update`, `login`, `password`, `email`, `f_name`, `l_name`, `last_date_auth`) VALUES
-	(3, '2018-03-11 16:12:25', '2018-04-29 21:49:30', 'test_update', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test@test.ru', 'Vasa', 'test', '2018-03-18 13:10:55'),
-	(4, '2018-04-25 14:00:08', '2018-04-29 21:49:30', 'test2', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test2@test.ru', 'test2', 'test', NULL),
-	(5, '2018-04-29 19:16:09', '2018-04-29 21:49:30', 'test', '$2y$10$11NhWaCPM8zAPSKt/Ch88ebECSz8cIlV69ZPlxYfGSaD08MRxWFbm', 'test@test.ru', 'Vasya', 'Pupkin', NULL),
-	(6, '2018-04-29 19:17:46', '2018-04-29 21:49:30', 'test', '$2y$10$sCOOAA32ie1H8SLQx7FsN.2GgE0YNVuddPZTrxTHH9oMpdkZn4YsS', 'test@test.ru', 'Vasya', 'Pupkin', NULL),
-	(7, '2018-04-29 19:17:59', '2018-04-29 21:49:30', 'test', '$2y$10$kM/qJ9yXVRlLw8d4Xn./aeFFeTEHJSxIg6LtQUZfMy2DA2fywd00.', 'test@test.ru', 'Vasya', 'Pupkin', NULL),
-	(8, '2018-04-29 19:19:47', '2018-04-29 21:49:30', 'test', '$2y$10$CxFR9F/M3Q1w74BFO7KqiuZpKfJwp9XMF7tcnO0IiZPpFI7LI0aCe', 'test@test.ru', 'Vasya', 'Pupkin', NULL),
-	(9, '2018-04-29 19:20:10', '2018-04-29 21:49:30', 'test', '$2y$10$5vBUtodzS/4BdwMNzQdJd.YpyguBWm4a4q74klGnw26ReDB1.Xi2y', 'test@test.ru', 'Vasya', 'Pupkin', NULL),
-	(11, '2018-04-29 19:20:55', '2018-04-29 21:49:30', 'test', '$2y$10$Hezd26AfF86RCiC4GpNBbeuGtIW2e05PHXt7KsqJV3EqcYNER/vnq', 'test@test.ru', 'Vasya', 'testovich', NULL),
-	(12, '2018-04-29 19:21:30', '2018-04-29 21:49:30', 'test', '$2y$10$0.OrUgELpucm701sGAkKCu9uhz0pP5KkSl21inCr0Z3sSQyhDizTW', 'test@test.ru', 'Vasya', 'Pupkin', NULL),
-	(13, '2018-04-29 19:21:30', '2018-04-29 21:49:30', 'test', '$2y$10$M2i.zAYOVSysRjitsOnQEOq/Co924MrcfTjeb/7XPO5qaiwUG8tVy', 'test@test.ru', 'Vasya', 'Pupkin', NULL),
-	(14, '2018-04-29 21:13:30', '2018-04-29 21:49:30', 'test', '$2y$10$MNc56fpNyDFds4vGeO8iCeJvAtC3HRctMjHL5cnmG35ojWbVJ8gZm', 'test@test.ru', 'Vasya', 'Pupkin', NULL),
-	(15, '2018-04-29 21:14:22', '2018-04-29 21:49:30', 'test', '$2y$10$zZv5j7GCenEzLPIVjcCwN.C1j2wzqtRLHYn3Qpu3rJNKWsr8tJpUu', 'test@test.ru', 'Vasya', 'Pupkin', NULL);
+INSERT INTO `s_users` (`id`, `date_insert`, `date_update`, `login`, `password`, `email`, `f_name`, `l_name`) VALUES
+	(3, '2018-03-11 16:12:25', '2018-04-29 21:49:30', 'test_update', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test@test.ru', 'Vasa', 'test'),
+	(4, '2018-04-25 14:00:08', '2018-04-29 21:49:30', 'test2', '$2y$10$AyeQcmxfth1Jza6T/b4UqOeMB47Gn0jKwVgHzWSLRiPReVDQJldsK', 'test2@test.ru', 'test2', 'test'),
+	(5, '2018-04-29 19:16:09', '2018-05-01 16:46:48', 'test', '$2y$10$11NhWaCPM8zAPSKt/Ch88ebECSz8cIlV69ZPlxYfGSaD08MRxWFbm', 'test3@test.ru', 'Vasya', 'Pupkin');
 /*!40000 ALTER TABLE `s_users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
