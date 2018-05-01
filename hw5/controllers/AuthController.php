@@ -8,6 +8,7 @@ class AuthController extends Controller
 {
   public function actionIndex()
   {
+    $userAuth = false;
     $arParams = array();
     if ($_POST)
     {
@@ -17,15 +18,21 @@ class AuthController extends Controller
         htmlspecialchars($_POST["password"])
       );
     }
-    if ($userAuth !== false)
+    if ($userAuth !== false && $userAuth->id > 0)
     {
-      
+      $arParams = array(
+        "result" => $userAuth,
+        "msg" => "Вы авторизированы"
+      );
     }
-    else
+    else if ($_POST)
     {
-      
+      $arParams = array(
+        "result" => $userAuth,
+        "msg" => "Неверный логин или пароль"
+      );
     }
-    echo $this->render("auth", array("msg" => ""));
+    echo $this->render("auth", array("params" => $arParams));
   }
 }
 ?>
