@@ -9,18 +9,23 @@ class AuthController extends Controller
   public function actionIndex()
   {
     $arParams = array();
-    if ($_POST){
-      $user = new User();
-      $user = $user->Auth(
+    if ($_POST)
+    {
+      $userAuth = new User();
+      $userAuth = $userAuth->Auth(
         htmlspecialchars($_POST["login"]),
         htmlspecialchars($_POST["password"])
       );
-      // $findUser = User::GetList(array("login" => htmlspecialchars($_POST["login"])), array());
-      echo "<pre>";
-      var_dump($user);
-      echo "</pre>";
     }
-    echo $this->render("auth", array("params" => $params));
+    if ($userAuth !== false)
+    {
+      
+    }
+    else
+    {
+      
+    }
+    echo $this->render("auth", array("msg" => ""));
   }
 }
 ?>
