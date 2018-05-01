@@ -1,6 +1,6 @@
 <?php
 namespace fadeev\php2\services;
-use \fadeev\php2\traits\TSingleton;
+use fadeev\php2\traits\TSingleton;
 /**
 * Database
 */

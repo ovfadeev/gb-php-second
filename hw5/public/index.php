@@ -7,8 +7,11 @@ $actionName = $_GET['a'];
 $controllerClass = CONTROLLERS_NAMESPACE.ucfirst($controllerName)."Controller";
 
 if(class_exists($controllerClass)){
-  $controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
-  // $controller = new $controllerClass(new \fadeev\php2\services\TwigRenderer());
-  $controller->RunAction($actionName);
+  // $controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
+  $controller = new $controllerClass(new \fadeev\php2\services\TwigRenderer());
+  echo "<pre>";
+  var_dump($controller);
+  echo "</pre>";
+  // $controller->RunAction($actionName);
 }
 ?>

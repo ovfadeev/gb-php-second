@@ -2,6 +2,7 @@
 namespace fadeev\php2\controllers;
 use fadeev\php2\interfaces\IRenderer;
 use fadeev\php2\services\TemplateRenderer;
+use fadeev\php2\services\TwigRenderer;
 /**
  * Controller
  */
