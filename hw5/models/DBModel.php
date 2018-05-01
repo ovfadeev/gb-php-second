@@ -1,8 +1,8 @@
 <?php
 namespace fadeev\php2\models;
-use \fadeev\php2\interfaces\IDBModel;
-use \fadeev\php2\services\DB;
-use \fadeev\php2\services\PrepareSql;
+use fadeev\php2\interfaces\IDBModel;
+use fadeev\php2\services\DB;
+use fadeev\php2\services\PrepareSql;
 /**
 * Data base model
 */

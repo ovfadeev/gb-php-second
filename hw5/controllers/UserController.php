@@ -10,7 +10,7 @@ class UserController extends Controller
   {
     $id = htmlspecialchars($_GET["id"]);
     $user = User::GetById($id);
-    echo $this->Render('user', array('user' => $user));
+    echo $this->Render("user", array("user" => $user));
   }
 }
 ?>
