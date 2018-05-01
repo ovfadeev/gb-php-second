@@ -12,7 +12,7 @@ class AuthController extends Controller
     $arParams = array();
     if ($_POST)
     {
-      $userAuth = User::Auth(
+      $userAuth = UserAuth::Auth(
         htmlspecialchars($_POST["login"]),
         htmlspecialchars($_POST["password"])
       );
