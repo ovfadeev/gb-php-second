@@ -59,7 +59,7 @@ class User extends DBModel
     return password_hash($password, PASSWORD_DEFAULT);
   }
   /**
-   * Шифруем пароль
+   * Проверяем пароль
    * @param string $password
    */
   protected function VerifyPassword($password, $db_password)
