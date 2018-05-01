@@ -9,5 +9,5 @@ require_once(ROOT_DIR."config/db.php");
 /* --- autoloader --- */
 require_once(ROOT_DIR."services/Autoloader.php");
 /* --- autoload --- */
-spl_autoload_register([new \fadeev\php2\services\Autoloader(), 'loadClass']);
+spl_autoload_register(arra(new \fadeev\php2\services\Autoloader(), "loadClass"));
 ?>
