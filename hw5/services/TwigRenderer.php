@@ -8,5 +8,4 @@ class TwigRenderer implements IRenderer
   {
 
   }
-
 }
