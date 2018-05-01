@@ -6,6 +6,9 @@
 </head>
 <body>
   <div class="header">Это хедер</div>
+  <div class="logo">
+    <a href="/">Главная страница</a>
+  </div>
   <div class="basket">
     <a href="/basket/">Корзина</a>
   </div>

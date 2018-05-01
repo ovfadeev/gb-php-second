@@ -12,26 +12,23 @@ class AuthController extends Controller
     $arParams = array();
     if ($_POST)
     {
-      $userAuth = new User();
-      $userAuth = $userAuth->Auth(
+      $userAuth = User::Auth(
         htmlspecialchars($_POST["login"]),
         htmlspecialchars($_POST["password"])
       );
     }
+
+    $arParams["result"] = $userAuth;
+
     if ($userAuth !== false && $userAuth->id > 0)
     {
-      $arParams = array(
-        "result" => $userAuth,
-        "msg" => "Вы авторизированы"
-      );
+      $arParams["msg"] = "Вы авторизированы";
     }
     else if ($_POST)
     {
-      $arParams = array(
-        "result" => $userAuth,
-        "msg" => "Неверный логин или пароль"
-      );
+      $arParams["msg"] = "Неверный логин или пароль";
     }
+
     echo $this->render("auth", array("params" => $arParams));
   }
 }

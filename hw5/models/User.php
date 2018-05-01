@@ -72,10 +72,10 @@ class User extends DBModel
    * @param string $login
    * @param string $password
    */
-  public function Auth($login, $password)
+  public static function Auth($login, $password)
   {
     $findUser = self::GetList(array("login" => $login), array("id", "password"))[0];
-    if ($this->VerifyPassword($password, $findUser["password"]))
+    if (self::VerifyPassword($password, $findUser["password"]))
     {
       return self::GetById($findUser["id"]);
     }
