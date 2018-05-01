@@ -1,0 +1,12 @@
+{
+    "name": "ofade/hw5",
+    "authors": [
+        {
+            "name": "o.fadeev",
+            "email": "o.fadeev@live.ru"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.4"
+    }
+}
