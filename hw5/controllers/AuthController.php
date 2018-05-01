@@ -31,5 +31,15 @@ class AuthController extends Controller
 
     echo $this->render("auth", array("params" => $arParams));
   }
+
+  public function actionForgot()
+  {
+    return false;
+  }
+
+  public function actionChange()
+  {
+    return false;
+  }
 }
 ?>
