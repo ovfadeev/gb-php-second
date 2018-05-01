@@ -41,9 +41,9 @@ class DB
 
   public function QueryObject($sql, $arParams, $class)
   {
-      $smtp = $this->query($sql, $arParams);
-      $smtp->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
-      return $smtp->fetch();
+    $smtp = $this->query($sql, $arParams);
+    $smtp->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
+    return $smtp->fetch();
   }
 
   public function Execute($sql, $arParams = array())
@@ -69,7 +69,7 @@ class DB
 
   function __toString()
   {
-      return "DB";
+    return "DB";
   }
 }
 ?>
