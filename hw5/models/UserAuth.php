@@ -2,9 +2,9 @@
 namespace fadeev\php2\models;
 use fadeev\php2\models\User;
 /**
-* Пользователь
+* Авторизация
 */
-class UserAuth
+class UserAuth extends User
 {
   /**
    * Шифруем пароль
@@ -22,7 +22,6 @@ class UserAuth
   {
     return password_verify($password, $db_password);
   }
-
   /**
    * Авторизация
    * @param string $login
@@ -30,10 +29,10 @@ class UserAuth
    */
   public static function Auth($login, $password)
   {
-    $findUser = User::GetList(array("login" => $login), array("id", "password"))[0];
+    $findUser = self::GetList(array("login" => $login), array("id", "password"))[0];
     if (self::VerifyPassword($password, $findUser["password"]))
     {
-      return User::GetById($findUser["id"]);
+      return self::GetById($findUser["id"]);
     }
     return false;
   }
