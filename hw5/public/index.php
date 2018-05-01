@@ -12,6 +12,6 @@ if(class_exists($controllerClass)){
   echo "<pre>";
   var_dump($controller);
   echo "</pre>";
-  // $controller->RunAction($actionName);
+  $controller->RunAction($actionName);
 }
 ?>
