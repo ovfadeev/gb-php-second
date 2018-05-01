@@ -6,7 +6,7 @@ class TwigRenderer implements IRenderer
 {
   public function Render($template, $params = array())
   {
-    
+
   }
 
 }
