@@ -33,7 +33,7 @@ class UserAuth
     $findUser = User::GetList(array("login" => $login), array("id", "password"))[0];
     if (self::VerifyPassword($password, $findUser["password"]))
     {
-      return self::GetById($findUser["id"]);
+      return User::GetById($findUser["id"]);
     }
     return false;
   }

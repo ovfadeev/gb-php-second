@@ -1,6 +1,6 @@
 <?php
 namespace fadeev\php2\controllers;
-use fadeev\php2\models\User;
+use fadeev\php2\models\UserAuth;
 /**
  * User controller
  */
