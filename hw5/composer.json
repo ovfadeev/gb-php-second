@@ -8,5 +8,14 @@
   ],
   "require": {
     "twig/twig": "^2.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "fadeev\\php2\\controllers\\" : "controllers/",
+      "fadeev\\php2\\interfaces\\" : "interfaces/",
+      "fadeev\\php2\\models\\" : "models/",
+      "fadeev\\php2\\services\\" : "services/",
+      "fadeev\\php2\\traits\\" : "traits/"
+    }
   }
 }
