@@ -16,7 +16,7 @@
     <a href="/user/">Личный кабинет</a>
   </div>
   <div class="content">
-    <?=$content?>
+    {{content}}
   </div>
   <div class="footer">Это футер</div>
 </body>
