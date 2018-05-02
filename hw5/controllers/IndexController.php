@@ -9,7 +9,7 @@ class IndexController extends Controller
   public function actionIndex()
   {
     $products = Product::GetList();
-    echo $this->render("index", array());
+    echo $this->render("index", array("name" => "main page"));
   }
 }
 ?>
