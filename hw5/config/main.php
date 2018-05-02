@@ -6,8 +6,4 @@ define("DEV_NAMESPACE", "fadeev\\php2\\");
 define("CONTROLLERS_NAMESPACE", DEV_NAMESPACE."controllers\\");
 /* --- database --- */
 require_once(ROOT_DIR."config/db.php");
-/* --- autoloader --- */
-// require_once(ROOT_DIR."services/Autoloader.php");
-/* --- autoload --- */
-// spl_autoload_register(array(new \fadeev\php2\services\Autoloader(), "loadClass"));
 ?>
