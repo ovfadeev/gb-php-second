@@ -21,15 +21,15 @@ class User extends DataEntity
    * @param string $login
    * @param string $password
    */
-  public function __construct($id = null, $f_name = null, $l_name = null, $email = null, $login = null, $password = null)
+  public function __construct($id = null, $login = null, $password = null, $email = null, $f_name = null, $l_name = null)
   {
-    parent::__construct();
+    // parent::__construct();
     $this->id = $id;
-    $this->f_name = $f_name;
-    $this->l_name = $l_name;
-    $this->email = $email;
     $this->login = $login;
     $this->password = $password;
+    $this->email = $email;
+    $this->f_name = $f_name;
+    $this->l_name = $l_name;
   }
 }
 ?>

@@ -1,6 +1,7 @@
 <?php
 namespace fadeev\php2\models\repositories;
 use fadeev\php2\models\Repository;
+use fadeev\php2\models\UserRegister;
 
 class UserRepository extends Repository
 {

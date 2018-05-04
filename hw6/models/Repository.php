@@ -19,7 +19,7 @@ abstract class Repository implements IRepository
     return array("DB", "date_insert", "date_update");
   }
 
-  public function Add()
+  public function Add(DataEntity $entity)
   {
     $arPrepareSql = PrepareSql::Add(
       $this->getTableName(),
@@ -30,7 +30,7 @@ abstract class Repository implements IRepository
     $this->id = $this->db->lastInsertId();
   }
 
-  public function Update()
+  public function Update(DataEntity $entity)
   {
     $res = false;
     $arPrepareSql = PrepareSql::Update(
@@ -44,7 +44,7 @@ abstract class Repository implements IRepository
     return $res;
   }
 
-  public function Delete()
+  public function Delete(DataEntity $entity)
   {
     $arPrepareSql = PrepareSql::Delete(
       $this->getTableName(),
