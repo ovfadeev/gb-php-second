@@ -35,7 +35,7 @@ class User extends DBModel
     $this->password = $password;
   }
 
-  public static function GetTableName()
+  public function GetTableName()
   {
     return DB_PREFIX_TABLE."users";
   }
@@ -47,7 +47,7 @@ class User extends DBModel
 
   public function Add()
   {
-    $this->password = UserAuth::HashPassword($this->password);
+    $this->password = $this->HashPassword($this->password);
     parent::Add();
   }
 
@@ -61,7 +61,7 @@ class User extends DBModel
     return password_hash($password, PASSWORD_DEFAULT);
   }
 
-  protected static function VerifyPassword($password, $db_password)
+  protected function VerifyPassword($password, $db_password)
   {
     return password_verify($password, $db_password);
   }

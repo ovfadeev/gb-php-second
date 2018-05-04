@@ -8,12 +8,10 @@ abstract class DBModel extends Model implements IDBModel
 {
   protected $db;
   protected $date_insert;
-  protected $prepareSql;
 
   function __construct()
   {
     $this->db = DB::GetInstance();
-    $this->prepareSql = new PrepareSql();
   }
 
   public function PrivateColumns()

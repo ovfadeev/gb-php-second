@@ -3,13 +3,6 @@ namespace fadeev\php2\services;
 
 class PrepareSql
 {
-  protected $table;
-
-  public function __construct()
-  {
-
-  }
-
   public function Select($table, $arFilter = array(), $arSelect = array())
   {
     $sql = "";
