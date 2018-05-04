@@ -3,9 +3,7 @@ namespace fadeev\php2\models;
 use fadeev\php2\interfaces\IDBModel;
 use fadeev\php2\services\DB;
 use fadeev\php2\services\PrepareSql;
-/**
-* Data base model
-*/
+
 abstract class DBModel extends Model implements IDBModel
 {
   protected $db;
