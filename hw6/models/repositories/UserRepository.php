@@ -8,7 +8,7 @@ class UserRepository extends Repository
     "last_date_auth"
   );
 
-  public static function GetTableName()
+  public function GetTableName()
   {
     return DB_PREFIX_TABLE."users";
   }

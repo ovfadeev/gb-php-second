@@ -1,5 +1,7 @@
 <?php
 namespace fadeev\php2\models;
+use fadeev\php2\models\DataEntity;
+use fadeev\php2\models\repositories\UserRepository;
 
 class User extends DataEntity
 {

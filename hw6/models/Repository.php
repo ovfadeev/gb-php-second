@@ -1,9 +1,10 @@
 <?php
 namespace fadeev\php2\models;
+use fadeev\php2\interfaces\IRepository;
 use fadeev\php2\services\DB;
 use fadeev\php2\services\PrepareSql;
 
-abstract class Repository
+abstract class Repository implements IRepository
 {
   protected $db;
   protected $date_insert;
@@ -21,7 +22,7 @@ abstract class Repository
   public function Add()
   {
     $arPrepareSql = PrepareSql::Add(
-      static::getTableName(),
+      $this->getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -33,7 +34,7 @@ abstract class Repository
   {
     $res = false;
     $arPrepareSql = PrepareSql::Update(
-      static::getTableName(),
+      $this->getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -46,7 +47,7 @@ abstract class Repository
   public function Delete()
   {
     $arPrepareSql = PrepareSql::Delete(
-      static::getTableName(),
+      $this->getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -65,10 +66,10 @@ abstract class Repository
     }
   }
 
-  public static function GetById($id, $arSelect = array())
+  public function GetById($id, $arSelect = array())
   {
     $arPrepareSql = PrepareSql::Select(
-      static::getTableName(),
+      $this->getTableName(),
       array("id" => $id),
       $arSelect
     );
@@ -77,10 +78,10 @@ abstract class Repository
     return $result;
   }
 
-  public static function GetList($arFilter = array(), $arSelect = array())
+  public function GetList($arFilter = array(), $arSelect = array())
   {
     $arPrepareSql = PrepareSql::Select(
-      static::getTableName(),
+      $this->getTableName(),
       $arFilter,
       $arSelect
     );

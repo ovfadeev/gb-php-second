@@ -1,5 +1,6 @@
 <?php
 namespace fadeev\php2\models;
+use fadeev\php2\models\repositories\UserRepository;
 
 class UserAuth extends User
 {
@@ -10,10 +11,10 @@ class UserAuth extends User
 
   public static function Auth($login, $password)
   {
-    $findUser = self::GetList(array("login" => $login), array("id", "password"))[0];
+    $findUser = (new UserRepository)->GetList(array("login" => $login), array("id", "password"))[0];
     if (self::VerifyPassword($password, $findUser["password"]))
     {
-      return self::GetById($findUser["id"]);
+      return (new UserRepository)->GetById($findUser["id"]);
     }
     return false;
   }
