@@ -1,8 +1,7 @@
 <?php
 namespace fadeev\php2\models;
-use fadeev\php2\models\DB;
 
-class User extends DBModel
+class User extends DataEntity
 {
   public $id;
   public $f_name;
@@ -10,10 +9,6 @@ class User extends DBModel
   public $email;
   public $login;
   public $password;
-
-  private $privateColumns = array(
-    "last_date_auth"
-  );
 
   /**
    * [__construct description]
@@ -33,33 +28,6 @@ class User extends DBModel
     $this->email = $email;
     $this->login = $login;
     $this->password = $password;
-  }
-
-  /**
-   * Получить таблицу пользователей
-   */
-  public static function GetTableName()
-  {
-    return DB_PREFIX_TABLE."users";
-  }
-
-  public function PrivateColumns()
-  {
-    return array_merge(parent::PrivateColumns(), $this->privateColumns);
-  }
-
-  /**
-   * Добавить пользователя
-   */
-  public function Add()
-  {
-    $this->password = UserAuth::HashPassword($this->password);
-    parent::Add();
-  }
-
-  public function Update()
-  {
-    parent::Update();
   }
 }
 ?>
