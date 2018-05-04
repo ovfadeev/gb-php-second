@@ -4,7 +4,7 @@ use fadeev\php2\models\DB;
 
 class Orders extends DBModel
 {
-  public function GetTableName()
+  public static function GetTableName()
   {
     return DB_PREFIX_TABLE."orders";
   }

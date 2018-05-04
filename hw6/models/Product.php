@@ -38,7 +38,7 @@ class Product extends DBModel
     $this->count = $count;
   }
 
-  public function GetTableName()
+  public static function GetTableName()
   {
     return DB_PREFIX_TABLE."catalog_products";
   }
