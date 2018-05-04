@@ -1,10 +1,12 @@
 <?php
 namespace fadeev\php2\models;
-use fadeev\php2\interfaces\IRepository;
+use fadeev\php2\interfaces\IDBModel;
 use fadeev\php2\services\DB;
 use fadeev\php2\services\PrepareSql;
-
-abstract class Repository implements IRepository
+/**
+* Data base model
+*/
+abstract class DBModel extends Model implements IDBModel
 {
   protected $db;
   protected $date_insert;
@@ -19,10 +21,10 @@ abstract class Repository implements IRepository
     return array("DB", "date_insert", "date_update");
   }
 
-  public function Add(DataEntity $entity)
+  public function Add()
   {
     $arPrepareSql = PrepareSql::Add(
-      $this->getTableName(),
+      static::getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -30,11 +32,11 @@ abstract class Repository implements IRepository
     $this->id = $this->db->lastInsertId();
   }
 
-  public function Update(DataEntity $entity)
+  public function Update()
   {
     $res = false;
     $arPrepareSql = PrepareSql::Update(
-      $this->getTableName(),
+      static::getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -44,10 +46,10 @@ abstract class Repository implements IRepository
     return $res;
   }
 
-  public function Delete(DataEntity $entity)
+  public function Delete()
   {
     $arPrepareSql = PrepareSql::Delete(
-      $this->getTableName(),
+      static::getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -66,10 +68,10 @@ abstract class Repository implements IRepository
     }
   }
 
-  public function GetById($id, $arSelect = array())
+  public static function GetById($id, $arSelect = array())
   {
     $arPrepareSql = PrepareSql::Select(
-      $this->getTableName(),
+      static::getTableName(),
       array("id" => $id),
       $arSelect
     );
@@ -78,10 +80,10 @@ abstract class Repository implements IRepository
     return $result;
   }
 
-  public function GetList($arFilter = array(), $arSelect = array())
+  public static function GetList($arFilter = array(), $arSelect = array())
   {
     $arPrepareSql = PrepareSql::Select(
-      $this->getTableName(),
+      static::getTableName(),
       $arFilter,
       $arSelect
     );
