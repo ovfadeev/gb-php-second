@@ -15,11 +15,9 @@ class AuthController extends Controller
         htmlspecialchars($_POST["password"])
       );
     }
-
-    $arParams["result"] = $userAuth;
-
     if ($userAuth !== false && $userAuth->id > 0)
     {
+      $arParams["user"] = $userAuth;
       $arParams["msg"] = "Вы авторизированы";
     }
     else if ($_POST)

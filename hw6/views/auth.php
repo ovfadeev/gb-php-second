@@ -1,5 +1,5 @@
 <h1>Авторизация</h1>
-<?if ($params["result"] === false){?>
+<?if ($params["user"] === false){?>
   <p><?=$params["msg"]?></p>
   <form action="/auth/" method="post">
     <input type="text" name="login" value="" placeholder="Login" />
