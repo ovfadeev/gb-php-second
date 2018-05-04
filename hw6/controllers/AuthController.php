@@ -1,6 +1,6 @@
 <?php
 namespace fadeev\php2\controllers;
-use fadeev\php2\models\UserAuth;
+use fadeev\php2\models\User;
 /**
  * User controller
  */
@@ -12,7 +12,7 @@ class AuthController extends Controller
     $arParams = array();
     if ($_POST)
     {
-      $userAuth = UserAuth::Auth(
+      $userAuth = User::Auth(
         htmlspecialchars($_POST["login"]),
         htmlspecialchars($_POST["password"])
       );
