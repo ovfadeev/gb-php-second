@@ -1,9 +1,7 @@
 <?php
 namespace fadeev\php2\controllers;
 use fadeev\php2\models\User;
-/**
- * User controller
- */
+
 class AuthController extends Controller
 {
   public function actionIndex()

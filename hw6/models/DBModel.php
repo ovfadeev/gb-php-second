@@ -3,17 +3,17 @@ namespace fadeev\php2\models;
 use fadeev\php2\interfaces\IDBModel;
 use fadeev\php2\services\DB;
 use fadeev\php2\services\PrepareSql;
-/**
-* Data base model
-*/
+
 abstract class DBModel extends Model implements IDBModel
 {
   protected $db;
   protected $date_insert;
+  protected $prepareSql;
 
   function __construct()
   {
     $this->db = DB::GetInstance();
+    $this->prepareSql = new PrepareSql();
   }
 
   public function PrivateColumns()

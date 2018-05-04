@@ -1,8 +1,6 @@
 <?php
 namespace fadeev\php2\services;
-/**
-* AutoLoader
-*/
+
 class AutoLoader
 {
   const FILE_PATH = "#PATH#";

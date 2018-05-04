@@ -1,9 +1,7 @@
 <?php
 namespace fadeev\php2\models;
 use fadeev\php2\models\DB;
-/**
-* Пользователь
-*/
+
 class User extends DBModel
 {
   public $id;
@@ -18,7 +16,7 @@ class User extends DBModel
   );
 
   /**
-   * [__construct description]
+   * Конструктор класса User
    * @param int $id
    * @param string $name
    * @param string $lastName
@@ -37,9 +35,6 @@ class User extends DBModel
     $this->password = $password;
   }
 
-  /**
-   * Получить таблицу пользователей
-   */
   public static function GetTableName()
   {
     return DB_PREFIX_TABLE."users";
@@ -50,9 +45,6 @@ class User extends DBModel
     return array_merge(parent::PrivateColumns(), $this->privateColumns);
   }
 
-  /**
-   * Добавить пользователя
-   */
   public function Add()
   {
     $this->password = UserAuth::HashPassword($this->password);
@@ -63,27 +55,17 @@ class User extends DBModel
   {
     parent::Update();
   }
-  /**
-   * Шифруем пароль
-   * @param string $password
-   */
+
   protected function HashPassword($password)
   {
     return password_hash($password, PASSWORD_DEFAULT);
   }
-  /**
-   * Проверяем пароль
-   * @param string $password
-   */
+
   protected static function VerifyPassword($password, $db_password)
   {
     return password_verify($password, $db_password);
   }
-  /**
-   * Авторизация
-   * @param string $login
-   * @param string $password
-   */
+
   public static function Auth($login, $password)
   {
     $findUser = self::GetList(array("login" => $login), array("id", "password"))[0];

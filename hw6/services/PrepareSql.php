@@ -1,11 +1,16 @@
 <?php
 namespace fadeev\php2\services;
-/**
-* PrepareSql
-*/
+
 class PrepareSql
 {
-  public static function Select($table, $arFilter = array(), $arSelect = array())
+  protected $table;
+
+  public function __construct()
+  {
+
+  }
+
+  public function Select($table, $arFilter = array(), $arSelect = array())
   {
     $sql = "";
     if (!empty($arSelect))
@@ -33,7 +38,7 @@ class PrepareSql
     );
   }
 
-  public static function Delete($table, $obj, $privateColumns = array())
+  public function Delete($table, $obj, $privateColumns = array())
   {
     $arParams = array();
     $arColumns = array();
@@ -53,7 +58,7 @@ class PrepareSql
     );
   }
 
-  public static function Update($table, $obj, $privateColumns = array())
+  public function Update($table, $obj, $privateColumns = array())
   {
     $arParams = array();
     $arColumns = array();
@@ -77,7 +82,7 @@ class PrepareSql
     );
   }
 
-  public static function Add($table, $obj, $privateColumns = array())
+  public function Add($table, $obj, $privateColumns = array())
   {
     $arParams = array();
     $arColumns = array();
