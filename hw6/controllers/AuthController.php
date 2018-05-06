@@ -6,8 +6,11 @@ class AuthController extends Controller
 {
   public function actionIndex()
   {
-    $userAuth = false;
-    $arParams = array();
+    $arParams = array(
+      "user" => false,
+      "msg" => ""
+    );
+
     if ($_POST)
     {
       $userAuth = User::Auth(
@@ -15,6 +18,7 @@ class AuthController extends Controller
         htmlspecialchars($_POST["password"])
       );
     }
+
     if ($userAuth !== false && $userAuth->id > 0)
     {
       $arParams["user"] = $userAuth;
