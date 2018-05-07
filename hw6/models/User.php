@@ -1,5 +1,6 @@
 <?php
 namespace fadeev\php2\models;
+use fadeev\php2\models\DataEntity;
 use fadeev\php2\models\repositories\UserRepository;
 
 class User extends DataEntity
@@ -10,7 +11,6 @@ class User extends DataEntity
   public $email;
   public $login;
   public $password;
-  protected $date_insert;
 
   /**
    * Конструктор класса User

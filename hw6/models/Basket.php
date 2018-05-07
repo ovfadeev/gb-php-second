@@ -1,11 +1,8 @@
 <?php
 namespace fadeev\php2\models;
-use fadeev\php2\models\DB;
+use fadeev\php2\models\DataEntity;
 
-class Basket extends DBModel
+class Basket extends DataEntity
 {
-  public static function GetTableName()
-  {
-    return DB_PREFIX_TABLE."basket";
-  }
+  
 }

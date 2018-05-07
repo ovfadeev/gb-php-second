@@ -8,8 +8,8 @@ spl_autoload_register(array(new \fadeev\php2\services\Autoloader(), "loadClass")
 
 $request = new \fadeev\php2\services\Request();
 
-$controllerName = $_GET['c'] ?: 'index';
-$actionName = $_GET['a'];
+$controllerName = $request->getControllerName() ?: 'index';
+$actionName = $request->getActionName();
 
 $controllerClass = CONTROLLERS_NAMESPACE.ucfirst($controllerName)."Controller";
 
