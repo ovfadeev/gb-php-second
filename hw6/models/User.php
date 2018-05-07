@@ -1,6 +1,6 @@
 <?php
 namespace fadeev\php2\models;
-use fadeev\php2\models\DB;
+use fadeev\php2\models\repositories\UserRepository;
 
 class User extends DataEntity
 {
@@ -10,6 +10,7 @@ class User extends DataEntity
   public $email;
   public $login;
   public $password;
+  protected $date_insert;
 
   /**
    * Конструктор класса User
@@ -28,6 +29,26 @@ class User extends DataEntity
     $this->email = $email;
     $this->login = $login;
     $this->password = $password;
+  }
+
+  protected function HashPassword($password)
+  {
+    return password_hash($password, PASSWORD_DEFAULT);
+  }
+
+  protected function VerifyPassword($password, $db_password)
+  {
+    return password_verify($password, $db_password);
+  }
+
+  public static function Auth($login, $password)
+  {
+    $findUser = (new UserRepository)->GetList(array("login" => $login), array("id", "password"))[0];
+    if (self::VerifyPassword($password, $findUser["password"]))
+    {
+      return (new UserRepository)->GetById($findUser["id"]);
+    }
+    return false;
   }
 }
 ?>

@@ -35,25 +35,5 @@ class UserRepository extends Repository
   {
     parent::Update($entity);
   }
-
-  protected function HashPassword($password)
-  {
-    return password_hash($password, PASSWORD_DEFAULT);
-  }
-
-  protected function VerifyPassword($password, $db_password)
-  {
-    return password_verify($password, $db_password);
-  }
-
-  public static function Auth($login, $password)
-  {
-    $findUser = self::GetList(array("login" => $login), array("id", "password"))[0];
-    if (self::VerifyPassword($password, $findUser["password"]))
-    {
-      return self::GetById($findUser["id"]);
-    }
-    return false;
-  }
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 namespace fadeev\php2\controllers;
-use fadeev\php2\models\repositories\UserRepository;
+use fadeev\php2\models\User;
 
 class AuthController extends Controller
 {
@@ -13,7 +13,7 @@ class AuthController extends Controller
 
     if ($_POST)
     {
-      $userAuth = UserRepository::Auth(
+      $userAuth = User::Auth(
         htmlspecialchars($_POST["login"]),
         htmlspecialchars($_POST["password"])
       );

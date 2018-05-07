@@ -16,6 +16,7 @@ class Product extends DataEntity
   public $status;
   public $view;
   public $count;
+  protected $date_insert;
 
   private $privateColumns = array();
 
