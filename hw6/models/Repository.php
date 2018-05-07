@@ -25,7 +25,7 @@ abstract class Repository
 
   public function Add(DataEntity $entity)
   {
-    $arPrepareSql = PrepareSql::Add(
+    $arPrepareSql = (new PrepareSql)->Add(
       static::getTableName(),
       $this,
       $this->PrivateColumns()
@@ -37,7 +37,7 @@ abstract class Repository
   public function Update(DataEntity $entity)
   {
     $res = false;
-    $arPrepareSql = PrepareSql::Update(
+    $arPrepareSql = (new PrepareSql)->Update(
       static::getTableName(),
       $this,
       $this->PrivateColumns()
@@ -50,7 +50,7 @@ abstract class Repository
 
   public function Delete(DataEntity $entity)
   {
-    $arPrepareSql = PrepareSql::Delete(
+    $arPrepareSql = (new PrepareSql)->Delete(
       static::getTableName(),
       $this,
       $this->PrivateColumns()
@@ -72,7 +72,7 @@ abstract class Repository
 
   public function GetById($id, $arSelect = array())
   {
-    $arPrepareSql = PrepareSql::Select(
+    $arPrepareSql = (new PrepareSql)->Select(
       static::getTableName(),
       array("id" => $id),
       $arSelect
@@ -84,7 +84,7 @@ abstract class Repository
 
   public function GetList($arFilter = array(), $arSelect = array())
   {
-    $arPrepareSql = PrepareSql::Select(
+    $arPrepareSql = (new PrepareSql)->Select(
       static::getTableName(),
       $arFilter,
       $arSelect

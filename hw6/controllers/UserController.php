@@ -7,11 +7,10 @@ class UserController extends Controller
 {
   public function actionIndex()
   {
-    global $user;
-    if ($user) {
-      $id = htmlspecialchars($user->id);
-      $db_user = (new UserRepository)->GetById($id);
-      echo $this->Render("user", array("user" => $db_user));
+    $userId = (new \fadeev\php2\services\Sessions)->Get('user_id');
+    if (intval($userId) > 0) {
+      $user = (new UserRepository)->GetById($userId);
+      echo $this->Render("user", array("user" => $user));
     } else {
       header("Location: /auth/");
     }

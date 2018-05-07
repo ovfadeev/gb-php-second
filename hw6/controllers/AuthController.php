@@ -21,6 +21,7 @@ class AuthController extends Controller
 
     if ($userAuth !== false && $userAuth->id > 0)
     {
+      (new \fadeev\php2\services\Sessions)->Set('user_id', $userAuth->id);
       $arParams["user"] = $userAuth;
       $arParams["msg"] = "Вы авторизированы";
     }
