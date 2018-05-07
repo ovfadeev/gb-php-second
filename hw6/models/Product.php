@@ -22,7 +22,6 @@ class Product extends DataEntity
 
   public function __construct($id = null, $category_id = null, $name = null, $image = null, $image_small = null, $image_slider = null, $description = null, $price = null, $size_id = null, $color_id = null, $status = null, $view = null, $count = null)
   {
-    parent::__construct();
     $this->id = $id;
     $this->category_id = $category_id;
     $this->name = $name;
