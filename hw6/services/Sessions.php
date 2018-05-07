@@ -6,7 +6,7 @@ class Sessions
   public function Start()
   {
     session_start();
-    session_id();
+    $this->Set('id', session_id());
   }
 
   public function Get($key)

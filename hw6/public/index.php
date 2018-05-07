@@ -10,8 +10,6 @@ if (empty($_SESSION))
 {
   (new \fadeev\php2\services\Sessions)->Start();
 }
-ini_set('display_errors',1);
-error_reporting(E_ALL);
 /* --- request --- */
 $request = new \fadeev\php2\services\Request();
 /* --- controller --- */
@@ -27,5 +25,4 @@ if(class_exists($controllerClass))
 echo "<pre>";
 print_r($_SESSION);
 echo "</pre>";
-echo SID;
 ?>
