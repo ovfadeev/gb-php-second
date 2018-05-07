@@ -28,7 +28,7 @@ class PrepareSql
     $sql .= ";";
     return array(
       "sql" => $sql,
-      "params" => ""
+      "params" => array()
     );
   }
 
