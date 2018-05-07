@@ -1,8 +1,7 @@
 <?php
 namespace fadeev\php2\models;
-use fadeev\php2\models\DB;
 
-class Product extends DBModel
+class Product extends DataEntity
 {
   public $id;
   public $category_id;
@@ -36,16 +35,6 @@ class Product extends DBModel
     $this->status = $status;
     $this->view = $view;
     $this->count = $count;
-  }
-
-  public static function GetTableName()
-  {
-    return DB_PREFIX_TABLE."catalog_products";
-  }
-
-  public function PrivateColumns()
-  {
-    return array_merge(parent::PrivateColumns(), $this->privateColumns);
   }
 }
 ?>

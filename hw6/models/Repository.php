@@ -1,10 +1,10 @@
 <?php
 namespace fadeev\php2\models;
-use fadeev\php2\interfaces\IDBModel;
 use fadeev\php2\services\DB;
+use fadeev\php2\models\DataEntity;
 use fadeev\php2\services\PrepareSql;
 
-abstract class DBModel extends Model implements IDBModel
+abstract class Repository
 {
   protected $db;
   protected $date_insert;
@@ -14,12 +14,16 @@ abstract class DBModel extends Model implements IDBModel
     $this->db = DB::GetInstance();
   }
 
+  abstract public function GetTableName();
+
+  abstract public function GetEntityClass();
+
   public function PrivateColumns()
   {
     return array("DB", "date_insert", "date_update");
   }
 
-  public function Add()
+  public function Add(DataEntity $entity)
   {
     $arPrepareSql = PrepareSql::Add(
       static::getTableName(),
@@ -30,7 +34,7 @@ abstract class DBModel extends Model implements IDBModel
     $this->id = $this->db->lastInsertId();
   }
 
-  public function Update()
+  public function Update(DataEntity $entity)
   {
     $res = false;
     $arPrepareSql = PrepareSql::Update(
@@ -44,7 +48,7 @@ abstract class DBModel extends Model implements IDBModel
     return $res;
   }
 
-  public function Delete()
+  public function Delete(DataEntity $entity)
   {
     $arPrepareSql = PrepareSql::Delete(
       static::getTableName(),
@@ -57,7 +61,7 @@ abstract class DBModel extends Model implements IDBModel
     return $res;
   }
 
-  public function Save()
+  public function Save(DataEntity $entity)
   {
     if ($this->date_insert){
       $this->Update();
@@ -66,7 +70,7 @@ abstract class DBModel extends Model implements IDBModel
     }
   }
 
-  public static function GetById($id, $arSelect = array())
+  public function GetById($id, $arSelect = array())
   {
     $arPrepareSql = PrepareSql::Select(
       static::getTableName(),
@@ -74,11 +78,11 @@ abstract class DBModel extends Model implements IDBModel
       $arSelect
     );
     $result = Db::getInstance()
-      ->queryObject($arPrepareSql["sql"], $arPrepareSql["params"], get_called_class());
+      ->queryObject($arPrepareSql["sql"], $arPrepareSql["params"], $this->GetEntityClass());
     return $result;
   }
 
-  public static function GetList($arFilter = array(), $arSelect = array())
+  public function GetList($arFilter = array(), $arSelect = array())
   {
     $arPrepareSql = PrepareSql::Select(
       static::getTableName(),
