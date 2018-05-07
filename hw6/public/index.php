@@ -6,6 +6,8 @@ require_once(ROOT_DIR."services/Autoloader.php");
 /* --- autoload --- */
 spl_autoload_register(array(new \fadeev\php2\services\Autoloader(), "loadClass"));
 
+$request = new \fadeev\php2\services\Request();
+
 $controllerName = $_GET['c'] ?: 'index';
 $actionName = $_GET['a'];
 
