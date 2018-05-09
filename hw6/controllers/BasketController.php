@@ -8,16 +8,14 @@ class BasketController extends Controller
 {
   public function actionIndex()
   {
-    $basket = (new BasketRepository)->GetList(
-      array(
-        "session_id" => (new Sessions)->Get("id")
-      )
-    )[0];
-    if (!empty($basket) && !empty($basket["products"]))
-    {
-      $basket["basket_items"] = (new BasketRepository)->GetBasketItems($basket);
+    $user_id = (new Sessions)->Get("user_id");
+    if (!empty($user_id)){
+      $basket = (new Basket)->GetBasketByUser($user_id);
+    } else {
+      $basket = (new Basket)->GetBasketBySession(
+        (new Sessions)->Get("id")
+      );
     }
-
     echo $this->render("basket", ["basket" => $basket]);
   }
 }
