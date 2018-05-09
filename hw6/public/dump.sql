@@ -156,6 +156,19 @@ DELETE FROM `s_delivery_method`;
 /*!40000 ALTER TABLE `s_delivery_method` DISABLE KEYS */;
 /*!40000 ALTER TABLE `s_delivery_method` ENABLE KEYS */;
 
+-- Дамп структуры для таблица gb-php.s_delivery_status
+DROP TABLE IF EXISTS `s_delivery_status`;
+CREATE TABLE IF NOT EXISTS `s_delivery_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Дамп данных таблицы gb-php.s_delivery_status: ~0 rows (приблизительно)
+DELETE FROM `s_delivery_status`;
+/*!40000 ALTER TABLE `s_delivery_status` DISABLE KEYS */;
+/*!40000 ALTER TABLE `s_delivery_status` ENABLE KEYS */;
+
 -- Дамп структуры для таблица gb-php.s_orders
 DROP TABLE IF EXISTS `s_orders`;
 CREATE TABLE IF NOT EXISTS `s_orders` (
@@ -164,8 +177,9 @@ CREATE TABLE IF NOT EXISTS `s_orders` (
   `basket_id` int(11) NOT NULL,
   `order_status` int(11) NOT NULL,
   `total_sum` float NOT NULL,
-  `delivery_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `delivery_method` int(11) NOT NULL,
+  `delivery_status` int(11) NOT NULL,
+  `delivery_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pay_method` int(11) NOT NULL,
   `pay_status` int(11) NOT NULL,
   PRIMARY KEY (`id`),
