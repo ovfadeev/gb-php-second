@@ -1,21 +1,28 @@
 <?php
 namespace fadeev\php2\services;
-use fadeev\php2\traits\TSingleton;
 
 class DB
 {
-  use TSingleton;
-
-  private $dbtype = DB_TYPE;
-  private $dbName = DB_NAME;
-  private $dbLogin = DB_LOGIN;
-  private $dbPassword = DB_PASSWORD;
-  private $dbHost = DB_HOST;
-  private $charset = DB_CHARSET;
+  private $dbName;
+  private $dbLogin;
+  private $dbPassword;
+  private $dbHost;
+  private $dbCharset;
+  private $dbDriver;
 
   private $db = null;
 
   private static $instance = null;
+
+  public function __construct($driver, $host, $login, $password, $database, $charset = "utf8")
+  {
+    $this->dbDriver = $driver;
+    $this->dbHost = $host;
+    $this->dbLogin = $login;
+    $this->dbPassword = $password;
+    $this->dbPassword = $database;
+    $this->dbCharset = $charset;
+  }
 
   private function Connect()
   {
@@ -58,10 +65,10 @@ class DB
   private function PrepareDsn()
   {
     return sprintf("%s:host=%s;dbname=%s;charset=%s",
-      $this->dbtype,
+      $this->dbDriver,
       $this->dbHost,
       $this->dbName,
-      $this->charset
+      $this->dbCharset
     );
   }
 

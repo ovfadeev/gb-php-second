@@ -14,7 +14,7 @@ class AutoLoader
     if (stristr($className, DEV_NAMESPACE))
     {
       $this->filePath = str_replace(array(DEV_NAMESPACE, "\\"), array("", DIRECTORY_SEPARATOR), $className);
-      $this->fileName = str_replace("#PATH#", $this->filePath, ROOT_DIR.self::FILE_PATH);
+      $this->fileName = str_replace("#PATH#", $this->filePath, __DIR__."/../".self::FILE_PATH);
       $this->fileName .= self::FILE_EXT;
     }
     if (file_exists($this->fileName))
