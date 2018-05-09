@@ -55,7 +55,7 @@ class AuthController extends Controller
   public function actionLogout()
   {
     (new Sessions)->Remove("user_id");
-    header("Location: /auth/");
+    header("Location: /");
   }
 }
 ?>
