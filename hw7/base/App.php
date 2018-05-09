@@ -22,24 +22,15 @@ class App
 	public function Run($config)
 	{
 		$this->config = $config;
-		echo "<pre>";
-		var_dump($this->config);
-		echo "</pre>";
-		
 		$this->components = new Storage();
 		echo "<pre>";
 		var_dump($this->components);
 		echo "</pre>";
-		
 		$this->RunController();
 	}
 
 	public function CreateComponent($name)
 	{
-		echo "<pre>";
-		var_dump($this->config);
-		echo "</pre>";
-		
 		if (isset($this->config["components"][$name])) {
 			$params = $this->config["components"][$name];
 			$class = $params["class"];
@@ -67,6 +58,6 @@ class App
 
 	function __get($name)
 	{
-		return $this->components->get($name);
+		return $this->components->Get($name);
 	}
 }
