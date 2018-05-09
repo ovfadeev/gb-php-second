@@ -1,6 +1,7 @@
 <?php
 namespace fadeev\php2\controllers;
-use fadeev\php2\models\User;
+use fadeev\php2\models\entities\User;
+use fadeev\php2\services\Sessions;
 
 class AuthController extends Controller
 {
@@ -21,7 +22,7 @@ class AuthController extends Controller
 
     if ($userAuth !== false && $userAuth->id > 0)
     {
-      (new \fadeev\php2\services\Sessions)->Set('user_id', $userAuth->id);
+      (new Sessions)->Set('user_id', $userAuth->id);
       $arParams["user"] = $userAuth;
       $arParams["msg"] = "Вы авторизированы";
     }
@@ -41,6 +42,12 @@ class AuthController extends Controller
   public function actionChange()
   {
     return false;
+  }
+
+  public function actionLogout()
+  {
+    (new Sessions)->Remove("user_id");
+    header("Location: /auth/");
   }
 }
 ?>
