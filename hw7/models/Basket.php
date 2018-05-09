@@ -2,9 +2,31 @@
 namespace fadeev\php2\models;
 use fadeev\php2\models\DataEntity;
 use fadeev\php2\models\repositories\BasketRepository;
+use fadeev\php2\models\services\Sessions;
 
 class Basket extends DataEntity
 {
+  public $id;
+  public $user_id;
+  public $session_id;
+  public $products;
+
+  /**
+   * Конструктор класса Basket
+   * @param int $id
+   * @param int $id
+   * @param int $id
+   * @param int $id
+   * @param int $id
+   */
+  public function __construct($id = null, $user_id = null, $session_id = null, $products = null)
+  {
+    $this->id = $id;
+    $this->user_id = $user_id;
+    $this->session_id = $session_id;
+    $this->products = $products;
+  }
+
   public function GetBasketByUser($user_id)
   {
     $basket = (new BasketRepository)->GetList(array("user_id" => $user_id))[0];
@@ -27,21 +49,38 @@ class Basket extends DataEntity
     return false;
   }
 
-  public function AddProductToBasket($basket_id, $product_id, $quantity, $price)
+  public function AddProductToBasket($product_id, $quantity, $price)
   {
-    $basket = (new BasketRepository)->GetById($basket_id);
-    $arProducts = json_decode($basket->products, true);
-    if (in_array($product_id, array_keys($arProducts))) {
-      $arProducts[$product_id]["quantity"] += $quantity;
-      $arProducts[$product_id]["price"] = $price;
+    $session_id = (new Sessions)->Get("id");
+    $user_id = (new Sessions)->Get("user_id");
+    $basket = $this->GetBasketBySession($session_id);
+    if ($basket)
+    {
+      $objBasket = (new BasketRepository)->GetById($basket["id"]);
+      $arProducts = json_decode($objBasket->products, true);
+      if (in_array($product_id, array_keys($arProducts))) {
+        $arProducts[$product_id]["quantity"] += $quantity;
+        $arProducts[$product_id]["price"] = $price;
+      } else {
+        $arProducts[$product_id] = array(
+          "product_id" => $product_id,
+          "quantity" => $quantity,
+          "price" => $price
+        );
+      }
+      $objBasket->products = json_encode($arProducts);
+      (new BasketRepository)->Update($basket);
     } else {
-      $arProducts[$product_id] = array(
-        "product_id" => $product_id,
-        "quantity" => $quantity,
-        "price" => $price
-      );
+      $this->user_id = $user_id;
+      $this->session_id = $session_id;
+      $this->products = json_encode(array(
+        $product_id => array(
+          "product_id" => $product_id,
+          "quantity" => $quantity,
+          "price" => $price
+        )
+      ));
+      (new BasketRepository)->Add($this);
     }
-    $basket->products = json_encode($arProducts);
-    (new BasketRepository)->Update($basket);
   }
 }

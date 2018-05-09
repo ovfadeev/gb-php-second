@@ -21,19 +21,19 @@ USE `gb-php`;
 DROP TABLE IF EXISTS `s_basket`;
 CREATE TABLE IF NOT EXISTS `s_basket` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
-  `user_id` int(255) DEFAULT NULL,
-  `session_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `user_id` int(255) NOT NULL,
+  `session_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `date_insert` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `products` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `products` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы gb-php.s_basket: ~1 rows (приблизительно)
+-- Дамп данных таблицы gb-php.s_basket: ~0 rows (приблизительно)
 DELETE FROM `s_basket`;
 /*!40000 ALTER TABLE `s_basket` DISABLE KEYS */;
 INSERT INTO `s_basket` (`id`, `user_id`, `session_id`, `date_insert`, `date_update`, `products`) VALUES
-	(2, 5, 'mjn71rb4er7sjjov9258ncuob6', '2018-05-09 11:17:20', '2018-05-09 11:18:03', '{"product_id":[1,2,3]}');
+	(2, 5, 'mjn71rb4er7sjjov9258ncuob6', '2018-05-09 11:17:20', '2018-05-09 12:59:14', '{"1":{"product_id":1,"quantity":1,"price":100},"2":{"product_id":2,"quantity":1,"price":200},"10":{"product_id":10,"quantity":1,"price":200}}');
 /*!40000 ALTER TABLE `s_basket` ENABLE KEYS */;
 
 -- Дамп структуры для таблица gb-php.s_catalog_category
