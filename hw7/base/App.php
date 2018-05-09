@@ -44,15 +44,18 @@ class App
 
 	public function RunController()
 	{
-		$this->controller = $this->request->GetControllerName() ?: "index";
-		$this->action = $this->request->GetActionName();
-
-		$controllerClass = $this->config['controllers_namespaces'].ucfirst($this->controller)."Controller";
-
-		if (class_exists($controllerClass))
+		if (!is_null($this->request))
 		{
-			$controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
-			$controller->RunAction($this->action);
+			$this->controller = $this->request->GetControllerName() ?: "index";
+			$this->action = $this->request->GetActionName();
+
+			$controllerClass = $this->config['controllers_namespaces'].ucfirst($this->controller)."Controller";
+
+			if (class_exists($controllerClass))
+			{
+				$controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
+				$controller->RunAction($this->action);
+			}
 		}
 	}
 
