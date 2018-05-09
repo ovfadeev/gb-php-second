@@ -12,7 +12,8 @@ class Storage
 
   public function Get($key)
   {
-    if(!isset($this->items[$key])){
+    if(!isset($this->items[$key]))
+    {
       $this->items[$key] = App::Call()->CreateComponent($key);
     }
     return $this->items[$key];
