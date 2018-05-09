@@ -13,7 +13,7 @@ trait TSingleton
   {
     if (is_null($instance))
     {
-      static::$instance = new Static();
+      static::$instance = new static();
     }
     return static::$instance;
   }
