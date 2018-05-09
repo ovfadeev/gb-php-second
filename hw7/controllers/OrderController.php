@@ -1,10 +1,10 @@
 <?php
 namespace fadeev\php2\controllers;
-use fadeev\php2\models\Order;
+use fadeev\php2\models\entities\Order;
 use fadeev\php2\models\repositories\OrderRepository;
-use fadeev\php2\models\Basket;
+use fadeev\php2\models\entities\Basket;
 use fadeev\php2\models\repositories\BasketRepository;
-use fadeev\php2\models\User;
+use fadeev\php2\models\entities\User;
 use fadeev\php2\models\repositories\UserRepository;
 use fadeev\php2\services\Sessions;
 
