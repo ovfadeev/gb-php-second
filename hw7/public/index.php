@@ -21,8 +21,4 @@ if(class_exists($controllerClass))
   $controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
   $controller->RunAction($actionName);
 }
-
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
 ?>
