@@ -57,6 +57,10 @@ class App
 				$controller->RunAction($this->action);
 			}
 		}
+		else
+		{
+			throw new \Exception("Request is null", 1);
+		}
 	}
 
 	function __get($name)
