@@ -15,5 +15,19 @@ class BasketRepository extends Repository
   {
       return Basket::class;
   }
+
+  public function GetBasketItems($arBasket = array())
+  {
+    if (!empty($arBasket["products"]))
+    {
+      $arProductsId = json_decode($arBasket["products"], true);
+      foreach ($arProductsId["product_id"] as $key => $product_id)
+      {
+        $arProducts[] = (new \fadeev\php2\models\repositories\ProductRepository)->GetById($product_id);
+      }
+      return $arProducts;
+    }
+    return false;
+  }
 }
 ?>
