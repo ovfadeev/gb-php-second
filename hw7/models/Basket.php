@@ -69,7 +69,7 @@ class Basket extends DataEntity
         );
       }
       $objBasket->products = json_encode($arProducts);
-      (new BasketRepository)->Update($basket);
+      return (new BasketRepository)->Update($basket);
     } else {
       $this->user_id = $user_id;
       $this->session_id = $session_id;
@@ -80,7 +80,7 @@ class Basket extends DataEntity
           "price" => $price
         )
       ));
-      (new BasketRepository)->Add($this);
+      return (new BasketRepository)->Add($this);
     }
   }
 }
