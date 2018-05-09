@@ -27,9 +27,21 @@ class Basket extends DataEntity
     return false;
   }
 
-  public function AddProductToBasket($basket_id)
+  public function AddProductToBasket($basket_id, $product_id, $quantity, $price)
   {
     $basket = (new BasketRepository)->GetById($basket_id);
     $arProducts = json_decode($basket->products, true);
+    if (in_array($product_id, array_keys($arProducts))) {
+      $arProducts[$product_id]["quantity"] += $quantity;
+      $arProducts[$product_id]["price"] = $price;
+    } else {
+      $arProducts[$product_id] = array(
+        "product_id" => $product_id,
+        "quantity" => $quantity,
+        "price" => $price
+      );
+    }
+    $basket->products = json_encode($arProducts);
+    (new BasketRepository)->Update($basket);
   }
 }
