@@ -24,7 +24,7 @@ class OrderController extends Controller
 
   public function actionDetail()
   {
-    $id = App::call()->request->getParams()["id"];
+    $id = App::call()->request->GetParams()["id"];
     $order = (new OrderRepository)->GetById($id);
     echo $this->render("order_detail", array("order" => $order));
   }
