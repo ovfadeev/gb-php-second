@@ -13,8 +13,8 @@ if (empty($_SESSION))
 /* --- request --- */
 $request = new \fadeev\php2\services\Request();
 /* --- controller --- */
-$controllerName = $request->getControllerName() ?: 'index';
-$actionName = $request->getActionName();
+$controllerName = $request->GetControllerName() ?: 'index';
+$actionName = $request->GetActionName();
 $controllerClass = CONTROLLERS_NAMESPACE.ucfirst($controllerName)."Controller";
 if(class_exists($controllerClass))
 {
