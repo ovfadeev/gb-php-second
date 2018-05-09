@@ -1,6 +1,6 @@
 <?php
 namespace fadeev\php2\base;
-use fadeev\php2\services\Db;
+use fadeev\php2\services\DB;
 use fadeev\php2\services\Request;
 use fadeev\php2\traits\TSingleton;
 
@@ -16,18 +16,30 @@ class App
 
 	public static function Call()
 	{
-		return static::getInstance();
+		return static::GetInstance();
 	}
 
 	public function Run($config)
 	{
 		$this->config = $config;
+		echo "<pre>";
+		var_dump($this->config);
+		echo "</pre>";
+		
 		$this->components = new Storage();
+		echo "<pre>";
+		var_dump($this->components);
+		echo "</pre>";
+		
 		$this->RunController();
 	}
 
 	public function CreateComponent($name)
 	{
+		echo "<pre>";
+		var_dump($this->config);
+		echo "</pre>";
+		
 		if (isset($this->config["components"][$name])) {
 			$params = $this->config["components"][$name];
 			$class = $params["class"];

@@ -12,6 +12,10 @@ class Storage
 
   public function Get($key)
   {
+    echo "<pre>";
+    print_r($key);
+    echo "</pre>";
+    
     if(!isset($this->items[$key])){
       $this->items[$key] = App::Call()->CreateComponent($key);
     }
