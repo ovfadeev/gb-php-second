@@ -14,10 +14,9 @@ class Basket extends DataEntity
   /**
    * Конструктор класса Basket
    * @param int $id
-   * @param int $id
-   * @param int $id
-   * @param int $id
-   * @param int $id
+   * @param int $user_id
+   * @param int $session_id
+   * @param str $products
    */
   public function __construct($id = null, $user_id = null, $session_id = null, $products = null)
   {
