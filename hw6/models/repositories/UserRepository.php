@@ -6,10 +6,6 @@ use fadeev\php2\models\User;
 
 class UserRepository extends Repository
 {
-  private $privateColumns = array(
-    "last_date_auth"
-  );
-
   public function GetTableName()
   {
     return DB_PREFIX_TABLE."users";
