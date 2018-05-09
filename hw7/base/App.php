@@ -23,11 +23,17 @@ class App
 	{
 		$this->config = $config;
 		$this->components = new Storage();
+		echo "<pre>";
+		var_dump($this->config);
+		echo "</pre>";
 		$this->RunController();
 	}
 
 	public function CreateComponent($name)
 	{
+		echo "<pre>";
+		var_dump($this->config);
+		echo "</pre>";
 		if (isset($this->config["components"][$name]))
 		{
 			$params = $this->config["components"][$name];
@@ -47,11 +53,11 @@ class App
 		$this->controller = $this->request->GetControllerName() ?: "index";
 		$this->action = $this->request->GetActionName();
 
-		$controllerClass = $this->config['controllers_namespaces'].ucfirst($this->controller) . "Controller";
+		$controllerClass = $this->config['controllers_namespaces'].ucfirst($this->controller)."Controller";
 
 		if (class_exists($controllerClass))
 		{
-			$controller = new $controllerClass(new \app\services\TemplateRenderer());
+			$controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
 			$controller->RunAction($this->action);
 		}
 	}

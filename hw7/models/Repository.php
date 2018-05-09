@@ -1,6 +1,6 @@
 <?php
 namespace fadeev\php2\models;
-use fadeev\php2\services\DB;
+use fadeev\php2\base\App;
 use fadeev\php2\models\DataEntity;
 use fadeev\php2\services\PrepareSql;
 
@@ -11,7 +11,7 @@ abstract class Repository
 
   function __construct()
   {
-    $this->db = DB::GetInstance();
+    $this->db = App::Call()->db;
   }
 
   abstract public function GetTableName();
@@ -26,7 +26,7 @@ abstract class Repository
   public function Add(DataEntity $entity)
   {
     $arPrepareSql = (new PrepareSql)->Add(
-      static::getTableName(),
+      $this->getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -38,7 +38,7 @@ abstract class Repository
   {
     $res = false;
     $arPrepareSql = (new PrepareSql)->Update(
-      static::getTableName(),
+      $this->getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -51,7 +51,7 @@ abstract class Repository
   public function Delete(DataEntity $entity)
   {
     $arPrepareSql = (new PrepareSql)->Delete(
-      static::getTableName(),
+      $this->getTableName(),
       $this,
       $this->PrivateColumns()
     );
@@ -73,7 +73,7 @@ abstract class Repository
   public function GetById($id, $arSelect = array())
   {
     $arPrepareSql = (new PrepareSql)->Select(
-      static::getTableName(),
+      $this->getTableName(),
       array("id" => $id),
       $arSelect
     );
@@ -85,7 +85,7 @@ abstract class Repository
   public function GetList($arFilter = array(), $arSelect = array())
   {
     $arPrepareSql = (new PrepareSql)->Select(
-      static::getTableName(),
+      $this->getTableName(),
       $arFilter,
       $arSelect
     );
