@@ -59,6 +59,6 @@ class App
 
 	function __get($name)
 	{
-		return $this->components->get($name);
+		return $this->components->Get($name);
 	}
 }
