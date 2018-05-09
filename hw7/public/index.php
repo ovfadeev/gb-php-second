@@ -1,9 +1,14 @@
 <?php
 define("DEV_NAMESPACE", "fadeev\\php2\\");
-
+/* --- autoloader --- */
 include(__DIR__."/../services/Autoloader.php");
 spl_autoload_register(array(new \fadeev\php2\services\Autoloader(), 'loadClass'));
-
+/* --- session --- */
+if (empty($_SESSION["id"]))
+{
+  (new \fadeev\php2\services\Sessions)->Start();
+}
+/* --- application --- */
 $config = include(__DIR__."/../config/main.php");
 \fadeev\php2\base\App::Call()->Run($config);
 
