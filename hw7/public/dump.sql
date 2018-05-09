@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `s_basket` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы gb-php.s_basket: ~0 rows (приблизительно)
+-- Дамп данных таблицы gb-php.s_basket: ~1 rows (приблизительно)
 DELETE FROM `s_basket`;
 /*!40000 ALTER TABLE `s_basket` DISABLE KEYS */;
 INSERT INTO `s_basket` (`id`, `user_id`, `session_id`, `date_insert`, `date_update`, `products`) VALUES

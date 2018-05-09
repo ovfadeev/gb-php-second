@@ -17,7 +17,7 @@ class Request
 
   private function ParseRequest()
   {
-    $pattern = "#(?P<controller>[a-z]+)[/]?(?P<action>\w+)?[/]?[?]?(?P<params>.*)#ui";
+    $pattern = "#(?P<controller>\w+)[/]?(?P<action>\w+)?[/]?[?]?(?P<params>.*)#ui";
     $this->method = $_SERVER['REQUEST_METHOD'];
     if (preg_match_all($pattern, $this->requestString, $matches)) {
       $this->controllerName = $matches['controller'][0];

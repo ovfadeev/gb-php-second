@@ -9,7 +9,8 @@ class AuthController extends Controller
   {
     $arParams = array(
       "user" => false,
-      "msg" => ""
+      "msg" => "",
+      "form_action" => $_SERVER["REQUEST_URI"]
     );
 
     if ($_POST)
@@ -23,8 +24,15 @@ class AuthController extends Controller
     if ($userAuth !== false && $userAuth->id > 0)
     {
       (new Sessions)->Set('user_id', $userAuth->id);
-      $arParams["user"] = $userAuth;
-      $arParams["msg"] = "Вы авторизированы";
+      if (!empty($_GET["back_url"]))
+      {
+        header("Location: ".htmlspecialchars($_GET["back_url"]));
+      }
+      else
+      {
+        $arParams["user"] = $userAuth;
+        $arParams["msg"] = "Вы авторизированы";
+      }
     }
     else if ($_POST)
     {
