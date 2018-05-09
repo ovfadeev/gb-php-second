@@ -5,7 +5,7 @@ return array(
   "controllers_namespaces" => "fadeev\php2\controllers\\",
   "components" => array(
     "db" => array(
-      "class" => \fadeev\php2\services\Db::class,
+      "class" => \fadeev\php2\services\DB::class,
       "driver" => "mysql",
       "host" => "localhost",
       "login" => "root",
