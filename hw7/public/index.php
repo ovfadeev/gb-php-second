@@ -20,5 +20,7 @@ if(class_exists($controllerClass))
 {
   $controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
   $controller->RunAction($actionName);
+} else {
+  throw new Exception("Controller not found", 404);
 }
 ?>

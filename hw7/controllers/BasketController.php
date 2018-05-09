@@ -1,6 +1,6 @@
 <?php
 namespace fadeev\php2\controllers;
-use fadeev\php2\models\Basket;
+use fadeev\php2\models\entities\Basket;
 use fadeev\php2\models\repositories\BasketRepository;
 use fadeev\php2\services\Sessions;
 

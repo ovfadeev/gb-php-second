@@ -2,7 +2,7 @@
 namespace fadeev\php2\models\repositories;
 use fadeev\php2\models\Repository;
 use fadeev\php2\models\DataEntity;
-use fadeev\php2\models\User;
+use fadeev\php2\models\entities\User;
 
 class UserRepository extends Repository
 {
