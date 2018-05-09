@@ -9,6 +9,7 @@ class App
 	use TSingleton;
 
 	public $config;
+
 	private $components;
 	private $controller;
 	private $action;
@@ -41,6 +42,9 @@ class App
 
 	public function RunController()
 	{
+		echo "<pre>";
+		print_r($this);
+		echo "</pre>";
 		$this->controller = $this->request->GetControllerName() ?: 'index';
 		$this->action = $this->request->GetActionName();
 
