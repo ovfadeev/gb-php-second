@@ -15,17 +15,13 @@ class OrderController extends Controller
     $user_id = (new Sessions)->Get("user_id");
     if (!empty($user_id)) {
       $order["user"] = (new UserRepository)->GetById($user_id);
-      $order["basket"] = (new BasketRepository)->GetList(
-        array(
-          "user_id" => $user->id
-        )
-      )[0];
+      $order["basket"] = (new BasketRepository)->GetList(array("user_id" => $order["user"]->id))[0];
       if (!empty($order["basket"]) && !empty($order["basket"]["products"]))
       {
         $order["basket"]["basket_items"] = (new BasketRepository)->GetBasketItems($order["basket"]);
       }
     } else {
-      header("Location: /auth/");
+      header("Location: /auth/?".http_build_query(array("back_url" => "/order/")));
     }
 
     echo $this->render("order", ["order" => $order]);
