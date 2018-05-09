@@ -22,16 +22,18 @@ DROP TABLE IF EXISTS `s_basket`;
 CREATE TABLE IF NOT EXISTS `s_basket` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `user_id` int(255) DEFAULT NULL,
-  `session_id` int(255) NOT NULL DEFAULT '0',
+  `session_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `date_insert` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `products` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы gb-php.s_basket: ~0 rows (приблизительно)
+-- Дамп данных таблицы gb-php.s_basket: ~1 rows (приблизительно)
 DELETE FROM `s_basket`;
 /*!40000 ALTER TABLE `s_basket` DISABLE KEYS */;
+INSERT INTO `s_basket` (`id`, `user_id`, `session_id`, `date_insert`, `date_update`, `products`) VALUES
+	(2, 5, 'mjn71rb4er7sjjov9258ncuob6', '2018-05-09 11:17:20', '2018-05-09 11:18:03', '{"product_id":[1,2,3]}');
 /*!40000 ALTER TABLE `s_basket` ENABLE KEYS */;
 
 -- Дамп структуры для таблица gb-php.s_catalog_category
@@ -141,6 +143,79 @@ INSERT INTO `s_catalog_product_size` (`id`, `value`) VALUES
 	(7, 'XXXL');
 /*!40000 ALTER TABLE `s_catalog_product_size` ENABLE KEYS */;
 
+-- Дамп структуры для таблица gb-php.s_delivery_method
+DROP TABLE IF EXISTS `s_delivery_method`;
+CREATE TABLE IF NOT EXISTS `s_delivery_method` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Дамп данных таблицы gb-php.s_delivery_method: ~0 rows (приблизительно)
+DELETE FROM `s_delivery_method`;
+/*!40000 ALTER TABLE `s_delivery_method` DISABLE KEYS */;
+/*!40000 ALTER TABLE `s_delivery_method` ENABLE KEYS */;
+
+-- Дамп структуры для таблица gb-php.s_orders
+DROP TABLE IF EXISTS `s_orders`;
+CREATE TABLE IF NOT EXISTS `s_orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `basket_id` int(11) NOT NULL,
+  `order_status` int(11) NOT NULL,
+  `total_sum` float NOT NULL,
+  `delivery_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `delivery_method` int(11) NOT NULL,
+  `pay_method` int(11) NOT NULL,
+  `pay_status` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `basket_id` (`basket_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Дамп данных таблицы gb-php.s_orders: ~0 rows (приблизительно)
+DELETE FROM `s_orders`;
+/*!40000 ALTER TABLE `s_orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `s_orders` ENABLE KEYS */;
+
+-- Дамп структуры для таблица gb-php.s_order_status
+DROP TABLE IF EXISTS `s_order_status`;
+CREATE TABLE IF NOT EXISTS `s_order_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Дамп данных таблицы gb-php.s_order_status: ~0 rows (приблизительно)
+DELETE FROM `s_order_status`;
+/*!40000 ALTER TABLE `s_order_status` DISABLE KEYS */;
+/*!40000 ALTER TABLE `s_order_status` ENABLE KEYS */;
+
+-- Дамп структуры для таблица gb-php.s_pay_method
+DROP TABLE IF EXISTS `s_pay_method`;
+CREATE TABLE IF NOT EXISTS `s_pay_method` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Дамп данных таблицы gb-php.s_pay_method: ~0 rows (приблизительно)
+DELETE FROM `s_pay_method`;
+/*!40000 ALTER TABLE `s_pay_method` DISABLE KEYS */;
+/*!40000 ALTER TABLE `s_pay_method` ENABLE KEYS */;
+
+-- Дамп структуры для таблица gb-php.s_pay_status
+DROP TABLE IF EXISTS `s_pay_status`;
+CREATE TABLE IF NOT EXISTS `s_pay_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Дамп данных таблицы gb-php.s_pay_status: ~0 rows (приблизительно)
+DELETE FROM `s_pay_status`;
+/*!40000 ALTER TABLE `s_pay_status` DISABLE KEYS */;
+/*!40000 ALTER TABLE `s_pay_status` ENABLE KEYS */;
+
 -- Дамп структуры для таблица gb-php.s_reviews
 DROP TABLE IF EXISTS `s_reviews`;
 CREATE TABLE IF NOT EXISTS `s_reviews` (
@@ -193,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `s_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Дамп данных таблицы gb-php.s_users: ~3 rows (приблизительно)
 DELETE FROM `s_users`;
