@@ -20,12 +20,12 @@ class BasketRepository extends Repository
   {
     if (!empty($arBasket["products"]))
     {
-      $arProductsId = json_decode($arBasket["products"], true);
-      foreach ($arProductsId["product_id"] as $key => $product_id)
+      $arProducts = json_decode($arBasket["products"], true);
+      foreach ($arProducts as $key => $product)
       {
-        $arProducts[] = (new \fadeev\php2\models\repositories\ProductRepository)->GetById($product_id);
+        $arBasketItems[] = (new \fadeev\php2\models\repositories\ProductRepository)->GetById($product["product_id"]);
       }
-      return $arProducts;
+      return $arBasketItems;
     }
     return false;
   }

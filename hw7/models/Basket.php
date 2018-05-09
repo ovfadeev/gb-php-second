@@ -26,4 +26,10 @@ class Basket extends DataEntity
     }
     return false;
   }
+
+  public function AddProductToBasket($basket_id)
+  {
+    $basket = (new BasketRepository)->GetById($basket_id);
+    $arProducts = json_decode($basket->products, true);
+  }
 }
