@@ -6,7 +6,7 @@ require_once(ROOT_DIR."services/Autoloader.php");
 /* --- autoload --- */
 spl_autoload_register(array(new \fadeev\php2\services\Autoloader(), "loadClass"));
 /* --- session --- */
-if (empty($_SESSION))
+if (empty($_SESSION["id"]))
 {
   (new \fadeev\php2\services\Sessions)->Start();
 }
