@@ -5,12 +5,12 @@ class Storage
 {
   protected $items = array();
 
-  public function Set($key, $object)
+  public function set($key, $object)
   {
     $this->items[$key] = $object;
   }
 
-  public function Get($key)
+  public function get($key)
   {
     if(!isset($this->items[$key])){
       $this->items[$key] = App::Call()->CreateComponent($key);

@@ -23,14 +23,14 @@ class App
 	{
 		$this->config = $config;
 		$this->components = new Storage();
-		echo "<pre>";
-		var_dump($this->components);
-		echo "</pre>";
 		$this->RunController();
 	}
 
 	public function CreateComponent($name)
 	{
+		echo "<pre>";
+		var_dump($this->config);
+		echo "</pre>";
 		if (isset($this->config["components"][$name])) {
 			$params = $this->config["components"][$name];
 			$class = $params["class"];
@@ -50,7 +50,8 @@ class App
 
 		$controllerClass = $this->config['controllers_namespaces'].ucfirst($this->controller) . "Controller";
 
-		if (class_exists($controllerClass)) {
+		if (class_exists($controllerClass))
+		{
 			$controller = new $controllerClass(new \app\services\TemplateRenderer());
 			$controller->RunAction($this->action);
 		}
@@ -58,6 +59,6 @@ class App
 
 	function __get($name)
 	{
-		return $this->components->Get($name);
+		return $this->components->get($name);
 	}
 }

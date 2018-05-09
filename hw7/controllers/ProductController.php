@@ -13,7 +13,7 @@ class ProductController extends Controller
 
   public function actionCard()
   {
-    $id = htmlspecialchars($_GET["id"]);
+    $id = App::call()->request->getParams()["id"];
     $product = (new ProductRepository)->GetById($id);
     echo $this->render("card", array("product" => $product));
   }
