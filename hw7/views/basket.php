@@ -1,3 +1,4 @@
+<h1>Корзина</h1>
 <?php
 echo "<pre>";
 var_dump($basket);
