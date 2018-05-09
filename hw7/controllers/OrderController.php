@@ -21,5 +21,12 @@ class OrderController extends Controller
 
     echo $this->render("order", ["order" => $order]);
   }
+
+  public function actionDetail()
+  {
+    $id = htmlspecialchars($_GET["id"]);
+    $order = (new OrderRepository)->GetById($id);
+    echo $this->render("order_detail", array("order" => $order));
+  }
 }
 ?>
