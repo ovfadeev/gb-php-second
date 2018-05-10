@@ -16,8 +16,8 @@ class AuthController extends Controller
     if ($_POST)
     {
       $userAuth = User::auth(
-        htmlspecialchars($_POST["login"]),
-        htmlspecialchars($_POST["password"])
+        App::call()->request->getParams()["login"],
+        App::call()->request->getParams()["password"]
       );
     }
 
