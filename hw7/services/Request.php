@@ -15,7 +15,7 @@ class Request
     $this->parseRequest();
   }
 
-  private function ParseRequest()
+  private function parseRequest()
   {
     $pattern = "#(?P<controller>\w+)[/]?(?P<action>\w+)?[/]?[?]?(?P<params>.*)#ui";
     $this->method = $_SERVER['REQUEST_METHOD'];
@@ -26,22 +26,22 @@ class Request
     }
   }
 
-  public function GetControllerName()
+  public function getControllerName()
   {
     return $this->controllerName;
   }
 
-  public function GetActionName()
+  public function getActionName()
   {
     return $this->actionName;
   }
 
-  public function GetParams()
+  public function getParams()
   {
     return $this->params;
   }
 
-  public function GetMethod()
+  public function getMethod()
   {
     return $this->method;
   }

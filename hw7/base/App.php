@@ -23,7 +23,7 @@ class App
 	 */
 	public static function call()
 	{
-		return static::GetInstance();
+		return static::getInstance();
 	}
 
 	public function run($config)

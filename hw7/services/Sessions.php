@@ -3,23 +3,23 @@ namespace fadeev\php2\services;
 
 class Sessions
 {
-  public function Start()
+  public function start()
   {
     session_start();
     $this->Set('id', session_id());
   }
 
-  public function Get($key)
+  public function get($key)
   {
     return $_SESSION[$key];
   }
 
-  public function Set($key, $value)
+  public function set($key, $value)
   {
     $_SESSION[$key] = $value;
   }
 
-  public function Remove($key)
+  public function remove($key)
   {
     unset($_SESSION[$key]);
   }

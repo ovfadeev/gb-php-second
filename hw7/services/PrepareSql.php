@@ -3,7 +3,7 @@ namespace fadeev\php2\services;
 
 class PrepareSql
 {
-  public function Select($table, $arFilter = array(), $arSelect = array())
+  public function select($table, $arFilter = array(), $arSelect = array())
   {
     $sql = "";
     if (!empty($arSelect))
@@ -32,7 +32,7 @@ class PrepareSql
     );
   }
 
-  public function Delete($table, $obj, $privateColumns = array())
+  public function delete($table, $obj, $privateColumns = array())
   {
     $arParams = array();
     $arColumns = array();
@@ -52,7 +52,7 @@ class PrepareSql
     );
   }
 
-  public function Update($table, $obj, $privateColumns = array())
+  public function update($table, $obj, $privateColumns = array())
   {
     $arParams = array();
     $arColumns = array();
@@ -76,7 +76,7 @@ class PrepareSql
     );
   }
 
-  public function Add($table, $obj, $privateColumns = array())
+  public function add($table, $obj, $privateColumns = array())
   {
     $arParams = array();
     $arColumns = array();

@@ -12,7 +12,7 @@ trait TSingleton
   /**
    * @return static
    */
-  public static function GetInstance()
+  public static function getInstance()
   {
     if (is_null(static::$instance))
     {
