@@ -30,7 +30,9 @@ class App
 
 	public function CreateComponent($name)
 	{
+		echo "<pre>";
 		var_dump($this->config);
+		echo "</pre>";
 		if (isset($this->config["components"][$name]))
 		{
 			$params = $this->config["components"][$name];
