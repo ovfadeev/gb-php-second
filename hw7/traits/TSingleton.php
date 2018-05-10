@@ -14,7 +14,7 @@ trait TSingleton
    */
   public static function GetInstance()
   {
-    if (is_null($instance))
+    if (is_null(static::$instance))
     {
       static::$instance = new static();
     }
