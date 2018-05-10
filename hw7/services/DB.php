@@ -18,7 +18,7 @@ class DB
     $this->dbHost = $host;
     $this->dbLogin = $login;
     $this->dbPassword = $password;
-    $this->dbPassword = $database;
+    $this->dbName = $database;
     $this->dbCharset = $charset;
   }
 

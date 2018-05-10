@@ -12,9 +12,6 @@ if (empty($_SESSION["id"]))
 }
 /* --- application --- */
 $config = include(__DIR__."/../config/main.php");
-echo "<pre>";
-print_r($config);
-echo "</pre>";
 \fadeev\php2\base\App::Call()->Run($config);
 
 // /* --- main config --- */
