@@ -32,7 +32,7 @@ class AuthController extends Controller
     }
     else if (App::call()->auth->login && App::call()->auth->password)
     {
-      $this->params["msg"] = "Неверный логин или пароль";
+      App::call()->auth->params["msg"] = "Неверный логин или пароль";
     }
 
     echo $this->render("auth", array("params" => App::call()->auth->params));
