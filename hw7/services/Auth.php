@@ -8,7 +8,7 @@ class Auth
 {
   public $login;
   public $password;
-  public $params;
+  public $params = array();
 
   public function __construct()
   {
