@@ -65,6 +65,7 @@ class App
 
 	function __get($name)
 	{
+		echo $name;
 		return $this->components->Get($name);
 	}
 }

@@ -11,7 +11,6 @@ if (empty($_SESSION["id"]))
 /* --- application --- */
 $config = include(__DIR__."/../config/main.php");
 \fadeev\php2\base\App::Call()->Run($config);
-// \fadeev\php2\base\App::GetInstance()->Run($config);
 
 // /* --- main config --- */
 // require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");
