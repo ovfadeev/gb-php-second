@@ -35,7 +35,6 @@ class App
 
 	public function CreateComponent($name)
 	{
-		echo $name;
 		if (isset($this->config["components"][$name]))
 		{
 			$params = $this->config["components"][$name];
@@ -52,11 +51,8 @@ class App
 
 	public function RunController()
 	{
-		// if (!is_null($this->request))
-		// {
-			echo "<pre>";
-			var_dump($this->request);
-			echo "</pre>";
+		if (!is_null($this->request))
+		{
 			$this->controller = $this->request->GetControllerName() ?: "index";
 			$this->action = $this->request->GetActionName();
 
@@ -67,16 +63,15 @@ class App
 				$controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
 				$controller->RunAction($this->action);
 			}
-		// }
-		// else
-		// {
-		// 	throw new \Exception("Request is null", 1);
-		// }
+		}
+		else
+		{
+			throw new \Exception("Request is null", 1);
+		}
 	}
 
 	function __get($name)
 	{
-		echo $name;
 		return $this->components->Get($name);
 	}
 }
