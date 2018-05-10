@@ -43,10 +43,11 @@ class User extends DataEntity
 
   public static function auth($login, $password)
   {
-    $findUser = (new UserRepository)->getList(array("login" => $login), array("id", "password"))[0];
+    $db_user = new UserRepository();
+    $findUser = $db_user->getList(array("login" => $login), array("id", "password"))[0];
     if (self::verifyPassword($password, $findUser["password"]))
     {
-      return (new UserRepository)->getById($findUser["id"]);
+      return $db_user->getById($findUser["id"]);
     }
     return false;
   }
