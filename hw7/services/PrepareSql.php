@@ -1,7 +1,7 @@
 <?php
 namespace fadeev\php2\services;
 
-class PrepareSql
+class Preparesql
 {
   public function select($table, $arFilter = array(), $arSelect = array())
   {

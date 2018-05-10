@@ -19,6 +19,9 @@ return array(
     "sessions" => array(
       "class" => \fadeev\php2\services\Sessions::class
     ),
+    "preparesql" => array(
+      "class" => \fadeev\php2\services\Preparesql::class
+    ),
   )
 );
 // define("ROOT_DIR", $_SERVER["DOCUMENT_ROOT"]."/../");

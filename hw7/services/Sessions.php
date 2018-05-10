@@ -3,7 +3,7 @@ namespace fadeev\php2\services;
 
 class Sessions
 {
-  public function start()
+  public function __construct()
   {
     session_start();
     $this->Set('id', session_id());
