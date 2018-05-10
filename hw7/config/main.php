@@ -21,6 +21,9 @@ return array(
     ),
     "preparesql" => array(
       "class" => \fadeev\php2\services\Preparesql::class
+    ),
+    "auth" => array(
+      "class" => \fadeev\php2\services\Auth::class
     )
   )
 );

@@ -5,22 +5,15 @@ use fadeev\php2\models\entities\User;
 
 class AuthController extends Controller
 {
-  private $login;
-  private $password;
-  private $params = array();
-
   public function actionIndex()
   {
-    $this->login = App::call()->request->getParams()["login"];
-    $this->password = App::call()->request->getParams()["password"];
+    App::call()->auth;
 
-    $this->params = $this->getDefaultParams();
-
-    if ($this->login && $this->password)
+    if (App::call()->auth->login && App::call()->auth->password)
     {
       $userAuth = (new User)->auth(
-        $this->login,
-        $this->password
+        App::call()->auth->login,
+        App::call()->auth->password
       );
     }
 
@@ -33,16 +26,16 @@ class AuthController extends Controller
       }
       else
       {
-        $this->params["user"] = $userAuth;
-        $this->params["msg"] = "Вы авторизированы";
+        App::call()->auth->params["user"] = $userAuth;
+        App::call()->auth->params["msg"] = "Вы авторизированы";
       }
     }
-    else if ($this->login && $this->password)
+    else if (App::call()->auth->login && App::call()->auth->password)
     {
       $this->params["msg"] = "Неверный логин или пароль";
     }
 
-    echo $this->render("auth", array("params" => $this->params));
+    echo $this->render("auth", array("params" => App::call()->auth->params));
   }
 
   public function actionForgot()
@@ -59,15 +52,6 @@ class AuthController extends Controller
   {
     App::call()->sessions->remove("user_id");
     header("Location: /");
-  }
-
-  private function getDefaultParams()
-  {
-    return array(
-      "user" => false,
-      "msg" => "",
-      "form_action" => $_SERVER["REQUEST_URI"]
-    );
   }
 }
 ?>
