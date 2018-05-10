@@ -5,6 +5,15 @@ use fadeev\php2\models\entities\User;
 
 class AuthController extends Controller
 {
+  private $login;
+  private $password;
+
+  public function __construct()
+  {
+    $this->login = App::call()->request->getParams()["login"];
+    $this->password = App::call()->request->getParams()["password"];
+  }
+
   public function actionIndex()
   {
     $arParams = array(
@@ -13,11 +22,11 @@ class AuthController extends Controller
       "form_action" => $_SERVER["REQUEST_URI"]
     );
 
-    if (App::call()->request->getParams()["login"] && App::call()->request->getParams()["password"])
+    if ($this->login && $this->password)
     {
       $userAuth = User::auth(
-        App::call()->request->getParams()["login"],
-        App::call()->request->getParams()["password"]
+        $this->login,
+        $this->password
       );
     }
 
@@ -34,7 +43,7 @@ class AuthController extends Controller
         $arParams["msg"] = "Вы авторизированы";
       }
     }
-    else if (App::call()->request->getParams()["login"] && App::call()->request->getParams()["password"])
+    else if ($this->login && $this->password)
     {
       $arParams["msg"] = "Неверный логин или пароль";
     }
