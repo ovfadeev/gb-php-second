@@ -51,6 +51,10 @@ class App
 
 	public function runController()
 	{
+		if (empty($this->sessions->get("id")))
+		{
+		  $this->sessions->start();
+		}
 		if (!is_null($this->request))
 		{
 			$this->controller = $this->request->getControllerName() ?: "index";

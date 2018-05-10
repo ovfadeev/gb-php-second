@@ -1,7 +1,7 @@
 <?php
 namespace fadeev\php2\controllers;
+use fadeev\php2\base\App;
 use fadeev\php2\models\entities\User;
-use fadeev\php2\services\Sessions;
 
 class AuthController extends Controller
 {
@@ -23,7 +23,7 @@ class AuthController extends Controller
 
     if ($userAuth !== false && $userAuth->id > 0)
     {
-      (new Sessions)->set('user_id', $userAuth->id);
+      App::call()->sessions->set('user_id', $userAuth->id);
       if (!empty($_GET["back_url"]))
       {
         header("Location: ".htmlspecialchars($_GET["back_url"]));
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
   public function actionLogout()
   {
-    (new Sessions)->remove("user_id");
+    App::call()->sessions->remove("user_id");
     header("Location: /");
   }
 }

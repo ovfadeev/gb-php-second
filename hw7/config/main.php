@@ -16,6 +16,9 @@ return array(
     "request" => array(
       "class" => \fadeev\php2\services\Request::class
     ),
+    "sessions" => array(
+      "class" => \fadeev\php2\services\Sessions::class
+    ),
   )
 );
 // define("ROOT_DIR", $_SERVER["DOCUMENT_ROOT"]."/../");

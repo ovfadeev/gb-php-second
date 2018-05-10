@@ -7,13 +7,12 @@ use fadeev\php2\models\entities\Basket;
 use fadeev\php2\models\repositories\BasketRepository;
 use fadeev\php2\models\entities\User;
 use fadeev\php2\models\repositories\UserRepository;
-use fadeev\php2\services\Sessions;
 
 class OrderController extends Controller
 {
   public function actionIndex()
   {
-    $user_id = (new Sessions)->get("user_id");
+    $user_id = App::call()->sessions->get("user_id");
     if (!empty($user_id)) {
       $order = (new Order)->orderPrepare($user_id);
     } else {
