@@ -30,6 +30,7 @@ class App
 
 	public function CreateComponent($name)
 	{
+		var_dump($this->config);
 		if (isset($this->config["components"][$name]))
 		{
 			$params = $this->config["components"][$name];
@@ -68,6 +69,13 @@ class App
 	function __get($name)
 	{
 		echo $name;
+		echo "<pre>";
+		var_dump($this->components);
+		echo "</pre>";
+
+		echo "<pre>";
+		var_dump($this->config);
+		echo "</pre>";
 		return $this->components->Get($name);
 	}
 }
