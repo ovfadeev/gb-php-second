@@ -9,19 +9,12 @@ class AuthController extends Controller
   private $password;
   private $params = array();
 
-  public function __construct()
+  public function actionIndex()
   {
     $this->login = App::call()->request->getParams()["login"];
     $this->password = App::call()->request->getParams()["password"];
-  }
 
-  public function actionIndex()
-  {
-    $arParams = array(
-      "user" => false,
-      "msg" => "",
-      "form_action" => $_SERVER["REQUEST_URI"]
-    );
+    $this->params = $this->getDefaultParams();
 
     if ($this->login && $this->password)
     {
@@ -40,16 +33,16 @@ class AuthController extends Controller
       }
       else
       {
-        $arParams["user"] = $userAuth;
-        $arParams["msg"] = "Вы авторизированы";
+        $this->params["user"] = $userAuth;
+        $this->params["msg"] = "Вы авторизированы";
       }
     }
     else if ($this->login && $this->password)
     {
-      $arParams["msg"] = "Неверный логин или пароль";
+      $this->params["msg"] = "Неверный логин или пароль";
     }
 
-    echo $this->render("auth", array("params" => $arParams));
+    echo $this->render("auth", array("params" => $this->params));
   }
 
   public function actionForgot()
@@ -66,6 +59,15 @@ class AuthController extends Controller
   {
     App::call()->sessions->remove("user_id");
     header("Location: /");
+  }
+
+  private function getDefaultParams()
+  {
+    return array(
+      "user" => false,
+      "msg" => "",
+      "form_action" => $_SERVER["REQUEST_URI"]
+    );
   }
 }
 ?>
