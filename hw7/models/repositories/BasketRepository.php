@@ -6,24 +6,24 @@ use fadeev\php2\models\entities\Basket;
 
 class BasketRepository extends Repository
 {
-  public function GetTableName()
+  public function getTableName()
   {
     return DB_PREFIX_TABLE."basket";
   }
 
-  public function GetEntityClass()
+  public function getEntityClass()
   {
       return Basket::class;
   }
 
-  public function GetBasketItems($arBasket = array())
+  public function getBasketItems($arBasket = array())
   {
     if (!empty($arBasket["products"]))
     {
       $arProducts = json_decode($arBasket["products"], true);
       foreach ($arProducts as $key => $product)
       {
-        $arBasketItems[] = (new \fadeev\php2\models\repositories\ProductRepository)->GetById($product["product_id"]);
+        $arBasketItems[] = (new \fadeev\php2\models\repositories\ProductRepository)->getById($product["product_id"]);
       }
       return $arBasketItems;
     }

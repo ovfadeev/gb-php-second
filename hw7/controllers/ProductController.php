@@ -8,14 +8,14 @@ class ProductController extends Controller
 {
   public function actionIndex()
   {
-    $products = (new ProductRepository)->GetList();
+    $products = (new ProductRepository)->getList();
     echo $this->render("products", array("products" => $products));
   }
 
   public function actionCard()
   {
-    $id = App::call()->request->GetParams()["id"];
-    $product = (new ProductRepository)->GetById($id);
+    $id = App::call()->request->getParams()["id"];
+    $product = (new ProductRepository)->getById($id);
     echo $this->render("card", array("product" => $product));
   }
 }

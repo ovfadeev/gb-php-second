@@ -4,12 +4,12 @@ namespace fadeev\php2\interfaces;
 interface IDBModel
 {
   public static function getTableName();
-  public static function GetById($id, $arSelect = array());
-  public static function GetList($arFilter = array(), $arSelect = array());
-  public function Add();
-  public function Update();
-  public function Delete();
-  public function Save();
-  public function PrivateColumns();
+  public static function getById($id, $arSelect = array());
+  public static function getList($arFilter = array(), $arSelect = array());
+  public function add();
+  public function update();
+  public function delete();
+  public function save();
+  public function privateColumns();
 }
 ?>

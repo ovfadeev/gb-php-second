@@ -15,7 +15,7 @@ class AuthController extends Controller
 
     if ($_POST)
     {
-      $userAuth = User::Auth(
+      $userAuth = User::auth(
         htmlspecialchars($_POST["login"]),
         htmlspecialchars($_POST["password"])
       );
@@ -23,7 +23,7 @@ class AuthController extends Controller
 
     if ($userAuth !== false && $userAuth->id > 0)
     {
-      (new Sessions)->Set('user_id', $userAuth->id);
+      (new Sessions)->set('user_id', $userAuth->id);
       if (!empty($_GET["back_url"]))
       {
         header("Location: ".htmlspecialchars($_GET["back_url"]));
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
   public function actionLogout()
   {
-    (new Sessions)->Remove("user_id");
+    (new Sessions)->remove("user_id");
     header("Location: /");
   }
 }

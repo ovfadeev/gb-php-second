@@ -7,7 +7,7 @@ class IndexController extends Controller
 {
   public function actionIndex()
   {
-    $products = (new ProductRepository)->GetList();
+    $products = (new ProductRepository)->getList();
     echo $this->render("index", array("name" => "main page"));
   }
 }

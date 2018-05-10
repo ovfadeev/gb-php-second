@@ -6,30 +6,30 @@ use fadeev\php2\models\entities\User;
 
 class UserRepository extends Repository
 {
-  public function GetTableName()
+  public function getTableName()
   {
     return DB_PREFIX_TABLE."users";
   }
 
-  public function GetEntityClass()
+  public function getEntityClass()
   {
       return User::class;
   }
 
-  public function PrivateColumns()
+  public function privateColumns()
   {
-    return array_merge(parent::PrivateColumns(), $this->privateColumns);
+    return array_merge(parent::privateColumns(), $this->privateColumns);
   }
 
-  public function Add(DataEntity $entity)
+  public function add(DataEntity $entity)
   {
-    $this->password = $this->HashPassword($this->password);
-    parent::Add($entity);
+    $this->password = $this->hashPassword($this->password);
+    parent::add($entity);
   }
 
-  public function Update(DataEntity $entity)
+  public function update(DataEntity $entity)
   {
-    parent::Update($entity);
+    parent::update($entity);
   }
 }
 ?>

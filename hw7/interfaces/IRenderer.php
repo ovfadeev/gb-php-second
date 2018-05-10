@@ -3,5 +3,5 @@ namespace fadeev\php2\interfaces;
 
 interface IRenderer
 {
-  public function Render($template, $arParams = array());
+  public function render($template, $arParams = array());
 }

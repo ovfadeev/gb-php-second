@@ -21,19 +21,19 @@ class App
 	/**
 	 * @return static
 	 */
-	public static function Call()
+	public static function call()
 	{
 		return static::GetInstance();
 	}
 
-	public function Run($config)
+	public function run($config)
 	{
 		$this->config = $config;
 		$this->components = new Storage();
-		$this->RunController();
+		$this->runController();
 	}
 
-	public function CreateComponent($name)
+	public function createComponent($name)
 	{
 		if (isset($this->config["components"][$name]))
 		{
@@ -49,19 +49,19 @@ class App
 		return null;
 	}
 
-	public function RunController()
+	public function runController()
 	{
 		if (!is_null($this->request))
 		{
-			$this->controller = $this->request->GetControllerName() ?: "index";
-			$this->action = $this->request->GetActionName();
+			$this->controller = $this->request->getControllerName() ?: "index";
+			$this->action = $this->request->getActionName();
 
 			$controllerClass = $this->config['controllers_namespaces'].ucfirst($this->controller)."Controller";
 
 			if (class_exists($controllerClass))
 			{
 				$controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
-				$controller->RunAction($this->action);
+				$controller->runAction($this->action);
 			}
 		}
 		else
@@ -72,6 +72,6 @@ class App
 
 	function __get($name)
 	{
-		return $this->components->Get($name);
+		return $this->components->get($name);
 	}
 }

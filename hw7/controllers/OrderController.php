@@ -1,5 +1,6 @@
 <?php
 namespace fadeev\php2\controllers;
+use fadeev\php2\base\App;
 use fadeev\php2\models\entities\Order;
 use fadeev\php2\models\repositories\OrderRepository;
 use fadeev\php2\models\entities\Basket;
@@ -12,9 +13,9 @@ class OrderController extends Controller
 {
   public function actionIndex()
   {
-    $user_id = (new Sessions)->Get("user_id");
+    $user_id = (new Sessions)->get("user_id");
     if (!empty($user_id)) {
-      $order = (new Order)->OrderPrepare($user_id);
+      $order = (new Order)->orderPrepare($user_id);
     } else {
       header("Location: /auth/?".http_build_query(array("back_url" => "/order/")));
     }
@@ -25,7 +26,7 @@ class OrderController extends Controller
   public function actionDetail()
   {
     $id = App::call()->request->GetParams()["id"];
-    $order = (new OrderRepository)->GetById($id);
+    $order = (new OrderRepository)->getById($id);
     echo $this->render("order_detail", array("order" => $order));
   }
 }

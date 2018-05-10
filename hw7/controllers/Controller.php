@@ -21,7 +21,7 @@ abstract class Controller
       $this->renderer = $renderer;
   }
 
-  public function RunAction($action = null)
+  public function runAction($action = null)
   {
     $this->action = $action ?: $this->defaultAction;
     $method = "action".ucfirst($this->action);
@@ -32,23 +32,23 @@ abstract class Controller
     }
   }
 
-  public function Render($template, $arParams = array())
+  public function render($template, $arParams = array())
   {
     if($this->useLayout){
-      return $this->RenderTemplate(
+      return $this->renderTemplate(
         "layouts/{$this->layout}",
         array(
-          "content" => $this->RenderTemplate($template, $arParams)
+          "content" => $this->renderTemplate($template, $arParams)
         )
       );
     } else {
-      return $this->RenderTemplate($template, $arParams);
+      return $this->renderTemplate($template, $arParams);
     }
   }
 
-  public function RenderTemplate($template, $arParams = array())
+  public function renderTemplate($template, $arParams = array())
   {
-    return $this->renderer->Render($template, $arParams);
+    return $this->renderer->render($template, $arParams);
   }
 }
 ?>

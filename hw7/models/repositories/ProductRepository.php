@@ -6,19 +6,19 @@ use fadeev\php2\models\entities\Product;
 
 class ProductRepository extends Repository
 {
-  public function GetTableName()
+  public function getTableName()
   {
     return DB_PREFIX_TABLE."catalog_products";
   }
 
-  public function GetEntityClass()
+  public function getEntityClass()
   {
       return Product::class;
   }
 
-  public function PrivateColumns()
+  public function privateColumns()
   {
-    return array_merge(parent::PrivateColumns(), $this->privateColumns);
+    return array_merge(parent::privateColumns(), $this->privateColumns);
   }
 }
 ?>

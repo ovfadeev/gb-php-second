@@ -8,11 +8,11 @@ spl_autoload_register(array(new \fadeev\php2\services\Autoloader(), 'loadClass')
 /* --- session --- */
 if (empty($_SESSION["id"]))
 {
-  (new \fadeev\php2\services\Sessions)->Start();
+  (new \fadeev\php2\services\Sessions)->start();
 }
 /* --- application --- */
 $config = include(__DIR__."/../config/main.php");
-\fadeev\php2\base\App::Call()->Run($config);
+\fadeev\php2\base\App::call()->run($config);
 
 // /* --- main config --- */
 // require_once($_SERVER["DOCUMENT_ROOT"]."/../config/main.php");

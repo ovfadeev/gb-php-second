@@ -26,36 +26,36 @@ class Basket extends DataEntity
     $this->products = $products;
   }
 
-  public function GetBasketByUser($user_id)
+  public function getBasketByUser($user_id)
   {
-    $basket = (new BasketRepository)->GetList(array("user_id" => $user_id))[0];
+    $basket = (new BasketRepository)->getList(array("user_id" => $user_id))[0];
     if (!empty($basket) && !empty($basket["products"]))
     {
-      $basket["basket_items"] = (new BasketRepository)->GetBasketItems($basket);
+      $basket["basket_items"] = (new BasketRepository)->getBasketItems($basket);
       return $basket;
     }
     return false;
   }
 
-  public function GetBasketBySession($session_id)
+  public function getBasketBySession($session_id)
   {
-    $basket = (new BasketRepository)->GetList(array("session_id" => $session_id))[0];
+    $basket = (new BasketRepository)->getList(array("session_id" => $session_id))[0];
     if (!empty($basket) && !empty($basket["products"]))
     {
-      $basket["basket_items"] = (new BasketRepository)->GetBasketItems($basket);
+      $basket["basket_items"] = (new BasketRepository)->getBasketItems($basket);
       return $basket;
     }
     return false;
   }
 
-  public function AddProductToBasket($product_id, $quantity, $price)
+  public function addProductToBasket($product_id, $quantity, $price)
   {
-    $session_id = (new Sessions)->Get("id");
-    $user_id = (new Sessions)->Get("user_id");
-    $basket = $this->GetBasketBySession($session_id);
+    $session_id = (new Sessions)->get("id");
+    $user_id = (new Sessions)->get("user_id");
+    $basket = $this->getBasketBySession($session_id);
     if ($basket)
     {
-      $objBasket = (new BasketRepository)->GetById($basket["id"]);
+      $objBasket = (new BasketRepository)->getById($basket["id"]);
       $arProducts = json_decode($objBasket->products, true);
       if (in_array($product_id, array_keys($arProducts))) {
         $arProducts[$product_id]["quantity"] += $quantity;
@@ -68,7 +68,7 @@ class Basket extends DataEntity
         );
       }
       $objBasket->products = json_encode($arProducts);
-      return (new BasketRepository)->Update($basket);
+      return (new BasketRepository)->update($basket);
     } else {
       $this->user_id = $user_id;
       $this->session_id = $session_id;
@@ -79,7 +79,7 @@ class Basket extends DataEntity
           "price" => $price
         )
       ));
-      return (new BasketRepository)->Add($this);
+      return (new BasketRepository)->add($this);
     }
   }
 }

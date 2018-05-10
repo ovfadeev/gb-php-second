@@ -31,22 +31,22 @@ class User extends DataEntity
     $this->password = $password;
   }
 
-  protected function HashPassword($password)
+  protected function hashPassword($password)
   {
     return password_hash($password, PASSWORD_DEFAULT);
   }
 
-  protected function VerifyPassword($password, $db_password)
+  protected function verifyPassword($password, $db_password)
   {
     return password_verify($password, $db_password);
   }
 
-  public static function Auth($login, $password)
+  public static function auth($login, $password)
   {
-    $findUser = (new UserRepository)->GetList(array("login" => $login), array("id", "password"))[0];
-    if (self::VerifyPassword($password, $findUser["password"]))
+    $findUser = (new UserRepository)->getList(array("login" => $login), array("id", "password"))[0];
+    if (self::verifyPassword($password, $findUser["password"]))
     {
-      return (new UserRepository)->GetById($findUser["id"]);
+      return (new UserRepository)->getById($findUser["id"]);
     }
     return false;
   }

@@ -6,12 +6,12 @@ use fadeev\php2\models\entities\Order;
 
 class BasketRepository extends Repository
 {
-  public function GetTableName()
+  public function getTableName()
   {
     return DB_PREFIX_TABLE."orders";
   }
 
-  public function GetEntityClass()
+  public function getEntityClass()
   {
       return Order::class;
   }

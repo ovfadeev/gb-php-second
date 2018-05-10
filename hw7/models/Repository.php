@@ -14,21 +14,21 @@ abstract class Repository
     $this->db = App::Call()->db;
   }
 
-  abstract public function GetTableName();
+  abstract public function getTableName();
 
-  abstract public function GetEntityClass();
+  abstract public function getEntityClass();
 
-  public function PrivateColumns()
+  public function privateColumns()
   {
     return array("DB", "date_insert", "date_update");
   }
 
-  public function Add(DataEntity $entity)
+  public function add(DataEntity $entity)
   {
-    $arPrepareSql = (new PrepareSql)->Add(
-      $this->GetTableName(),
+    $arPrepareSql = (new PrepareSql)->add(
+      $this->getTableName(),
       $this,
-      $this->PrivateColumns()
+      $this->privateColumns()
     );
     $this->db->Query($arPrepareSql["sql"], $arPrepareSql["params"]);
     $this->id = $this->db->lastInsertId();
@@ -37,61 +37,61 @@ abstract class Repository
   public function Update(DataEntity $entity)
   {
     $res = false;
-    $arPrepareSql = (new PrepareSql)->Update(
-      $this->GetTableName(),
+    $arPrepareSql = (new PrepareSql)->update(
+      $this->getTableName(),
       $this,
-      $this->PrivateColumns()
+      $this->privateColumns()
     );
     $res = $this->db
-      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->query($arPrepareSql["sql"], $arPrepareSql["params"])
       ->rowCount();
     return $res;
   }
 
   public function Delete(DataEntity $entity)
   {
-    $arPrepareSql = (new PrepareSql)->Delete(
-      $this->GetTableName(),
+    $arPrepareSql = (new PrepareSql)->delete(
+      $this->getTableName(),
       $this,
-      $this->PrivateColumns()
+      $this->privateColumns()
     );
     $res = $this->db
-      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->query($arPrepareSql["sql"], $arPrepareSql["params"])
       ->rowCount();
     return $res;
   }
 
-  public function Save(DataEntity $entity)
+  public function save(DataEntity $entity)
   {
     if ($this->date_insert){
-      $this->Update();
+      $this->update();
     } else {
-      $this->Add();
+      $this->add();
     }
   }
 
-  public function GetById($id, $arSelect = array())
+  public function getById($id, $arSelect = array())
   {
-    $arPrepareSql = (new PrepareSql)->Select(
-      $this->GetTableName(),
+    $arPrepareSql = (new PrepareSql)->select(
+      $this->getTableName(),
       array("id" => $id),
       $arSelect
     );
     $result = $this->db
-      ->queryObject($arPrepareSql["sql"], $arPrepareSql["params"], $this->GetEntityClass());
+      ->queryObject($arPrepareSql["sql"], $arPrepareSql["params"], $this->getEntityClass());
     return $result;
   }
 
   public function GetList($arFilter = array(), $arSelect = array())
   {
-    $arPrepareSql = (new PrepareSql)->Select(
-      $this->GetTableName(),
+    $arPrepareSql = (new PrepareSql)->select(
+      $this->getTableName(),
       $arFilter,
       $arSelect
     );
     $arResult = $this->db
-      ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
-      ->FetchAll();
+      ->query($arPrepareSql["sql"], $arPrepareSql["params"])
+      ->fetchAll();
     return $arResult;
   }
 }
