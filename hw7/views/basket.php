@@ -1,5 +1,7 @@
 <h1>Корзина</h1>
-<a href="/order/">Оформить заказ</a>
+<?if ($basket):?>
+  <a href="/order/">Оформить заказ</a>
+<?endif?>
 <?php
 echo "<pre>";
 var_dump($basket);

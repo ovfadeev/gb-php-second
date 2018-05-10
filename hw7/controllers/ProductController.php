@@ -1,5 +1,6 @@
 <?php
 namespace fadeev\php2\controllers;
+use fadeev\php2\base\App;
 use fadeev\php2\models\Product;
 use fadeev\php2\models\repositories\ProductRepository;
 
