@@ -14,6 +14,8 @@ class App
 	private $controller;
 	private $action;
 
+	private static $instance;
+
 	public static function Call()
 	{
 		return static::GetInstance();
