@@ -1,4 +1,6 @@
 <?php
+/* --- config --- */
+include(__DIR__."/../config/db.php");
 define("DEV_NAMESPACE", "fadeev\\php2\\");
 /* --- autoloader --- */
 include(__DIR__."/../services/Autoloader.php");
@@ -10,6 +12,9 @@ if (empty($_SESSION["id"]))
 }
 /* --- application --- */
 $config = include(__DIR__."/../config/main.php");
+echo "<pre>";
+print_r($config);
+echo "</pre>";
 \fadeev\php2\base\App::Call()->Run($config);
 
 // /* --- main config --- */

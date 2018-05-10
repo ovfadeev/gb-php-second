@@ -77,7 +77,7 @@ abstract class Repository
       array("id" => $id),
       $arSelect
     );
-    $result = Db::getInstance()
+    $result = $this->db
       ->queryObject($arPrepareSql["sql"], $arPrepareSql["params"], $this->GetEntityClass());
     return $result;
   }
@@ -89,7 +89,7 @@ abstract class Repository
       $arFilter,
       $arSelect
     );
-    $arResult = Db::getInstance()
+    $arResult = $this->db
       ->Query($arPrepareSql["sql"], $arPrepareSql["params"])
       ->FetchAll();
     return $arResult;

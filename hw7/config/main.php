@@ -6,12 +6,12 @@ return array(
   "components" => array(
     "db" => array(
       "class" => \fadeev\php2\services\DB::class,
-      "driver" => "mysql",
-      "host" => "localhost",
-      "login" => "root",
-      "password" => "",
-      "database" => "gb-php",
-      "charset" => "utf8"
+      "driver" => DB_TYPE,
+      "host" => DB_HOST,
+      "login" => DB_LOGIN,
+      "password" => DB_PASSWORD,
+      "database" => DB_NAME,
+      "charset" => DB_CHARSET
     ),
     "request" => array(
       "class" => \fadeev\php2\services\Request::class
