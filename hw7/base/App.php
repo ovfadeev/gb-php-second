@@ -9,12 +9,18 @@ class App
 
 	public $config;
 
+	/**
+	 * @var storage
+	 */
 	private $components;
 	private $controller;
 	private $action;
 
-	private static $instance;
+	private static $instance = null;
 
+	/**
+	 * @return static
+	 */
 	public static function Call()
 	{
 		return static::GetInstance();
@@ -29,9 +35,6 @@ class App
 
 	public function CreateComponent($name)
 	{
-		echo "<pre>";
-		var_dump($this->config);
-		echo "</pre>";
 		if (isset($this->config["components"][$name]))
 		{
 			$params = $this->config["components"][$name];
@@ -48,8 +51,8 @@ class App
 
 	public function RunController()
 	{
-		if (!is_null($this->request))
-		{
+		// if (!is_null($this->request))
+		// {
 			$this->controller = $this->request->GetControllerName() ?: "index";
 			$this->action = $this->request->GetActionName();
 
@@ -60,23 +63,15 @@ class App
 				$controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
 				$controller->RunAction($this->action);
 			}
-		}
-		else
-		{
-			throw new \Exception("Request is null", 1);
-		}
+		// }
+		// else
+		// {
+		// 	throw new \Exception("Request is null", 1);
+		// }
 	}
 
 	function __get($name)
 	{
-		echo $name;
-		echo "<pre>";
-		var_dump($this->components);
-		echo "</pre>";
-
-		echo "<pre>";
-		var_dump($this->config);
-		echo "</pre>";
 		return $this->components->Get($name);
 	}
 }
