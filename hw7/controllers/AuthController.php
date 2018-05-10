@@ -14,7 +14,7 @@ class AuthController extends Controller
     {
       if (App::call()->auth->login && App::call()->auth->password)
       {
-        $userAuth = App::call()->auth->verify();
+        $userAuth = App::call()->auth->signIn();
       }
 
       if ($userAuth !== false && $userAuth->id > 0)

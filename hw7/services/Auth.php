@@ -21,7 +21,7 @@ class Auth
     );
   }
 
-  public function verify()
+  public function signIn()
   {
     $db_user = new UserRepository();
     $findUser = $db_user->getList(array("login" => $this->login), array("id", "password"))[0];
