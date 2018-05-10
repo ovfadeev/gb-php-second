@@ -1,7 +1,6 @@
 <?php
 namespace fadeev\php2\controllers;
 use fadeev\php2\base\App;
-use fadeev\php2\models\entities\User;
 
 class AuthController extends Controller
 {
@@ -11,10 +10,7 @@ class AuthController extends Controller
 
     if (App::call()->auth->login && App::call()->auth->password)
     {
-      $userAuth = (new User)->auth(
-        App::call()->auth->login,
-        App::call()->auth->password
-      );
+      $userAuth = App::call()->auth->verify();
     }
 
     if ($userAuth !== false && $userAuth->id > 0)
