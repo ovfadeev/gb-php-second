@@ -12,8 +12,6 @@ class DB
 
   private $db = null;
 
-  private static $instance = null;
-
   public function __construct($driver, $host, $login, $password, $database, $charset = "utf8")
   {
     $this->dbDriver = $driver;
