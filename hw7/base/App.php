@@ -35,6 +35,7 @@ class App
 
 	public function CreateComponent($name)
 	{
+		echo $name;
 		if (isset($this->config["components"][$name]))
 		{
 			$params = $this->config["components"][$name];
@@ -53,6 +54,9 @@ class App
 	{
 		// if (!is_null($this->request))
 		// {
+			echo "<pre>";
+			var_dump($this->request);
+			echo "</pre>";
 			$this->controller = $this->request->GetControllerName() ?: "index";
 			$this->action = $this->request->GetActionName();
 
@@ -72,6 +76,7 @@ class App
 
 	function __get($name)
 	{
+		echo $name;
 		return $this->components->Get($name);
 	}
 }
