@@ -62,6 +62,8 @@ class App
 			{
 				$controller = new $controllerClass(new \fadeev\php2\services\TemplateRenderer());
 				$controller->runAction($this->action);
+			} else {
+				throw new \Exception("Controller not found", 404);
 			}
 		}
 		else
