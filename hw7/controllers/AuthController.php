@@ -24,9 +24,9 @@ class AuthController extends Controller
     if ($userAuth !== false && $userAuth->id > 0)
     {
       App::call()->sessions->set('user_id', $userAuth->id);
-      if (!empty($_GET["back_url"]))
+      if (!empty(App::call()->request->getParams()["back_url"]))
       {
-        header("Location: ".htmlspecialchars($_GET["back_url"]));
+        header("Location: " . App::call()->request->getParams()["back_url"]);
       }
       else
       {
