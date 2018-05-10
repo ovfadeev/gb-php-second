@@ -5,14 +5,14 @@ class Preparesql
 {
   public function select($table, $arFilter = array(), $arSelect = array())
   {
-    $sql = "";
+    $sql = "SELECT ";
     if (!empty($arSelect))
     {
-      $sql .= "SELECT ".implode(", ", $arSelect);
+      $sql .= implode(", ", $arSelect);
     }
     else
     {
-      $sql .= "SELECT *";
+      $sql .= "*";
     }
     $sql .= " FROM ".$table;
     if (!empty($arFilter))
