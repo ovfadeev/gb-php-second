@@ -31,7 +31,7 @@ class User extends DataEntity
     $this->password = $password;
   }
 
-  protected function hashPassword($password)
+  public function hashPassword($password)
   {
     return password_hash($password, PASSWORD_DEFAULT);
   }
