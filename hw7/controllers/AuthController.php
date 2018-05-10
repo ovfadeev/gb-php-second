@@ -13,7 +13,7 @@ class AuthController extends Controller
       "form_action" => $_SERVER["REQUEST_URI"]
     );
 
-    if ($_POST)
+    if (App::call()->request->getParams()["login"] && App::call()->request->getParams()["password"])
     {
       $userAuth = User::auth(
         App::call()->request->getParams()["login"],
@@ -34,7 +34,7 @@ class AuthController extends Controller
         $arParams["msg"] = "Вы авторизированы";
       }
     }
-    else if ($_POST)
+    else if (App::call()->request->getParams()["login"] && App::call()->request->getParams()["password"])
     {
       $arParams["msg"] = "Неверный логин или пароль";
     }
