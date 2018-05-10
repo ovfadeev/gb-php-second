@@ -1,8 +1,8 @@
 <?php
 namespace fadeev\php2\models\entities;
+use fadeev\php2\base\App;
 use fadeev\php2\models\DataEntity;
 use fadeev\php2\models\repositories\BasketRepository;
-use fadeev\php2\models\services\Sessions;
 
 class Basket extends DataEntity
 {
@@ -50,8 +50,8 @@ class Basket extends DataEntity
 
   public function addProductToBasket($product_id, $quantity, $price)
   {
-    $session_id = (new Sessions)->get("id");
-    $user_id = (new Sessions)->get("user_id");
+    $session_id = App::call()->sessions->get("id");
+    $user_id = App::call()->sessions->get("user_id");
     $basket = $this->getBasketBySession($session_id);
     if ($basket)
     {
