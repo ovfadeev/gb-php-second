@@ -17,8 +17,7 @@ class Preparesql
     $sql .= " FROM ".$table;
     if (!empty($arFilter))
     {
-      $sql .= " WHERE ";
-      $sql .= implode(
+      $sql .= " WHERE " . implode(
         ", ",
         array_map(function ($k, $v) {
           return $k." = '".$v."'";
