@@ -12,8 +12,6 @@ class AuthController extends Controller
     }
     else
     {
-      App::call()->auth;
-
       if (App::call()->auth->login && App::call()->auth->password)
       {
         $userAuth = App::call()->auth->verify();
