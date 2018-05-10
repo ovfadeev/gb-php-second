@@ -41,7 +41,7 @@ class User extends DataEntity
     return password_verify($password, $db_password);
   }
 
-  public static function auth($login, $password)
+  public function auth($login, $password)
   {
     $db_user = new UserRepository();
     $findUser = $db_user->getList(array("login" => $login), array("id", "password"))[0];

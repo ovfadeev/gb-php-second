@@ -7,6 +7,7 @@ class AuthController extends Controller
 {
   private $login;
   private $password;
+  private $params = array();
 
   public function __construct()
   {
@@ -24,7 +25,7 @@ class AuthController extends Controller
 
     if ($this->login && $this->password)
     {
-      $userAuth = User::auth(
+      $userAuth = (new User)->auth(
         $this->login,
         $this->password
       );
